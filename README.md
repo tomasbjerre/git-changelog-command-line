@@ -4,7 +4,7 @@ This is a command line tool for generating a changelog, or releasenotes, from a 
 
 There are some screenshots [here](https://github.com/tomasbjerre/git-changelog-lib/tree/screenshots/sandbox).
 
-The runnable can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-lib%22) (the zip file). Unpack it and you will find the bin-folder.
+The runnable can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) (the zip file). Unpack it and you will find the bin-folder.
 
 # Usage
 Or from command line:
