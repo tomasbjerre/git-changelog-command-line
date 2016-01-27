@@ -1,0 +1,28 @@
+# Git Changelog changelog
+
+Changelog of Git Changelog.
+
+{{#tags}}
+## {{name}}
+ {{#issues}}
+  {{#hasIssue}}
+   {{#hasLink}}
+### {{name}} [{{issue}}]({{link}}) {{title}}
+   {{/hasLink}}
+   {{^hasLink}}
+### {{name}} {{issue}} {{title}}
+   {{/hasLink}}
+  {{/hasIssue}}
+  {{^hasIssue}}
+### {{name}}
+  {{/hasIssue}}
+
+  {{#commits}}
+[{{hash}}](https://github.com/tomasbjerre/git-changelog-lib/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+
+{{{message}}}
+
+  {{/commits}}
+
+ {{/issues}}
+{{/tags}}
