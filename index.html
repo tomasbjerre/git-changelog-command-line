@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Git-changelog-command-line : Command line tool to generate changelog, or releasenotes, from a git repository.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Git-changelog-command-line</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tomasbjerre/git-changelog-command-line">View on GitHub</a>
+
+          <h1 id="project_title">Git-changelog-command-line</h1>
+          <h2 id="project_tagline">Command line tool to generate changelog, or releasenotes, from a git repository.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/tomasbjerre/git-changelog-command-line/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/tomasbjerre/git-changelog-command-line/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="git-changelog-command-line-" class="anchor" href="#git-changelog-command-line-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Changelog Command Line <a href="https://travis-ci.org/tomasbjerre/git-changelog-command-line"><img src="https://travis-ci.org/tomasbjerre/git-changelog-command-line.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<p>This is a command line tool for generating a changelog, or releasenotes, from a GIT repository. It uses the <a href="https://github.com/tomasbjerre/git-changelog-lib">Git Changelog Lib</a>.</p>
+
+<p>There are some screenshots <a href="https://github.com/tomasbjerre/git-changelog-lib/tree/screenshots/sandbox">here</a>.</p>
+
+<p>The runnable can be found in <a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22">Maven Central</a> (the zip file). Unpack it and you will find the bin-folder.</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>Or from command line:</p>
+
+<pre><code>-cl, --custom-issue-link &lt;string&gt;          Custom issue link.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-cn, --custom-issue-name &lt;string&gt;          Custom issue name.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-cp, --custom-issue-pattern &lt;string&gt;       Custom issue pattern.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-df, --date-format &lt;string&gt;                Format to use when printing dates.
+                                           &lt;string&gt;: any string
+                                           Default: YYYY-MM-dd HH:mm:ss
+-fc, --from-commit &lt;string&gt;                From commit.
+                                           &lt;string&gt;: any string
+                                           Default: 0000000000000000000000000000000000000000
+-fr, --from-ref &lt;string&gt;                   From ref.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-gapi, --github-api &lt;string&gt;               GitHub API.
+                                           &lt;string&gt;: any string
+                                           Default: 
+-h, --help &lt;argument-to-print-help-for&gt;    &lt;argument-to-print-help-for&gt;: an argument to print help for
+                                           Default: If no specific parameter is given the whole usage text is given
+-ip, --ignore-pattern &lt;string&gt;             Ignore commits where pattern 
+                                           matches message.
+                                           &lt;string&gt;: any string
+                                           Default: ^\[maven-release-plugin\].*|^\[Gradle Release Plugin\].*|^Merge.*
+-jp, --jira-pattern &lt;string&gt;               Jira issue pattern.
+                                           &lt;string&gt;: any string
+                                           Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
+-jpw, --jira-password &lt;string&gt;             Optional password to authenticate 
+                                           with Jira.
+                                           &lt;string&gt;: any string
+                                           Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
+-js, --jiraServer &lt;string&gt;                 Jira server. When a Jira server is 
+                                           given, the title of the Jira issues can be 
+                                           used in the changelog.
+                                           &lt;string&gt;: any string
+                                           Default: 
+-ju, --jira-username &lt;string&gt;              Optional username to authenticate 
+                                           with Jira.
+                                           &lt;string&gt;: any string
+                                           Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
+-mp, --mediawiki-password &lt;string&gt;         Password to authenticate with 
+                                           MediaWiki.
+                                           &lt;string&gt;: any string
+                                           Default: 
+-mt, --mediawiki-title &lt;string&gt;            Title of MediaWiki page.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-mu, --mediawiki-user &lt;string&gt;             User to authenticate with MediaWiki.
+                                           &lt;string&gt;: any string
+                                           Default: 
+-murl, --mediawiki-url &lt;string&gt;            Base URL of MediaWiki.
+                                           &lt;string&gt;: any string
+                                           Default: 
+-ni, --no-issue-name &lt;string&gt;              Name of virtual issue that contains 
+                                           commits that has no issue associated.
+                                           &lt;string&gt;: any string
+                                           Default: No issue
+-of, --output-file &lt;string&gt;                Write output to file.
+                                           &lt;string&gt;: any string
+                                           Default: 
+-r, --repo &lt;string&gt;                        Repository.
+                                           &lt;string&gt;: any string
+                                           Default: .
+-ri, --remove-issue-from-message           Dont print any issues in the 
+                                           messages of commits.
+                                           Default: disabled
+-rt, --readable-tag-name &lt;string&gt;          Pattern to extract readable part of 
+                                           tag.
+                                           &lt;string&gt;: any string
+                                           Default: /([^/]+?)$
+-sf, --settings-file &lt;string&gt;              Use settings from file.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-std, --stdout                             Print builder to &lt;STDOUT&gt;.
+                                           Default: disabled
+-t, --template &lt;string&gt;                    Template to use. A default template 
+                                           will be used if not specified.
+                                           &lt;string&gt;: any string
+                                           Default: git-changelog-template.mustache
+-tc, --to-commit &lt;string&gt;                  To commit.
+                                           &lt;string&gt;: any string
+                                           Default: null
+-tr, --to-ref &lt;string&gt;                     To ref.
+                                           &lt;string&gt;: any string
+                                           Default: refs/heads/master
+-tz, --time-zone &lt;string&gt;                  TimeZone to use when printing dates.
+                                           &lt;string&gt;: any string
+                                           Default: UTC
+-ut, --untagged-name &lt;string&gt;              When listing commits per tag, this 
+                                           will by the name of a virtual tag that 
+                                           contains commits not available in any git 
+                                           tag.
+                                           &lt;string&gt;: any string
+                                           Default: No tag
+</code></pre>
+
+<p>Creating a MediaWiki page can be done like this.</p>
+
+<pre><code>./git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
+</code></pre>
+
+<h1>
+<a id="developer-instructions" class="anchor" href="#developer-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developer instructions</h1>
+
+<p>To build the code, have a look at <code>.travis.yml</code>.</p>
+
+<p>To do a release you need to do <code>./gradlew release</code> and release the artifact from <a href="https://oss.sonatype.org/#stagingRepositories">staging</a>. More information <a href="http://central.sonatype.org/pages/releasing-the-deployment.html">here</a>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Git-changelog-command-line maintained by <a href="https://github.com/tomasbjerre">tomasbjerre</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
