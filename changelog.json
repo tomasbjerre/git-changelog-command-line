@@ -1,4 +1,6 @@
 {
+ "templatePath": "changelog.json",
+
  "fromRepo": ".",
  "fromCommit": "0000000000000000000000000000000000000000",
  "toRef": "refs/heads/master",
