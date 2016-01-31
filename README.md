@@ -6,7 +6,12 @@ There are some screenshots [here](https://github.com/tomasbjerre/git-changelog-l
 
 The runnable can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) (the zip file). Unpack it and you will find the bin-folder.
 
-Creating a MediaWiki page can be done like this.
+A CHANGELOG.md file can be created like this.
+```
+./bin/git-changelog-command-line -t changelog.mustache -sf changelog.json -of CHANGELOG.md
+```
+
+A MediaWiki page can be created like this.
 ```
 ./git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
 ```
