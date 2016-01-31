@@ -2,10 +2,10 @@
 
 Changelog of Git Changelog.
 
-## Next release
+## 1.1
 ### Other changes
 
-[b00d6cb8951979b](https://github.com/tomasbjerre/git-changelog-lib/commit/b00d6cb8951979b) Tomas Bjerre *2016-01-30 17:08:40*
+[c66eae3ba424076](https://github.com/tomasbjerre/git-changelog-lib/commit/c66eae3ba424076) Tomas Bjerre *2016-01-30 17:23:15*
 
 Lib 1.22 and test cases
 
