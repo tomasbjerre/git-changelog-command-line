@@ -32,7 +32,7 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="git-changelog-command-line-" class="anchor" href="#git-changelog-command-line-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Changelog Command Line <a href="https://travis-ci.org/tomasbjerre/git-changelog-command-line"><img src="https://travis-ci.org/tomasbjerre/git-changelog-command-line.svg?branch=master" alt="Build Status"></a>
+<a id="git-changelog-command-line--" class="anchor" href="#git-changelog-command-line--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Changelog Command Line <a href="https://travis-ci.org/tomasbjerre/git-changelog-command-line"><img src="https://travis-ci.org/tomasbjerre/git-changelog-command-line.svg?branch=master" alt="Build Status"></a> <a href="https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line"><img src="https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line/badge.svg" alt="Maven Central"></a>
 </h1>
 
 <p>This is a command line tool for generating a changelog, or releasenotes, from a GIT repository. It uses the <a href="https://github.com/tomasbjerre/git-changelog-lib">Git Changelog Lib</a>.</p>
@@ -40,6 +40,18 @@
 <p>There are some screenshots <a href="https://github.com/tomasbjerre/git-changelog-lib/tree/screenshots/sandbox">here</a>.</p>
 
 <p>The runnable can be found in <a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22">Maven Central</a> (the zip file). Unpack it and you will find the bin-folder.</p>
+
+<p>A CHANGELOG.md file can be created like this.</p>
+
+<pre><code>./bin/git-changelog-command-line -t changelog.mustache -sf changelog.json -of CHANGELOG.md
+</code></pre>
+
+<p>A MediaWiki page can be created like this.</p>
+
+<pre><code>./git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
+</code></pre>
+
+<p>There are more examples <a href="https://github.com/tomasbjerre/git-changelog-command-line/blob/master/generate_changelog.sh">here</a>.</p>
 
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
@@ -143,11 +155,6 @@
                                            tag.
                                            &lt;string&gt;: any string
                                            Default: No tag
-</code></pre>
-
-<p>Creating a MediaWiki page can be done like this.</p>
-
-<pre><code>./git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
 </code></pre>
 
 <h1>
