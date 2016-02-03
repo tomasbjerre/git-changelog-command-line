@@ -70,6 +70,12 @@
 -df, --date-format &lt;string&gt;                Format to use when printing dates.
                                            &lt;string&gt;: any string
                                            Default: YYYY-MM-dd HH:mm:ss
+-ex, --extended-variables &lt;string&gt;         Extended variables that will be 
+                                           available as {{extended.*}}. -ex "{\"var1\": 
+                                           \"val1\"}" will print out "val1" for 
+                                           a template like "{{extended.var1}}"
+                                           &lt;string&gt;: any string
+                                           Default: 
 -fc, --from-commit &lt;string&gt;                From commit.
                                            &lt;string&gt;: any string
                                            Default: 0000000000000000000000000000000000000000
@@ -143,6 +149,9 @@
 -tc, --to-commit &lt;string&gt;                  To commit.
                                            &lt;string&gt;: any string
                                            Default: null
+-tec, --template-content &lt;string&gt;          String to use as template.
+                                           &lt;string&gt;: any string
+                                           Default: 
 -tr, --to-ref &lt;string&gt;                     To ref.
                                            &lt;string&gt;: any string
                                            Default: refs/heads/master
