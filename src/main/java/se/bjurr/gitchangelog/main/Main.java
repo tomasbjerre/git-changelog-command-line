@@ -1,6 +1,7 @@
 package se.bjurr.gitchangelog.main;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.collect.ImmutableMap.of;
 import static se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder;
 import static se.bjurr.gitchangelog.internal.settings.Settings.defaultSettings;
 import static se.softhouse.jargo.Arguments.helpArgument;
@@ -9,6 +10,8 @@ import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.Map;
 
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.internal.settings.Settings;
@@ -17,6 +20,8 @@ import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class Main {
  public static final String PARAM_SETTINGS_FILE = "-sf";
@@ -47,6 +52,8 @@ public class Main {
  public static final String PARAM_MEDIAWIKIUSER = "-mu";
  public static final String PARAM_MEDIAWIKIPASSWORD = "-mp";
  public static final String PARAM_GITHUBAPI = "-gapi";
+ public static final String PARAM_EXTENDED_VARIABLES = "-ex";
+ public static final String PARAM_TEMPLATE_CONTENT = "-tec";
 
  private static String systemOutPrintln;
  private static boolean recordSystemOutPrintln;
@@ -173,6 +180,18 @@ public class Main {
     .defaultValue("") //
     .build();
 
+  Argument<String> extendedVariablesArgument = stringArgument(PARAM_EXTENDED_VARIABLES, "--extended-variables")//
+    .description(
+      "Extended variables that will be available as {{extended.*}}. " + PARAM_EXTENDED_VARIABLES
+        + " \"{\\\"var1\\\": \\\"val1\\\"}\" will print out \"val1\" for a template like \"{{extended.var1}}\"")//
+    .defaultValue("") //
+    .build();
+
+  Argument<String> templateContentArgument = stringArgument(PARAM_TEMPLATE_CONTENT, "--template-content")//
+    .description("String to use as template.")//
+    .defaultValue("") //
+    .build();
+
   try {
    ParsedArguments arg = withArguments(helpArgument, settingsArgument, outputStdoutArgument, outputFileArgument,
      templatePathArgument, fromCommitArgument, fromRefArgument, fromRepoArgument, toCommitArgument, toRefArgument,
@@ -180,13 +199,27 @@ public class Main {
      customIssueLinkArgument, customIssueNameArgument, customIssuePatternArgument, timeZoneArgument,
      dateFormatArgument, noIssueArgument, readableTagNameArgument, removeIssueFromMessageArgument,
      mediaWikiUrlArgument, mediaWikiUserArgument, mediaWikiPasswordArgument, mediaWikiTitleArgument, gitHubApiArgument,
-     jiraUsernamePatternArgument, jiraPasswordPatternArgument)//
+     jiraUsernamePatternArgument, jiraPasswordPatternArgument, extendedVariablesArgument, templateContentArgument)//
      .parse(args);
 
    GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
 
    if (arg.wasGiven(removeIssueFromMessageArgument)) {
     changelogApiBuilder.withRemoveIssueFromMessageArgument(true);
+   }
+
+   if (arg.wasGiven(extendedVariablesArgument)) {
+    String jsonString = arg.get(extendedVariablesArgument);
+    Gson gson = new Gson();
+    Type type = new TypeToken<Map<String, Object>>() {
+    }.getType();
+    Object jsonObject = gson.fromJson(jsonString, type);
+    Map<String, Object> extendedVariables = of("extended", jsonObject);
+    changelogApiBuilder.withExtendedVariables(extendedVariables);
+   }
+
+   if (arg.wasGiven(templateContentArgument)) {
+    changelogApiBuilder.withTemplateContent(arg.get(templateContentArgument));
    }
 
    if (arg.wasGiven(settingsArgument)) {

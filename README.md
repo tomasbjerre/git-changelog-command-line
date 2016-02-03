@@ -33,6 +33,12 @@ Or from command line:
 -df, --date-format <string>                Format to use when printing dates.
                                            <string>: any string
                                            Default: YYYY-MM-dd HH:mm:ss
+-ex, --extended-variables <string>         Extended variables that will be 
+                                           available as {{extended.*}}. -ex "{\"var1\": 
+                                           \"val1\"}" will print out "val1" for 
+                                           a template like "{{extended.var1}}"
+                                           <string>: any string
+                                           Default: 
 -fc, --from-commit <string>                From commit.
                                            <string>: any string
                                            Default: 0000000000000000000000000000000000000000
@@ -106,6 +112,9 @@ Or from command line:
 -tc, --to-commit <string>                  To commit.
                                            <string>: any string
                                            Default: null
+-tec, --template-content <string>          String to use as template.
+                                           <string>: any string
+                                           Default: 
 -tr, --to-ref <string>                     To ref.
                                            <string>: any string
                                            Default: refs/heads/master

@@ -8,10 +8,11 @@ cd *T
 #Actual changelog to be used in root of repo
 #
 
+./bin/git-changelog-command-line -h
+
 ./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog.mustache -sf $ROOT_FOLDER/changelog.json -of $ROOT_FOLDER/CHANGELOG.md
 
 #./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog_mediawiki.mustache -sf $ROOT_FOLDER/changelog.json -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -gapi https://api.github.com/repos/tomasbjerre/git-changelog-lib
-
 
 #
 #test cases
@@ -25,3 +26,6 @@ cd *T
 
 ## Create MediaWiki page
 ./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog_mediawiki.mustache -sf $ROOT_FOLDER/changelog.json -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -tc 224cad580426bc03027b77c1036306253cbba973
+
+## Use variables from command line
+./bin/git-changelog-command-line -ex "{\"var1\":\"value1\"}" -tec "extended variable: {{extended.var1}}" -of $ROOT_FOLDER/src/test/resources/testThatVariablesCanBeUsed.md

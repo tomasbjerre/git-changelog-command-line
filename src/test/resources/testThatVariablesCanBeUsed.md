@@ -1,0 +1,1 @@
+extended variable: value1
