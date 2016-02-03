@@ -4,11 +4,11 @@ cd build/distributions
 unzip *T.zip
 cd *T
 
+./bin/git-changelog-command-line -h
+
 #
 #Actual changelog to be used in root of repo
 #
-
-./bin/git-changelog-command-line -h
 
 ./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog.mustache -sf $ROOT_FOLDER/changelog.json -of $ROOT_FOLDER/CHANGELOG.md
 

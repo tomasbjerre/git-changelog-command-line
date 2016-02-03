@@ -2,10 +2,10 @@
 
 Changelog of Git Changelog.
 
-## Next release
+## 1.3
 ### Other changes
 
-[084b6213ba9fd03](https://github.com/tomasbjerre/git-changelog-lib/commit/084b6213ba9fd03) Tomas Bjerre *2016-02-03 17:29:28*
+[79ebeca10883ed8](https://github.com/tomasbjerre/git-changelog-lib/commit/79ebeca10883ed8) Tomas Bjerre *2016-02-03 17:32:18*
 
 Adding -tec and -ex
 
