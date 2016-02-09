@@ -2,6 +2,21 @@
 
 Changelog of Git Changelog.
 
+## Next release
+### GitHub [#5](https://github.com/tomasbjerre/git-changelog-lib/issues/5) Confluence integration
+
+[23697e42d35382d](https://github.com/tomasbjerre/git-changelog-lib/commit/23697e42d35382d) Tomas Bjerre *2016-02-09 19:38:01*
+
+Added variables: messageTitle, messageBody, messageItems
+
+
+### Other changes
+
+[496444b04e46ff6](https://github.com/tomasbjerre/git-changelog-lib/commit/496444b04e46ff6) Tomas Bjerre *2016-02-03 19:45:06*
+
+Updating CHANGELOG.md
+
+
 ## 1.3
 ### Other changes
 
