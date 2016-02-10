@@ -1,6 +1,6 @@
-# Git Changelog changelog
+# Git Changelog Command Line changelog
 
-Changelog of Git Changelog.
+Changelog of Git Changelog Command Line.
 
 ## 1.0
 ### Other changes
@@ -8,6 +8,6 @@ Changelog of Git Changelog.
 **Initial commit**
 
 
-[3dd0012f113ba82](https://github.com/tomasbjerre/git-changelog-lib/commit/3dd0012f113ba82) Tomas Bjerre *2016-01-27 18:29:52*
+[3dd0012f113ba82](https://github.com/tomasbjerre/git-changelog-command-line/commit/3dd0012f113ba82) Tomas Bjerre *2016-01-27 18:29:52*
 
 
