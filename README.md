@@ -129,6 +129,8 @@ Or from command line:
                                            Default: No tag
 ```
 
+Checkout the [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib) for more documentation.
+
 # Developer instructions
 
 To build the code, have a look at `.travis.yml`.
