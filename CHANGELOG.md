@@ -2,14 +2,23 @@
 
 Changelog of Git Changelog Command Line.
 
-## Next release
+## 1.7
+### Other changes
+
+**Lib 1.28, performance optimizations**
+
+
+[e8230ac1b0ec6be](https://github.com/tomasbjerre/git-changelog-command-line/commit/e8230ac1b0ec6be) Tomas Bjerre *2016-02-14 16:52:59*
+
+
+## 1.6
 ### Other changes
 
 **Significant performance improvements**
 
  * Using lib 1.27. 
 
-[465aad136641543](https://github.com/tomasbjerre/git-changelog-command-line/commit/465aad136641543) Tomas Bjerre *2016-02-13 09:00:12*
+[d2cf164af5d00c6](https://github.com/tomasbjerre/git-changelog-command-line/commit/d2cf164af5d00c6) Tomas Bjerre *2016-02-13 09:00:47*
 
 
 ## 1.5
