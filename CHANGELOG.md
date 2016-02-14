@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.8
+### Other changes
+
+**Lib 1.29**
+
+
+[f69357fac63ae1a](https://github.com/tomasbjerre/git-changelog-command-line/commit/f69357fac63ae1a) Tomas Bjerre *2016-02-14 17:42:33*
+
+
 ## 1.7
 ### Other changes
 
