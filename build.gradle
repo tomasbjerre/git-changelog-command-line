@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
- compile 'se.bjurr.gitchangelog:git-changelog-lib:1.29'
+ compile 'se.bjurr.gitchangelog:git-changelog-lib:1.30'
  compile 'se.softhouse:jargo:0.1.1'
  testCompile 'junit:junit:4.12'
 }
