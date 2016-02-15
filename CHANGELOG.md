@@ -2,8 +2,13 @@
 
 Changelog of Git Changelog Command Line.
 
-## Next release
+## 1.9
 ### Other changes
+
+**Lib 1.30, supporting multiple tags on same commit**
+
+
+[444d5d850a7490a](https://github.com/tomasbjerre/git-changelog-command-line/commit/444d5d850a7490a) Tomas Bjerre *2016-02-15 18:08:12*
 
 **Updating CHANGELOG.md**
 
