@@ -2,6 +2,20 @@
 
 Changelog of Git Changelog Command Line.
 
+## Next release
+### Other changes
+
+**Supplying commit in each issue mentioned in message**
+
+
+[081ae03ce1505d8](https://github.com/tomasbjerre/git-changelog-command-line/commit/081ae03ce1505d8) Tomas Bjerre *2016-02-20 08:16:23*
+
+**Updating CHANGELOG.md**
+
+
+[0f1d69f8049ffb7](https://github.com/tomasbjerre/git-changelog-command-line/commit/0f1d69f8049ffb7) Tomas Bjerre *2016-02-15 18:11:25*
+
+
 ## 1.9
 ### Other changes
 
