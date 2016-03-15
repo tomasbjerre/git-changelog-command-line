@@ -3,12 +3,21 @@
 Changelog of Git Changelog Command Line.
 
 ## Next release
+### Other changes
+
+**Lib 1.35**
+
+
+[fdcaee39561368d](https://github.com/tomasbjerre/git-changelog-command-line/commit/fdcaee39561368d) Tomas Bjerre *2016-03-15 20:13:50*
+
+
+## 1.11
 ### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support
 
 **Support GitHub OAuth2 tokens**
 
 
-[65237c5198de35f](https://github.com/tomasbjerre/git-changelog-command-line/commit/65237c5198de35f) Tomas Bjerre *2016-03-15 18:18:36*
+[7b5e98122110337](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b5e98122110337) Tomas Bjerre *2016-03-15 19:17:11*
 
 
 ## 1.10
