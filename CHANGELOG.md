@@ -5,10 +5,19 @@ Changelog of Git Changelog Command Line.
 ## Next release
 ### Other changes
 
+**Lib 1.36**
+
+
+[58f653a4e0cf480](https://github.com/tomasbjerre/git-changelog-command-line/commit/58f653a4e0cf480) Tomas Bjerre *2016-03-15 20:29:08*
+
+
+## 1.12
+### Other changes
+
 **Lib 1.35**
 
 
-[fdcaee39561368d](https://github.com/tomasbjerre/git-changelog-command-line/commit/fdcaee39561368d) Tomas Bjerre *2016-03-15 20:13:50*
+[701ea9325b6c45c](https://github.com/tomasbjerre/git-changelog-command-line/commit/701ea9325b6c45c) Tomas Bjerre *2016-03-15 20:14:46*
 
 
 ## 1.11
