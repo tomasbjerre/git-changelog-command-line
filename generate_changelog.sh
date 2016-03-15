@@ -10,7 +10,7 @@ cd *T
 #Actual changelog to be used in root of repo
 #
 
-./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog.mustache -sf $ROOT_FOLDER/changelog.json -of $ROOT_FOLDER/CHANGELOG.md
+./bin/git-changelog-command-line -gapi https://api.github.com/repos/tomasbjerre/git-changelog-command-line/ -gtok $GITHUB_OAUTH2TOKEN -t $ROOT_FOLDER/changelog.mustache -sf $ROOT_FOLDER/changelog.json -of $ROOT_FOLDER/CHANGELOG.md
 
 #./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog_mediawiki.mustache -sf $ROOT_FOLDER/changelog.json -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -gapi https://api.github.com/repos/tomasbjerre/git-changelog-lib
 

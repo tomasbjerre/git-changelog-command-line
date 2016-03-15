@@ -52,6 +52,7 @@ public class Main {
  public static final String PARAM_MEDIAWIKIUSER = "-mu";
  public static final String PARAM_MEDIAWIKIPASSWORD = "-mp";
  public static final String PARAM_GITHUBAPI = "-gapi";
+ public static final String PARAM_GITHUBTOKEN = "-gtok";
  public static final String PARAM_EXTENDED_VARIABLES = "-ex";
  public static final String PARAM_TEMPLATE_CONTENT = "-tec";
 
@@ -176,7 +177,12 @@ public class Main {
     .defaultValue("") //
     .build();
   Argument<String> gitHubApiArgument = stringArgument(PARAM_GITHUBAPI, "--github-api")//
-    .description("GitHub API.")//
+    .description("GitHub API. Like: https://api.github.com/repos/tomasbjerre/git-changelog-command-line/")//
+    .defaultValue("") //
+    .build();
+  Argument<String> gitHubTokenArgument = stringArgument(PARAM_GITHUBTOKEN, "--github-token")//
+    .description(
+      "GitHub API OAuth2 token. You can get it from: curl -u 'yourgithubuser' -d '{\"note\":\"Git Changelog Lib\"}' https://api.github.com/authorizations")//
     .defaultValue("") //
     .build();
 
@@ -199,7 +205,8 @@ public class Main {
      customIssueLinkArgument, customIssueNameArgument, customIssuePatternArgument, timeZoneArgument,
      dateFormatArgument, noIssueArgument, readableTagNameArgument, removeIssueFromMessageArgument,
      mediaWikiUrlArgument, mediaWikiUserArgument, mediaWikiPasswordArgument, mediaWikiTitleArgument, gitHubApiArgument,
-     jiraUsernamePatternArgument, jiraPasswordPatternArgument, extendedVariablesArgument, templateContentArgument)//
+     jiraUsernamePatternArgument, jiraPasswordPatternArgument, extendedVariablesArgument, templateContentArgument,
+     gitHubTokenArgument)//
      .parse(args);
 
    GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
@@ -280,6 +287,9 @@ public class Main {
    }
    if (arg.wasGiven(gitHubApiArgument)) {
     changelogApiBuilder.withGitHubApi(arg.get(gitHubApiArgument));
+   }
+   if (arg.wasGiven(gitHubTokenArgument)) {
+    changelogApiBuilder.withGitHubToken(arg.get(gitHubTokenArgument));
    }
 
    if ( //

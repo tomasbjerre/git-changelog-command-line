@@ -45,7 +45,15 @@ Or from command line:
 -fr, --from-ref <string>                   From ref.
                                            <string>: any string
                                            Default: null
--gapi, --github-api <string>               GitHub API.
+-gapi, --github-api <string>               GitHub API. Like: https://api.
+                                           github.com/tomasbjerre/git-changelog-
+                                           command-line/
+                                           <string>: any string
+                                           Default: 
+-gtok, --github-token <string>             GitHub API. You can get it from: 
+                                           curl -u 'yourgithubuser' -d '{"note":"
+                                           Git Changelog Lib"}' https://api.github.
+                                           com/authorizations
                                            <string>: any string
                                            Default: 
 -h, --help <argument-to-print-help-for>    <argument-to-print-help-for>: an argument to print help for

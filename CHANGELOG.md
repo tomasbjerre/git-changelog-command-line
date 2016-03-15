@@ -3,12 +3,21 @@
 Changelog of Git Changelog Command Line.
 
 ## Next release
+### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support
+
+**Support GitHub OAuth2 tokens**
+
+
+[65237c5198de35f](https://github.com/tomasbjerre/git-changelog-command-line/commit/65237c5198de35f) Tomas Bjerre *2016-03-15 18:18:36*
+
+
+## 1.10
 ### Other changes
 
 **Supplying commit in each issue mentioned in message**
 
 
-[081ae03ce1505d8](https://github.com/tomasbjerre/git-changelog-command-line/commit/081ae03ce1505d8) Tomas Bjerre *2016-02-20 08:16:23*
+[67b997695bfe797](https://github.com/tomasbjerre/git-changelog-command-line/commit/67b997695bfe797) Tomas Bjerre *2016-02-20 08:17:23*
 
 **Updating CHANGELOG.md**
 
@@ -73,7 +82,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.4
-### GitHub [#5](https://github.com/tomasbjerre/git-changelog-lib/issues/5) Confluence integration
+### GitHub #5 
 
 **Added variables: messageTitle, messageBody, messageItems**
 
