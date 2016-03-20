@@ -21,13 +21,20 @@ There are more examples [here](https://github.com/tomasbjerre/git-changelog-comm
 # Usage
 Or from command line:
 ```
--cl, --custom-issue-link <string>          Custom issue link.
+-cl, --custom-issue-link <string>          Custom issue link. Supports 
+                                           variables like ${PATTERN_GROUP_1} to inject 
+                                           variables from pattern.
                                            <string>: any string
                                            Default: null
 -cn, --custom-issue-name <string>          Custom issue name.
                                            <string>: any string
                                            Default: null
 -cp, --custom-issue-pattern <string>       Custom issue pattern.
+                                           <string>: any string
+                                           Default: null
+-ct, --custom-issue-title <string>         Custom issue title. Supports 
+                                           variables like ${PATTERN_GROUP_1} to inject 
+                                           variables from pattern.
                                            <string>: any string
                                            Default: null
 -df, --date-format <string>                Format to use when printing dates.
@@ -46,18 +53,21 @@ Or from command line:
                                            <string>: any string
                                            Default: null
 -gapi, --github-api <string>               GitHub API. Like: https://api.
-                                           github.com/tomasbjerre/git-changelog-
+                                           github.com/repos/tomasbjerre/git-changelog-
                                            command-line/
                                            <string>: any string
                                            Default: 
--gtok, --github-token <string>             GitHub API. You can get it from: 
-                                           curl -u 'yourgithubuser' -d '{"note":"
-                                           Git Changelog Lib"}' https://api.github.
-                                           com/authorizations
+-gtok, --github-token <string>             GitHub API OAuth2 token. You can 
+                                           get it from: curl -u 'yourgithubuser' -
+                                           d '{"note":"Git Changelog Lib"}' 
+                                           https://api.github.com/authorizations
                                            <string>: any string
                                            Default: 
 -h, --help <argument-to-print-help-for>    <argument-to-print-help-for>: an argument to print help for
                                            Default: If no specific parameter is given the whole usage text is given
+-ini, --ignore-commits-without-issue       Ignore commits that is not included 
+                                           in any issue.
+                                           Default: disabled
 -ip, --ignore-pattern <string>             Ignore commits where pattern 
                                            matches message.
                                            <string>: any string

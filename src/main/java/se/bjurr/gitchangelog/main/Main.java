@@ -41,10 +41,12 @@ public class Main {
  public static final String PARAM_CUSTOM_ISSUE_NAME = "-cn";
  public static final String PARAM_CUSTOM_ISSUE_PATTERN = "-cp";
  public static final String PARAM_CUSTOM_ISSUE_LINK = "-cl";
+ public static final String PARAM_CUSTOM_ISSUE_TITLE = "-ct";
  public static final String PARAM_UNTAGGED_TAG_NAME = "-ut";
  public static final String PARAM_TIMEZONE = "-tz";
  public static final String PARAM_DATEFORMAT = "-df";
  public static final String PARAM_NOISSUE = "-ni";
+ public static final String PARAM_IGNORE_NOISSUE = "-ini";
  public static final String PARAM_READABLETAGNAME = "-rt";
  public static final String PARAM_REMOVEISSUE = "-ri";
  public static final String PARAM_MEDIAWIKIURL = "-murl";
@@ -137,7 +139,11 @@ public class Main {
     .defaultValue(null)//
     .build();
   Argument<String> customIssueLinkArgument = stringArgument(PARAM_CUSTOM_ISSUE_LINK, "--custom-issue-link")//
-    .description("Custom issue link.")//
+    .description("Custom issue link. Supports variables like ${PATTERN_GROUP_1} to inject variables from pattern.")//
+    .defaultValue(null)//
+    .build();
+  Argument<String> customIssueTitleArgument = stringArgument(PARAM_CUSTOM_ISSUE_TITLE, "--custom-issue-title")//
+    .description("Custom issue title. Supports variables like ${PATTERN_GROUP_1} to inject variables from pattern.")//
     .defaultValue(null)//
     .build();
 
@@ -152,6 +158,10 @@ public class Main {
   Argument<String> noIssueArgument = stringArgument(PARAM_NOISSUE, "--no-issue-name")//
     .description("Name of virtual issue that contains commits that has no issue associated.")//
     .defaultValue(defaultSettings.getNoIssueName())//
+    .build();
+  Argument<Boolean> ignoreCommitsWithoutIssueArgument = optionArgument(PARAM_IGNORE_NOISSUE,
+    "--ignore-commits-without-issue")//
+    .description("Ignore commits that is not included in any issue.")//
     .build();
   Argument<String> readableTagNameArgument = stringArgument(PARAM_READABLETAGNAME, "--readable-tag-name")//
     .description("Pattern to extract readable part of tag.")//
@@ -202,17 +212,24 @@ public class Main {
    ParsedArguments arg = withArguments(helpArgument, settingsArgument, outputStdoutArgument, outputFileArgument,
      templatePathArgument, fromCommitArgument, fromRefArgument, fromRepoArgument, toCommitArgument, toRefArgument,
      untaggedTagNameArgument, jiraIssuePatternArgument, jiraServerArgument, ignoreCommitsIfMessageMatchesArgument,
-     customIssueLinkArgument, customIssueNameArgument, customIssuePatternArgument, timeZoneArgument,
-     dateFormatArgument, noIssueArgument, readableTagNameArgument, removeIssueFromMessageArgument,
+     customIssueLinkArgument, customIssueTitleArgument, customIssueNameArgument, customIssuePatternArgument,
+     timeZoneArgument, dateFormatArgument, noIssueArgument, readableTagNameArgument, removeIssueFromMessageArgument,
      mediaWikiUrlArgument, mediaWikiUserArgument, mediaWikiPasswordArgument, mediaWikiTitleArgument, gitHubApiArgument,
      jiraUsernamePatternArgument, jiraPasswordPatternArgument, extendedVariablesArgument, templateContentArgument,
-     gitHubTokenArgument)//
+     gitHubTokenArgument, ignoreCommitsWithoutIssueArgument)//
      .parse(args);
 
    GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
 
+   if (arg.wasGiven(settingsArgument)) {
+    changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
+   }
+
    if (arg.wasGiven(removeIssueFromMessageArgument)) {
     changelogApiBuilder.withRemoveIssueFromMessageArgument(true);
+   }
+   if (arg.wasGiven(ignoreCommitsWithoutIssueArgument)) {
+    changelogApiBuilder.withIgnoreCommitsWithoutIssue(true);
    }
 
    if (arg.wasGiven(extendedVariablesArgument)) {
@@ -229,9 +246,6 @@ public class Main {
     changelogApiBuilder.withTemplateContent(arg.get(templateContentArgument));
    }
 
-   if (arg.wasGiven(settingsArgument)) {
-    changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
-   }
    if (arg.wasGiven(fromRepoArgument)) {
     changelogApiBuilder.withFromRepo(arg.get(fromRepoArgument));
    }
@@ -294,12 +308,20 @@ public class Main {
 
    if ( //
    arg.wasGiven(customIssueNameArgument) && //
-     arg.wasGiven(customIssuePatternArgument) && //
-     arg.wasGiven(customIssueLinkArgument)) {
+     arg.wasGiven(customIssuePatternArgument)) {
+    String title = null;
+    if (arg.wasGiven(customIssueTitleArgument)) {
+     title = arg.get(customIssueTitleArgument);
+    }
+    String link = null;
+    if (arg.wasGiven(customIssueLinkArgument)) {
+     link = arg.get(customIssueLinkArgument);
+    }
     changelogApiBuilder.withCustomIssue(//
       arg.get(customIssueNameArgument),//
       arg.get(customIssuePatternArgument),//
-      arg.get(customIssueLinkArgument));
+      link,//
+      title);
    }
 
    checkArgument(//

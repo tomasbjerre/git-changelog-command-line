@@ -24,6 +24,9 @@ cd *T
 ## Write to file
 ./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog.mustache -sf $ROOT_FOLDER/changelog.json -of $ROOT_FOLDER/src/test/resources/testThatJsonCanBeUsedActual.md -tc 224cad580426bc03027b77c1036306253cbba973
 
+## Write to file
+./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog.mustache -sf $ROOT_FOLDER/changelog.json -of $ROOT_FOLDER/src/test/resources/testThatCommitsCanBeIgnoredIfNoIssue.md -ini
+
 ## Create MediaWiki page
 ./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog_mediawiki.mustache -sf $ROOT_FOLDER/changelog.json -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -tc 224cad580426bc03027b77c1036306253cbba973
 
