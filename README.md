@@ -72,6 +72,11 @@ Or from command line:
                                            matches message.
                                            <string>: any string
                                            Default: ^\[maven-release-plugin\].*|^\[Gradle Release Plugin\].*|^Merge.*
+-itp, --ignore-tag-pattern <string>        Ignore tags that matches regular 
+                                           expression. Can be used to ignore release 
+                                           candidates and only include actual releases.
+                                           <string>: any string
+                                           Default: null
 -jp, --jira-pattern <string>               Jira issue pattern.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b

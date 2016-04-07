@@ -2,43 +2,7 @@
 
 Changelog of Git Changelog Command Line.
 
-## 1.15
-### Other changes
-
-**Lib 1.39**
-
-
-[d843ab2414be0e7](https://github.com/tomasbjerre/git-changelog-command-line/commit/d843ab2414be0e7) Tomas Bjerre *2016-03-20 09:50:01*
-
-
-## 1.14
-### Other changes
-
-**Lib 1.38**
-
-
-[f6371e136d5fc22](https://github.com/tomasbjerre/git-changelog-command-line/commit/f6371e136d5fc22) Tomas Bjerre *2016-03-20 09:23:18*
-
-
-## 1.13
-### Other changes
-
-**Lib 1.36**
-
-
-[12a6c079e7103bc](https://github.com/tomasbjerre/git-changelog-command-line/commit/12a6c079e7103bc) Tomas Bjerre *2016-03-15 20:31:47*
-
-
-## 1.12
-### Other changes
-
-**Lib 1.35**
-
-
-[701ea9325b6c45c](https://github.com/tomasbjerre/git-changelog-command-line/commit/701ea9325b6c45c) Tomas Bjerre *2016-03-15 20:14:46*
-
-
-## 1.11
+## Next release
 ### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support
 
 **Support GitHub OAuth2 tokens**
@@ -47,8 +11,27 @@ Changelog of Git Changelog Command Line.
 [7b5e98122110337](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b5e98122110337) Tomas Bjerre *2016-03-15 19:17:11*
 
 
-## 1.10
 ### Other changes
+
+**Lib 1.39**
+
+
+[d843ab2414be0e7](https://github.com/tomasbjerre/git-changelog-command-line/commit/d843ab2414be0e7) Tomas Bjerre *2016-03-20 09:50:01*
+
+**Lib 1.38**
+
+
+[f6371e136d5fc22](https://github.com/tomasbjerre/git-changelog-command-line/commit/f6371e136d5fc22) Tomas Bjerre *2016-03-20 09:23:18*
+
+**Lib 1.36**
+
+
+[12a6c079e7103bc](https://github.com/tomasbjerre/git-changelog-command-line/commit/12a6c079e7103bc) Tomas Bjerre *2016-03-15 20:31:47*
+
+**Lib 1.35**
+
+
+[701ea9325b6c45c](https://github.com/tomasbjerre/git-changelog-command-line/commit/701ea9325b6c45c) Tomas Bjerre *2016-03-15 20:14:46*
 
 **Supplying commit in each issue mentioned in message**
 

@@ -34,6 +34,7 @@ public class Main {
  public static final String PARAM_FROM_COMMIT = "-fc";
  public static final String PARAM_TO_COMMIT = "-tc";
  public static final String PARAM_IGNORE_PATTERN = "-ip";
+ public static final String PARAM_IGNORE_TAG_PATTERN = "-itp";
  public static final String PARAM_JIRA_SERVER = "-js";
  public static final String PARAM_JIRA_ISSUE_PATTERN = "-jp";
  public static final String PARAM_JIRA_USERNAME = "-ju";
@@ -111,6 +112,12 @@ public class Main {
   Argument<String> ignoreCommitsIfMessageMatchesArgument = stringArgument(PARAM_IGNORE_PATTERN, "--ignore-pattern")//
     .description("Ignore commits where pattern matches message.")//
     .defaultValue(defaultSettings.getIgnoreCommitsIfMessageMatches())//
+    .build();
+
+  Argument<String> ignoreTagsIfNameMatchesArgument = stringArgument(PARAM_IGNORE_TAG_PATTERN, "--ignore-tag-pattern")//
+    .description(
+      "Ignore tags that matches regular expression. Can be used to ignore release candidates and only include actual releases.")//
+    .defaultValue(defaultSettings.getIgnoreTagsIfNameMatches().orNull())//
     .build();
 
   Argument<String> jiraServerArgument = stringArgument(PARAM_JIRA_SERVER, "--jiraServer")//
@@ -216,7 +223,7 @@ public class Main {
      timeZoneArgument, dateFormatArgument, noIssueArgument, readableTagNameArgument, removeIssueFromMessageArgument,
      mediaWikiUrlArgument, mediaWikiUserArgument, mediaWikiPasswordArgument, mediaWikiTitleArgument, gitHubApiArgument,
      jiraUsernamePatternArgument, jiraPasswordPatternArgument, extendedVariablesArgument, templateContentArgument,
-     gitHubTokenArgument, ignoreCommitsWithoutIssueArgument)//
+     gitHubTokenArgument, ignoreCommitsWithoutIssueArgument, ignoreTagsIfNameMatchesArgument)//
      .parse(args);
 
    GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
@@ -254,6 +261,9 @@ public class Main {
    }
    if (arg.wasGiven(ignoreCommitsIfMessageMatchesArgument)) {
     changelogApiBuilder.withIgnoreCommitsWithMesssage(arg.get(ignoreCommitsIfMessageMatchesArgument));
+   }
+   if (arg.wasGiven(ignoreTagsIfNameMatchesArgument)) {
+    changelogApiBuilder.withIgnoreTagsIfNameMatches(arg.get(ignoreTagsIfNameMatchesArgument));
    }
    if (arg.wasGiven(templatePathArgument)) {
     changelogApiBuilder.withTemplatePath(arg.get(templatePathArgument));
