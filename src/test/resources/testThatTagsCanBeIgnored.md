@@ -13,6 +13,11 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**Lib 1.40 can ignore tags by regexp**
+
+
+[24b1fd830d85fd2](https://github.com/tomasbjerre/git-changelog-command-line/commit/24b1fd830d85fd2) Tomas Bjerre *2016-04-07 18:51:58*
+
 **Lib 1.39**
 
 
