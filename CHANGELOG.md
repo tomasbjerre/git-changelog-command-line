@@ -2,6 +2,33 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.19
+### Other changes
+
+**Lib 1.43, Parsing commits, oldest first**
+
+
+[fec08570ae03569](https://github.com/tomasbjerre/git-changelog-command-line/commit/fec08570ae03569) Tomas Bjerre *2016-04-10 09:15:29*
+
+
+## 1.18
+### Other changes
+
+**Lib 1.42, Parsing commits, oldest first**
+
+
+[d3a83d8422b2c3f](https://github.com/tomasbjerre/git-changelog-command-line/commit/d3a83d8422b2c3f) Tomas Bjerre *2016-04-10 09:04:38*
+
+
+## 1.17
+### Other changes
+
+**Lib 1.41, Commits added to correct tags**
+
+
+[8865a3af376eccc](https://github.com/tomasbjerre/git-changelog-command-line/commit/8865a3af376eccc) Tomas Bjerre *2016-04-09 20:42:51*
+
+
 ## 1.16
 ### Other changes
 
