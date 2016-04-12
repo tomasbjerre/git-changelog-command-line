@@ -11,7 +11,20 @@ Changelog of Git Changelog Command Line.
 [7b5e98122110337](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b5e98122110337) Tomas Bjerre *2016-03-15 19:17:11*
 
 
+### Jira JENKINS-34155 
+
+**Support short SHA**
+
+
+[64865656e2d6164](https://github.com/tomasbjerre/git-changelog-command-line/commit/64865656e2d6164) Tomas Bjerre *2016-04-12 17:00:22*
+
+
 ### Other changes
+
+**doc**
+
+
+[9e890fb3151e1ec](https://github.com/tomasbjerre/git-changelog-command-line/commit/9e890fb3151e1ec) Tomas Bjerre *2016-04-10 09:17:27*
 
 **Lib 1.43, Parsing commits, oldest first**
 

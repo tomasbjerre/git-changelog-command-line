@@ -2,6 +2,23 @@
 
 Changelog of Git Changelog Command Line.
 
+## Next release
+### Jira JENKINS-34155 
+
+**Support short SHA**
+
+
+[64865656e2d6164](https://github.com/tomasbjerre/git-changelog-command-line/commit/64865656e2d6164) Tomas Bjerre *2016-04-12 17:00:22*
+
+
+### Other changes
+
+**doc**
+
+
+[9e890fb3151e1ec](https://github.com/tomasbjerre/git-changelog-command-line/commit/9e890fb3151e1ec) Tomas Bjerre *2016-04-10 09:17:27*
+
+
 ## 1.19
 ### Other changes
 
