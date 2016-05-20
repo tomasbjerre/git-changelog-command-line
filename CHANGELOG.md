@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.21
+### Other changes
+
+**Lib 1.45**
+
+
+[88a91833658029d](https://github.com/tomasbjerre/git-changelog-command-line/commit/88a91833658029d) Tomas Bjerre *2016-04-13 18:38:43*
+
+
 ## 1.20
 ### Jira JENKINS-34155 
 
