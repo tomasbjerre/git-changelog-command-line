@@ -2,6 +2,24 @@
 
 Changelog of Git Changelog Command Line.
 
+## Next release
+### Other changes
+
+**Lib 1.49, finding first commit as parents from HEAD**
+
+
+[0a33fc791a51160](https://github.com/tomasbjerre/git-changelog-command-line/commit/0a33fc791a51160) Tomas Bjerre *2016-06-02 18:29:09*
+
+
+## 1.22
+### Other changes
+
+**Ignoring trailing slash in JIRA URL**
+
+
+[4bd1a4d3366768d](https://github.com/tomasbjerre/git-changelog-command-line/commit/4bd1a4d3366768d) Tomas Bjerre *2016-05-20 19:07:37*
+
+
 ## 1.21
 ### Other changes
 
