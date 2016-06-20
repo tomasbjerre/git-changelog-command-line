@@ -21,10 +21,15 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**Adding script to add bin to path**
+
+
+[f6e98fb30811cd9](https://github.com/tomasbjerre/git-changelog-command-line/commit/f6e98fb30811cd9) Tomas Bjerre *2016-06-20 19:18:22*
+
 **Lib 1.49, finding first commit as parents from HEAD**
 
 
-[0a33fc791a51160](https://github.com/tomasbjerre/git-changelog-command-line/commit/0a33fc791a51160) Tomas Bjerre *2016-06-02 18:29:09*
+[6c28f9b5d5bc128](https://github.com/tomasbjerre/git-changelog-command-line/commit/6c28f9b5d5bc128) Tomas Bjerre *2016-06-02 18:29:53*
 
 **Ignoring trailing slash in JIRA URL**
 
