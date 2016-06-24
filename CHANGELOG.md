@@ -8,7 +8,7 @@ Changelog of Git Changelog Command Line.
 **Adding script to add bin to path**
 
 
-[f6e98fb30811cd9](https://github.com/tomasbjerre/git-changelog-command-line/commit/f6e98fb30811cd9) Tomas Bjerre *2016-06-20 19:18:22*
+[309b65cbe000872](https://github.com/tomasbjerre/git-changelog-command-line/commit/309b65cbe000872) Tomas Bjerre *2016-06-20 19:18:51*
 
 
 ## 1.23
