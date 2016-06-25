@@ -2,8 +2,31 @@
 
 Changelog of Git Changelog Command Line.
 
-## Next release
+## 1.26
 ### Other changes
+
+**Faster**
+
+
+[223b34816bdd780](https://github.com/tomasbjerre/git-changelog-command-line/commit/223b34816bdd780) Tomas Bjerre *2016-06-25 00:07:17*
+
+
+## 1.25
+### Other changes
+
+**Fixing merge commits... again...**
+
+
+[72a26d37a434998](https://github.com/tomasbjerre/git-changelog-command-line/commit/72a26d37a434998) Tomas Bjerre *2016-06-24 21:10:07*
+
+
+## 1.24
+### Other changes
+
+**Including commits from merges lib issue 49**
+
+
+[c1227c6120f9e28](https://github.com/tomasbjerre/git-changelog-command-line/commit/c1227c6120f9e28) Tomas Bjerre *2016-06-24 09:34:26*
 
 **Adding script to add bin to path**
 
@@ -266,14 +289,5 @@ Changelog of Git Changelog Command Line.
  * And correcting link to Maven Central 
 
 [e711322ff826053](https://github.com/tomasbjerre/git-changelog-command-line/commit/e711322ff826053) Tomas Bjerre *2016-01-28 18:17:38*
-
-
-## 1.0
-### Other changes
-
-**Initial commit**
-
-
-[3dd0012f113ba82](https://github.com/tomasbjerre/git-changelog-command-line/commit/3dd0012f113ba82) Tomas Bjerre *2016-01-27 18:29:52*
 
 
