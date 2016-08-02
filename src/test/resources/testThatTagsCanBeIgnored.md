@@ -21,6 +21,11 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**Adding {{hashFull}} variable**
+
+
+[2d54505d813c6d0](https://github.com/tomasbjerre/git-changelog-command-line/commit/2d54505d813c6d0) Tomas Bjerre *2016-08-02 18:24:03*
+
 **Faster**
 
 
