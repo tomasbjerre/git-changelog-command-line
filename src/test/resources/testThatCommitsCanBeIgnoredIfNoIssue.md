@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.29
+### GitHub #35 
+
+**Adding merge boolean to commits**
+
+
+[b27d768978dc40f](https://github.com/tomasbjerre/git-changelog-command-line/commit/b27d768978dc40f) Tomas Bjerre *2016-10-05 18:32:06*
+
+
 ## 1.20
 ### Jira JENKINS-34155 
 

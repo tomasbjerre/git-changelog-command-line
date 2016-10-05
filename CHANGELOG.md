@@ -2,13 +2,31 @@
 
 Changelog of Git Changelog Command Line.
 
-## Next release
+## 1.29
+### GitHub #35 
+
+**Adding merge boolean to commits**
+
+
+[b27d768978dc40f](https://github.com/tomasbjerre/git-changelog-command-line/commit/b27d768978dc40f) Tomas Bjerre *2016-10-05 18:32:06*
+
+
+## 1.28
+### Other changes
+
+**Lib 1.56 correcting link to Jira**
+
+
+[0663c27008b6c10](https://github.com/tomasbjerre/git-changelog-command-line/commit/0663c27008b6c10) Tomas Bjerre *2016-08-11 14:47:13*
+
+
+## 1.27
 ### Other changes
 
 **Adding {{hashFull}} variable**
 
 
-[2d54505d813c6d0](https://github.com/tomasbjerre/git-changelog-command-line/commit/2d54505d813c6d0) Tomas Bjerre *2016-08-02 18:24:03*
+[eb89a06b91265d8](https://github.com/tomasbjerre/git-changelog-command-line/commit/eb89a06b91265d8) Tomas Bjerre *2016-08-02 18:24:35*
 
 
 ## 1.26

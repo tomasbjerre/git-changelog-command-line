@@ -11,6 +11,14 @@ Changelog of Git Changelog Command Line.
 [7b5e98122110337](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b5e98122110337) Tomas Bjerre *2016-03-15 19:17:11*
 
 
+### GitHub #35 
+
+**Adding merge boolean to commits**
+
+
+[b27d768978dc40f](https://github.com/tomasbjerre/git-changelog-command-line/commit/b27d768978dc40f) Tomas Bjerre *2016-10-05 18:32:06*
+
+
 ### Jira JENKINS-34155 
 
 **Support short SHA**
@@ -21,10 +29,15 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**Lib 1.56 correcting link to Jira**
+
+
+[0663c27008b6c10](https://github.com/tomasbjerre/git-changelog-command-line/commit/0663c27008b6c10) Tomas Bjerre *2016-08-11 14:47:13*
+
 **Adding {{hashFull}} variable**
 
 
-[2d54505d813c6d0](https://github.com/tomasbjerre/git-changelog-command-line/commit/2d54505d813c6d0) Tomas Bjerre *2016-08-02 18:24:03*
+[eb89a06b91265d8](https://github.com/tomasbjerre/git-changelog-command-line/commit/eb89a06b91265d8) Tomas Bjerre *2016-08-02 18:24:35*
 
 **Faster**
 
