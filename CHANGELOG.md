@@ -2,6 +2,20 @@
 
 Changelog of Git Changelog Command Line.
 
+## Next release
+### Other changes
+
+**Adding annotation to context of tag**
+
+
+[d161e3f5276c019](https://github.com/tomasbjerre/git-changelog-command-line/commit/d161e3f5276c019) Tomas Bjerre *2016-10-22 09:45:33*
+
+**doc**
+
+
+[14591c118d9d066](https://github.com/tomasbjerre/git-changelog-command-line/commit/14591c118d9d066) Tomas Bjerre *2016-10-05 18:35:59*
+
+
 ## 1.29
 ### GitHub #35 
 
