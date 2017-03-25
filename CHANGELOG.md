@@ -5,10 +5,45 @@ Changelog of Git Changelog Command Line.
 ## Next release
 ### Other changes
 
+**GitLab integration**
+
+
+[5a99b2c09804027](https://github.com/tomasbjerre/git-changelog-command-line/commit/5a99b2c09804027) Tomas Bjerre *2017-03-25 16:33:00*
+
+
+## 1.32
+### Other changes
+
+**Fix Jira labels**
+
+
+[44794701a5eb1dc](https://github.com/tomasbjerre/git-changelog-command-line/commit/44794701a5eb1dc) Tomas Bjerre *2017-03-20 18:20:07*
+
+
+## 1.31
+### Other changes
+
+**Git Changelog Lib 1.58 -> 1.64**
+
+ * Jira issueType and labels 
+ * GitHub labels 
+ * 10 seconds timeout to GitHub 
+
+[cd884b3291e7659](https://github.com/tomasbjerre/git-changelog-command-line/commit/cd884b3291e7659) Tomas Bjerre *2017-03-18 09:32:26*
+
+**Set theme jekyll-theme-slate**
+
+
+[5bee23a3f889712](https://github.com/tomasbjerre/git-changelog-command-line/commit/5bee23a3f889712) Tomas Bjerre *2017-02-07 20:21:48*
+
+
+## 1.30
+### Other changes
+
 **Adding annotation to context of tag**
 
 
-[d161e3f5276c019](https://github.com/tomasbjerre/git-changelog-command-line/commit/d161e3f5276c019) Tomas Bjerre *2016-10-22 09:45:33*
+[680fd78af6e828a](https://github.com/tomasbjerre/git-changelog-command-line/commit/680fd78af6e828a) Tomas Bjerre *2016-10-22 09:46:10*
 
 **doc**
 
@@ -17,7 +52,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.29
-### GitHub #35 
+### GitHub #35   
 
 **Adding merge boolean to commits**
 
@@ -103,7 +138,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.20
-### Jira JENKINS-34155 
+### Jira JENKINS-34155   
 
 **Support short SHA**
 
@@ -192,7 +227,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.11
-### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support
+### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support  
 
 **Support GitHub OAuth2 tokens**
 
@@ -271,7 +306,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.4
-### GitHub #5 
+### GitHub #5   
 
 **Added variables: messageTitle, messageBody, messageItems**
 

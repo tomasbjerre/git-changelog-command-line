@@ -13,15 +13,15 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class Main {
  public static final String PARAM_SETTINGS_FILE = "-sf";
@@ -58,6 +58,9 @@ public class Main {
  public static final String PARAM_GITHUBTOKEN = "-gtok";
  public static final String PARAM_EXTENDED_VARIABLES = "-ex";
  public static final String PARAM_TEMPLATE_CONTENT = "-tec";
+ public static final String PARAM_GITLABTOKEN = "-glt";
+ public static final String PARAM_GITLABSERVER = "-gls";
+ public static final String PARAM_GITLABPROJECTNAME = "-glpn";
 
  private static String systemOutPrintln;
  private static boolean recordSystemOutPrintln;
@@ -215,6 +218,23 @@ public class Main {
     .defaultValue("") //
     .build();
 
+
+  Argument<String> gitLabTokenArgument = stringArgument(PARAM_GITLABTOKEN, "--gitlab-token")//
+      .description(
+        "GitLab API token.")//
+      .defaultValue("") //
+      .build();
+  Argument<String> gitLabServerArgument = stringArgument(PARAM_GITLABSERVER, "--gitlab-server")//
+      .description(
+        "GitLab server, like https://gitlab.com/.")//
+      .defaultValue("") //
+      .build();
+  Argument<String> gitLabProjectNameArgument = stringArgument(PARAM_GITLABPROJECTNAME, "--gitlab-project-name")//
+      .description(
+        "GitLab project name.")//
+      .defaultValue("") //
+      .build();
+
   try {
    ParsedArguments arg = withArguments(helpArgument, settingsArgument, outputStdoutArgument, outputFileArgument,
      templatePathArgument, fromCommitArgument, fromRefArgument, fromRepoArgument, toCommitArgument, toRefArgument,
@@ -223,7 +243,8 @@ public class Main {
      timeZoneArgument, dateFormatArgument, noIssueArgument, readableTagNameArgument, removeIssueFromMessageArgument,
      mediaWikiUrlArgument, mediaWikiUserArgument, mediaWikiPasswordArgument, mediaWikiTitleArgument, gitHubApiArgument,
      jiraUsernamePatternArgument, jiraPasswordPatternArgument, extendedVariablesArgument, templateContentArgument,
-     gitHubTokenArgument, ignoreCommitsWithoutIssueArgument, ignoreTagsIfNameMatchesArgument)//
+     gitHubTokenArgument, ignoreCommitsWithoutIssueArgument, ignoreTagsIfNameMatchesArgument,gitLabTokenArgument,gitLabServerArgument
+     ,gitLabProjectNameArgument)//
      .parse(args);
 
    GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
@@ -314,6 +335,16 @@ public class Main {
    }
    if (arg.wasGiven(gitHubTokenArgument)) {
     changelogApiBuilder.withGitHubToken(arg.get(gitHubTokenArgument));
+   }
+
+   if (arg.wasGiven(gitLabServerArgument)) {
+     changelogApiBuilder.withGitLabServer(arg.get(gitLabServerArgument));
+   }
+   if (arg.wasGiven(gitLabProjectNameArgument)) {
+     changelogApiBuilder.withGitLabProjectName(arg.get(gitLabProjectNameArgument));
+   }
+   if (arg.wasGiven(gitLabTokenArgument)) {
+     changelogApiBuilder.withGitLabToken(arg.get(gitLabTokenArgument));
    }
 
    if ( //

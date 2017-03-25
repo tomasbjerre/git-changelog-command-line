@@ -57,6 +57,16 @@ Or from command line:
                                            command-line/
                                            <string>: any string
                                            Default: 
+-glpn, --gitlab-project-name <string>      GitLab project name.
+                                           <string>: any string
+                                           Default: 
+-gls, --gitlab-server <string>             GitLab server, like https://gitlab.
+                                           com/.
+                                           <string>: any string
+                                           Default: 
+-glt, --gitlab-token <string>              GitLab API token.
+                                           <string>: any string
+                                           Default: 
 -gtok, --github-token <string>             GitHub API OAuth2 token. You can 
                                            get it from: curl -u 'yourgithubuser' -
                                            d '{"note":"Git Changelog Lib"}' 

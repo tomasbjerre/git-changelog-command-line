@@ -3,7 +3,7 @@
 Changelog of Git Changelog Command Line.
 
 ## 1.29
-### GitHub #35 
+### GitHub #35   
 
 **Adding merge boolean to commits**
 
@@ -12,7 +12,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.20
-### Jira JENKINS-34155 
+### Jira JENKINS-34155   
 
 **Support short SHA**
 
@@ -21,7 +21,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.11
-### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support
+### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support  
 
 **Support GitHub OAuth2 tokens**
 
@@ -30,7 +30,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.4
-### GitHub #5 
+### GitHub #5   
 
 **Added variables: messageTitle, messageBody, messageItems**
 

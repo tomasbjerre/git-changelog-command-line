@@ -35,3 +35,6 @@ cd *T
 
 ## Use variables from command line
 ./bin/git-changelog-command-line -ex "{\"var1\":\"value1\"}" -tec "extended variable: {{extended.var1}}" -of $ROOT_FOLDER/src/test/resources/testThatVariablesCanBeUsed.md
+
+## Use GitLab issues
+./bin/git-changelog-command-line -fc 67b9976 -tc e281256 -gls https://gitlab.com/ -glt $GITLAB_TOKEN -glpn violations-test -t $ROOT_FOLDER/changelog.mustache -of $ROOT_FOLDER/src/test/resources/gitLabChangelog.md
