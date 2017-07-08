@@ -78,6 +78,10 @@ Or from command line:
 -ini, --ignore-commits-without-issue       Ignore commits that is not included 
                                            in any issue.
                                            Default: disabled
+-iot, --ignore-older-than <string>         Ignore commits older than YYYY-MM-
+                                           dd HH:mm:ss.
+                                           <string>: any string
+                                           Default: 
 -ip, --ignore-pattern <string>             Ignore commits where pattern 
                                            matches message.
                                            <string>: any string

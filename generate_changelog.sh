@@ -38,3 +38,6 @@ cd *T
 
 ## Use GitLab issues
 ./bin/git-changelog-command-line -fc 67b9976 -tc e281256 -gls https://gitlab.com/ -glt $GITLAB_TOKEN -glpn violations-test -t $ROOT_FOLDER/changelog.mustache -of $ROOT_FOLDER/src/test/resources/gitLabChangelog.md
+
+## Ignore tags older
+./bin/git-changelog-command-line -t $ROOT_FOLDER/changelog.mustache -of $ROOT_FOLDER/src/test/resources/testThatCommitsCanBeIgnoredByTime.md -iot "2017-04-01 00:00:00"

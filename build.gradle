@@ -1,10 +1,14 @@
 buildscript {
  repositories {
   jcenter()
+  maven {
+   url "https://plugins.gradle.org/m2/"
+  }
  }
  dependencies {
   classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
   classpath 'net.researchgate:gradle-release:2.2.2'
+  classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
  }
 }
 
@@ -15,6 +19,7 @@ apply plugin: 'application'
 apply plugin: 'signing'
 apply plugin: 'com.bmuschko.nexus'
 apply plugin: 'net.researchgate.release'
+apply plugin: 'com.github.sherter.google-java-format'
 
 group = 'se.bjurr.gitchangelog'
 
@@ -29,7 +34,7 @@ repositories {
 }
 
 dependencies {
- compile 'se.bjurr.gitchangelog:git-changelog-lib:1.68'
+ compile 'se.bjurr.gitchangelog:git-changelog-lib:1.69'
  compile 'se.softhouse:jargo:0.1.1'
  testCompile 'junit:junit:4.12'
 }
@@ -81,5 +86,7 @@ extraArchive {
  tests = true
  javadoc = true
 }
+
+compileJava.dependsOn 'googleJavaFormat'
 
 afterReleaseBuild.dependsOn uploadArchives

@@ -2,13 +2,22 @@
 
 Changelog of Git Changelog Command Line.
 
-## Next release
+## 1.35
+### Other changes
+
+**tag time added to tag model**
+
+
+[141cb08bbee6fae](https://github.com/tomasbjerre/git-changelog-command-line/commit/141cb08bbee6fae) Tomas Bjerre *2017-04-14 09:18:12*
+
+
+## 1.34
 ### Other changes
 
 **GitLab integration**
 
 
-[5a99b2c09804027](https://github.com/tomasbjerre/git-changelog-command-line/commit/5a99b2c09804027) Tomas Bjerre *2017-03-25 16:33:00*
+[449caf097a8fc08](https://github.com/tomasbjerre/git-changelog-command-line/commit/449caf097a8fc08) Tomas Bjerre *2017-03-25 16:35:42*
 
 
 ## 1.32
