@@ -29,6 +29,26 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**Lib 1.72**
+
+
+[0d8cffbd967749e](https://github.com/tomasbjerre/git-changelog-command-line/commit/0d8cffbd967749e) Tomas Bjerre *2017-09-08 09:07:57*
+
+**Lib 1.71**
+
+
+[1074f832a4c8934](https://github.com/tomasbjerre/git-changelog-command-line/commit/1074f832a4c8934) Tomas Bjerre *2017-07-25 18:26:30*
+
+**Lib 1.70**
+
+
+[61cdd7d4b44f573](https://github.com/tomasbjerre/git-changelog-command-line/commit/61cdd7d4b44f573) Tomas Bjerre *2017-07-24 19:37:17*
+
+**ignoreCommitsOlderThan**
+
+
+[0d52803865316bd](https://github.com/tomasbjerre/git-changelog-command-line/commit/0d52803865316bd) Tomas Bjerre *2017-07-08 07:35:03*
+
 **tag time added to tag model**
 
 

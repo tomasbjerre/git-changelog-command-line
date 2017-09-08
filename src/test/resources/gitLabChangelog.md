@@ -12,7 +12,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.11
-### GitLab [1](https://gitlab.com/tomas.bjerre85/violations-test.git/issues/1) Test issue    *bug*  *l1*  
+### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support  
 
 **Support GitHub OAuth2 tokens #1**
 
