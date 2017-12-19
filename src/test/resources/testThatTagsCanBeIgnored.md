@@ -32,7 +32,7 @@ Changelog of Git Changelog Command Line.
 **Lib 1.72**
 
 
-[0d8cffbd967749e](https://github.com/tomasbjerre/git-changelog-command-line/commit/0d8cffbd967749e) Tomas Bjerre *2017-09-08 09:07:57*
+[58fa0073f072ef6](https://github.com/tomasbjerre/git-changelog-command-line/commit/58fa0073f072ef6) Tomas Bjerre *2017-09-08 09:08:50*
 
 **Lib 1.71**
 
