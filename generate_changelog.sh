@@ -1,6 +1,7 @@
 #/bin/bash
 ROOT_FOLDER=`pwd`
 cd build/distributions
+rm *shadow*
 unzip *T.zip
 cd *T
 

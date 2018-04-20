@@ -5,6 +5,10 @@ group = 'se.bjurr.gitchangelog'
 description = 'Command line tool that generates changelog from a GIT repository.'
 
 
+apply plugin: 'application'
+mainClassName = 'se.bjurr.gitchangelog.main.Main'
+
+
 buildscript {
  repositories {
   maven { url "https://jitpack.io" }
@@ -16,8 +20,6 @@ buildscript {
 apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
 
-apply plugin: 'application'
-mainClassName = 'se.bjurr.gitchangelog.main.Main'
 
 
 dependencies {
