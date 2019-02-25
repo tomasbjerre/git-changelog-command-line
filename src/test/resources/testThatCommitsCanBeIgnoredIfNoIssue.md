@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 180420
+### Jira JENKINS-19994   
+
+**Closing RevWalk**
+
+
+[69198a6151dc014](https://github.com/tomasbjerre/git-changelog-command-line/commit/69198a6151dc014) Tomas Bjerre *2017-12-30 20:45:19*
+
+
 ## 1.29
 ### GitHub #35   
 

@@ -19,6 +19,14 @@ Changelog of Git Changelog Command Line.
 [b27d768978dc40f](https://github.com/tomasbjerre/git-changelog-command-line/commit/b27d768978dc40f) Tomas Bjerre *2016-10-05 18:32:06*
 
 
+### Jira JENKINS-19994   
+
+**Closing RevWalk**
+
+
+[69198a6151dc014](https://github.com/tomasbjerre/git-changelog-command-line/commit/69198a6151dc014) Tomas Bjerre *2017-12-30 20:45:19*
+
+
 ### Jira JENKINS-34155   
 
 **Support short SHA**
@@ -28,6 +36,31 @@ Changelog of Git Changelog Command Line.
 
 
 ### Other changes
+
+**Moving application to before shaddow plugin**
+
+
+[86de96e119f451a](https://github.com/tomasbjerre/git-changelog-command-line/commit/86de96e119f451a) Tomas Bjerre *2018-04-20 10:00:52*
+
+**Doc**
+
+
+[090c31efd122ff4](https://github.com/tomasbjerre/git-changelog-command-line/commit/090c31efd122ff4) Tomas Bjerre *2017-12-19 12:31:32*
+
+**Bumping version to fix faulty release**
+
+
+[0b6575a7726b978](https://github.com/tomasbjerre/git-changelog-command-line/commit/0b6575a7726b978) Tomas Bjerre *2017-12-19 12:02:40*
+
+**Description available for Jira issues**
+
+
+[d4841fab0e3949b](https://github.com/tomasbjerre/git-changelog-command-line/commit/d4841fab0e3949b) Tomas Bjerre *2017-12-19 11:48:16*
+
+**Adjusting to Bintray**
+
+
+[79bf1fad841ef56](https://github.com/tomasbjerre/git-changelog-command-line/commit/79bf1fad841ef56) Tomas Bjerre *2017-12-19 11:43:01*
 
 **Lib 1.72**
 
