@@ -37,6 +37,11 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**Stepping lib**
+
+
+[58f760b6e6157bf](https://github.com/tomasbjerre/git-changelog-command-line/commit/58f760b6e6157bf) Tomas Bjerre *2019-02-25 15:59:02*
+
 **Moving application to before shaddow plugin**
 
 

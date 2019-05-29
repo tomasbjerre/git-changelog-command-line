@@ -3,11 +3,13 @@ apply plugin: 'java'
 project.ext.tags = ['git', 'changelog', 'releasenotes', 'patchnotes']
 group = 'se.bjurr.gitchangelog'
 description = 'Command line tool that generates changelog from a GIT repository.'
+project.ext.useShadowJar = true
 
-
-apply plugin: 'application'
-mainClassName = 'se.bjurr.gitchangelog.main.Main'
-
+jar {
+  manifest {
+    attributes 'Main-Class': 'se.bjurr.gitchangelog.main.Main'
+  }
+}
 
 buildscript {
  repositories {

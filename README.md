@@ -7,23 +7,23 @@ This is a command line tool for generating a changelog, or releasenotes, from a 
 
 There are some screenshots [here](https://github.com/tomasbjerre/git-changelog-lib/tree/screenshots/sandbox).
 
-The runnable can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) (the zip file). Unpack it and you will find the bin-folder.
+The runnable can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22).
 
-A CHANGELOG.md file can be created like this.
-```
-./bin/git-changelog-command-line -t changelog.mustache -sf changelog.json -of CHANGELOG.md
+A `CHANGELOG.md` file can be created like this.
+```shell
+java -jar git-changelog-command-line-*.jar -t changelog.mustache -sf changelog.json -of CHANGELOG.md
 ```
 
 A MediaWiki page can be created like this.
-```
-./git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
+```shell
+java -jar git-changelog-command-line-*.jar -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
 ```
 
 There are more examples [here](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/generate_changelog.sh).
 
 # Usage
 Or from command line:
-```
+```shell
 -cl, --custom-issue-link <string>          Custom issue link. Supports 
                                            variables like ${PATTERN_GROUP_1} to inject 
                                            variables from pattern.

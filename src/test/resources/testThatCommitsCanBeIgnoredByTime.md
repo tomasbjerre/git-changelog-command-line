@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## Unreleased
+### No issue
+
+**Stepping lib**
+
+
+[58f760b6e6157bf](https://github.com/tomasbjerre/git-changelog-command-line/commit/58f760b6e6157bf) Tomas Bjerre *2019-02-25 15:59:02*
+
+
 ## 180420
 ### Jira JENKINS-19994   
 
