@@ -360,7 +360,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.11
-### GitHub #1   
+### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support  
 
 **Support GitHub OAuth2 tokens**
 

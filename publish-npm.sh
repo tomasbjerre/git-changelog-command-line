@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf jdeploy-bundle
+sudo rm -rf jdeploy-bundle
 version=`awk 'NF>1{print $NF}' gradle.properties`
 echo "Version is: \"$version\""
 rm -rf package.json
