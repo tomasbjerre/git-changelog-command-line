@@ -13,10 +13,18 @@ A `CHANGELOG.md` file can be created like this.
 ```shell
 java -jar git-changelog-command-line-*.jar -t changelog.mustache -sf changelog.json -of CHANGELOG.md
 ```
+Or from *NPM* like this:
+```shell
+npx git-changelog-command-line -t changelog.mustache -sf changelog.json -of CHANGELOG.md
+```
 
 A MediaWiki page can be created like this.
 ```shell
 java -jar git-changelog-command-line-*.jar -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
+```
+Or from *NPM* like this:
+```shell
+npx git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
 ```
 
 There are more examples [here](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/generate_changelog.sh).
