@@ -37,6 +37,21 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**doc**
+
+
+[4ad87e4ce2c0320](https://github.com/tomasbjerre/git-changelog-command-line/commit/4ad87e4ce2c0320) Tomas Bjerre *2019-05-29 17:11:56*
+
+**doc**
+
+
+[e3ff40ca79ec5d4](https://github.com/tomasbjerre/git-changelog-command-line/commit/e3ff40ca79ec5d4) Tomas Bjerre *2019-05-29 16:45:53*
+
+**Adding jdeploy to release script**
+
+
+[0e7113abb20c452](https://github.com/tomasbjerre/git-changelog-command-line/commit/0e7113abb20c452) Tomas Bjerre *2019-05-29 16:27:50*
+
 **Dropping Gradle application and packaging runnable jar**
 
 
