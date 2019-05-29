@@ -5,4 +5,4 @@ echo "Version is: \"$version\""
 rm -rf package.json
 cp package.json.orig package.json
 sed -i "s/VERSION/$version/g" package.json
-jdeploy publish
+sudo jdeploy publish
