@@ -10,3 +10,8 @@ temp
 .couscous
 couscous.phar
 .okhttpcache
+jdeploy-bundle
+package.json
+node_modules
+package-lock.json
+

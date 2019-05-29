@@ -5,6 +5,5 @@ git commit -a --amend --no-edit
 git push -f
 
 git checkout HEAD~1
-jdeploy init
-jdeploy publish
+./publish-npm.sh
 git pull

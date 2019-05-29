@@ -1,0 +1,16 @@
+{
+  "bin": {"git-changelog-command-line": "jdeploy-bundle/jdeploy.js"},
+  "author": "Tomas Bjerre",
+  "description": "Command line tool for generating a changelog, or releasenotes, from a GIT repository.",
+  "homepage": "https://github.com/tomasbjerre/git-changelog-command-line",
+  "repository": "git@github.com:tomasbjerre/git-changelog-command-line.git",
+  "main": "index.js",
+  "preferGlobal": true,
+  "version": "VERSION.0",
+  "jdeploy": {"jar": "build/libs/git-changelog-command-line-VERSION.jar"},
+  "dependencies": {"shelljs": "^0.7.5"},
+  "license": "ISC",
+  "name": "git-changelog-command-line",
+  "files": ["jdeploy-bundle"],
+  "scripts": {"test": "echo \"Error: no test specified\" && exit 1"}
+}
