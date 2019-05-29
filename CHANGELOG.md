@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.47
+### Other changes
+
+**doc**
+
+
+[b9b579705985131](https://github.com/tomasbjerre/git-changelog-command-line/commit/b9b579705985131) Tomas Bjerre *2019-05-29 17:17:19*
+
+
 ## 1.46
 ### Other changes
 
