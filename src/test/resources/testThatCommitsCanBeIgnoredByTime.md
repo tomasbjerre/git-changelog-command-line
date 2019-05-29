@@ -2,8 +2,13 @@
 
 Changelog of Git Changelog Command Line.
 
-## Unreleased
+## 1.45
 ### No issue
+
+**Dropping Gradle application and packaging runnable jar**
+
+
+[67ec69a7683efd9](https://github.com/tomasbjerre/git-changelog-command-line/commit/67ec69a7683efd9) Tomas Bjerre *2019-05-29 16:14:46*
 
 **Stepping lib**
 
