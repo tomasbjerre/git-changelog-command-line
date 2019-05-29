@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.48
+### No issue
+
+**doc**
+
+
+[546b4634f550ac3](https://github.com/tomasbjerre/git-changelog-command-line/commit/546b4634f550ac3) Tomas Bjerre *2019-05-29 17:25:56*
+
+
 ## 1.47
 ### No issue
 
