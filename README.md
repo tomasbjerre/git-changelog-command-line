@@ -10,23 +10,49 @@ There are some screenshots [here](https://github.com/tomasbjerre/git-changelog-l
 
 The runnable can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) or [NPM](https://www.npmjs.com/package/git-changelog-command-line).
 
-A `CHANGELOG.md` file can be created like this.
+A changelog can be created like this.
 ```shell
-npx git-changelog-command-line -t changelog.mustache -sf changelog.json -of CHANGELOG.md
+npx git-changelog-command-line -std -tec "
+# Changelog
+
+Changelog for {{ownerName}} {{repoName}}.
+
+{{#tags}}
+## {{name}}
+ {{#issues}}
+  {{#hasIssue}}
+   {{#hasLink}}
+### {{name}} [{{issue}}]({{link}}) {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+   {{/hasLink}}
+   {{^hasLink}}
+### {{name}} {{issue}} {{title}} {{#hasIssueType}} *{{issueType}}* {{/hasIssueType}} {{#hasLabels}} {{#labels}} *{{.}}* {{/labels}} {{/hasLabels}}
+   {{/hasLink}}
+  {{/hasIssue}}
+  {{^hasIssue}}
+### {{name}}
+  {{/hasIssue}}
+
+  {{#commits}}
+**{{{messageTitle}}}**
+
+{{#messageBodyItems}}
+ * {{.}} 
+{{/messageBodyItems}}
+
+[{{hash}}](https://github.com/{{ownerName}}/{{repoName}}/commit/{{hash}}) {{authorName}} *{{commitTime}}*
+
+  {{/commits}}
+
+ {{/issues}}
+{{/tags}}
+"
 ```
 
-Or with the *JAR* from Central:
-```shell
-java -jar git-changelog-command-line-*.jar -t changelog.mustache -sf changelog.json -of CHANGELOG.md
-```
+Or, with the *JAR* from Central, do `java -jar git-changelog-command-line-*.jar ....`
 
 A MediaWiki page can be created like this.
 ```shell
 npx git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
-```
-Or with the *JAR* from Central:
-```shell
-java -jar git-changelog-command-line-*.jar -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
 ```
 
 There are more examples [here](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/generate_changelog.sh).
