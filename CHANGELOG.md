@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.52
+### Other changes
+
+**doc**
+
+
+[bd8004089502412](https://github.com/tomasbjerre/git-changelog-command-line/commit/bd8004089502412) Tomas Bjerre *2019-05-29 18:04:27*
+
+
 ## 1.51
 ### Other changes
 
@@ -369,7 +378,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.11
-### GitHub #1   
+### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support  
 
 **Support GitHub OAuth2 tokens**
 

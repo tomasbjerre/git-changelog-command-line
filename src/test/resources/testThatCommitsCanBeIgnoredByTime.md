@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.52
+### No issue
+
+**doc**
+
+
+[bd8004089502412](https://github.com/tomasbjerre/git-changelog-command-line/commit/bd8004089502412) Tomas Bjerre *2019-05-29 18:04:27*
+
+
 ## 1.51
 ### No issue
 

@@ -40,6 +40,11 @@ Changelog of Git Changelog Command Line.
 **doc**
 
 
+[bd8004089502412](https://github.com/tomasbjerre/git-changelog-command-line/commit/bd8004089502412) Tomas Bjerre *2019-05-29 18:04:27*
+
+**doc**
+
+
 [7b9120a14926f9a](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b9120a14926f9a) Tomas Bjerre *2019-05-29 17:45:51*
 
 **doc**
