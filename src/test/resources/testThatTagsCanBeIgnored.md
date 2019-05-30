@@ -37,6 +37,11 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**slf4j**
+
+
+[e8f65b19415b1ab](https://github.com/tomasbjerre/git-changelog-command-line/commit/e8f65b19415b1ab) Tomas Bjerre *2019-05-30 13:39:40*
+
 **doc**
 
 
