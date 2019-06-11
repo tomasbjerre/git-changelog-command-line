@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.55
+### No issue
+
+**Removing dependency on javax.xml**
+
+
+[1108865f1024786](https://github.com/tomasbjerre/git-changelog-command-line/commit/1108865f1024786) Tomas Bjerre *2019-06-11 16:58:38*
+
+
 ## 1.54
 ### No issue
 
