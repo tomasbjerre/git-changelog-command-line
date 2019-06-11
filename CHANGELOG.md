@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## Next release
+### Other changes
+
+**Gradle 5**
+
+
+[f24a4ac79d4008f](https://github.com/tomasbjerre/git-changelog-command-line/commit/f24a4ac79d4008f) Tomas Bjerre *2019-06-11 17:59:20*
+
+
 ## 1.55
 ### Other changes
 
