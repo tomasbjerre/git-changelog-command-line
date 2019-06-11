@@ -37,6 +37,11 @@ Changelog of Git Changelog Command Line.
 
 ### Other changes
 
+**JDK 11 compatible**
+
+
+[436550774dc2ade](https://github.com/tomasbjerre/git-changelog-command-line/commit/436550774dc2ade) Tomas Bjerre *2019-06-11 16:30:00*
+
 **slf4j**
 
 
