@@ -2,13 +2,48 @@
 
 Changelog of Git Changelog Command Line.
 
-## Unreleased
+## 1.56
 ### No issue
+
+**naming**
+
+
+[0246b3a370c4f13](https://github.com/tomasbjerre/git-changelog-command-line/commit/0246b3a370c4f13) Dmitry Mamchur *2020-02-25 13:08:49*
+
+**bump git-changelog-lib version**
+
+
+[d3b4091c0145e9f](https://github.com/tomasbjerre/git-changelog-command-line/commit/d3b4091c0145e9f) Dmitry Mamchur *2020-02-25 12:39:13*
+
+**align naming with git-changelog-lib**
+
+
+[53657c77ec38f8b](https://github.com/tomasbjerre/git-changelog-command-line/commit/53657c77ec38f8b) Dmitry Mamchur *2020-02-25 12:38:51*
+
+**update readme**
+
+
+[e75d56cf326c4a9](https://github.com/tomasbjerre/git-changelog-command-line/commit/e75d56cf326c4a9) Dmitry Mamchur *2020-02-25 12:16:06*
+
+**add support for jira token**
+
+
+[b48f83d7f34079a](https://github.com/tomasbjerre/git-changelog-command-line/commit/b48f83d7f34079a) Dmitry Mamchur *2020-02-20 15:41:36*
+
+**openjdk8**
+
+
+[0405ac4ad84c9fd](https://github.com/tomasbjerre/git-changelog-command-line/commit/0405ac4ad84c9fd) Tomas Bjerre *2019-10-09 13:14:34*
+
+**Create FUNDING.yml**
+
+
+[067fca4c6cbe0c5](https://github.com/tomasbjerre/git-changelog-command-line/commit/067fca4c6cbe0c5) Tomas Bjerre *2019-09-28 07:05:38*
 
 **Gradle 5**
 
 
-[f24a4ac79d4008f](https://github.com/tomasbjerre/git-changelog-command-line/commit/f24a4ac79d4008f) Tomas Bjerre *2019-06-11 17:59:20*
+[48acc0c2ac1839e](https://github.com/tomasbjerre/git-changelog-command-line/commit/48acc0c2ac1839e) Tomas Bjerre *2019-06-11 18:03:15*
 
 
 ## 1.55

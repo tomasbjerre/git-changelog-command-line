@@ -39,7 +39,7 @@ Changelog of Git Changelog Command Line.
 
 
 ## 1.4
-### GitHub #5   
+### GitHub [#5](https://github.com/tomasbjerre/git-changelog-command-line/pull/5) add support for jira tokens  
 
 **Added variables: messageTitle, messageBody, messageItems**
 
