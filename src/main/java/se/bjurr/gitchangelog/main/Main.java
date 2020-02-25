@@ -41,7 +41,7 @@ public class Main {
   public static final String PARAM_JIRA_ISSUE_PATTERN = "-jp";
   public static final String PARAM_JIRA_USERNAME = "-ju";
   public static final String PARAM_JIRA_PASSWORD = "-jpw";
-  public static final String PARAM_JIRA_TOKEN = "-jt";
+  public static final String PARAM_JIRA_BASIC_AUTH = "-jba";
   public static final String PARAM_CUSTOM_ISSUE_NAME = "-cn";
   public static final String PARAM_CUSTOM_ISSUE_PATTERN = "-cp";
   public static final String PARAM_CUSTOM_ISSUE_LINK = "-cl";
@@ -164,8 +164,8 @@ public class Main {
             .description("Optional password to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    Argument<String> jiraTokenPatternArgument =
-        stringArgument(PARAM_JIRA_TOKEN, "--jira-token") //
+    Argument<String> jiraBasicAuthStringPatternArgument =
+        stringArgument(PARAM_JIRA_BASIC_AUTH, "--jira-basic-auth") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
@@ -320,7 +320,7 @@ public class Main {
                   gitHubApiArgument,
                   jiraUsernamePatternArgument,
                   jiraPasswordPatternArgument,
-                  jiraTokenPatternArgument,
+                  jiraBasicAuthStringPatternArgument,
                   extendedVariablesArgument,
                   templateContentArgument,
                   gitHubTokenArgument,
@@ -390,8 +390,8 @@ public class Main {
       if (arg.wasGiven(jiraPasswordPatternArgument)) {
         changelogApiBuilder.withJiraPassword(arg.get(jiraPasswordPatternArgument));
       }
-      if (arg.wasGiven(jiraTokenPatternArgument)) {
-        changelogApiBuilder.withJiraBasicAuthString(arg.get(jiraTokenPatternArgument));
+      if (arg.wasGiven(jiraBasicAuthStringPatternArgument)) {
+        changelogApiBuilder.withJiraBasicAuthString(arg.get(jiraBasicAuthStringPatternArgument));
       }
       if (arg.wasGiven(timeZoneArgument)) {
         changelogApiBuilder.withTimeZone(arg.get(timeZoneArgument));

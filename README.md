@@ -137,7 +137,7 @@ Or from command line:
                                            with Jira.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
--jt, --jira-token <string>                 Optional token to authenticate 
+-jba, --jira-basic-auth <string>           Optional token to authenticate 
                                            with Jira.
                                            <string>: any string
                                            Default: 
