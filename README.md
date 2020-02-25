@@ -137,6 +137,10 @@ Or from command line:
                                            with Jira.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
+-jt, --jira-token <string>                 Optional token to authenticate 
+                                           with Jira.
+                                           <string>: any string
+                                           Default: 
 -js, --jiraServer <string>                 Jira server. When a Jira server is 
                                            given, the title of the Jira issues can be 
                                            used in the changelog.
