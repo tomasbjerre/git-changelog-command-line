@@ -391,7 +391,7 @@ public class Main {
         changelogApiBuilder.withJiraPassword(arg.get(jiraPasswordPatternArgument));
       }
       if (arg.wasGiven(jiraTokenPatternArgument)) {
-        changelogApiBuilder.withJiraToken(arg.get(jiraTokenPatternArgument));
+        changelogApiBuilder.withJiraBasicAuthString(arg.get(jiraTokenPatternArgument));
       }
       if (arg.wasGiven(timeZoneArgument)) {
         changelogApiBuilder.withTimeZone(arg.get(timeZoneArgument));
