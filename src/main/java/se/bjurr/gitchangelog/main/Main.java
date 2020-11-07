@@ -60,6 +60,7 @@ public class Main {
   public static final String PARAM_GITHUBAPI = "-gapi";
   public static final String PARAM_GITHUBTOKEN = "-gtok";
   public static final String PARAM_EXTENDED_VARIABLES = "-ex";
+  public static final String PARAM_EXTENDED_HEADERS = "-eh";
   public static final String PARAM_TEMPLATE_CONTENT = "-tec";
   public static final String PARAM_GITLABTOKEN = "-glt";
   public static final String PARAM_GITLABSERVER = "-gls";
@@ -264,6 +265,15 @@ public class Main {
             .defaultValue("") //
             .build();
 
+    Argument<String> extendedHeadersArgument =
+        stringArgument(PARAM_EXTENDED_HEADERS, "--extended-headers") //
+            .description(
+                "Extended headers that will send when access JIRA. e.g. "
+                    + PARAM_EXTENDED_HEADERS
+                    + " \"{\\\"CF-Access-Client-ID\\\": \\\"abcde12345xyz.access\\\"}\"") //
+            .defaultValue("") //
+            .build();
+
     Argument<String> templateContentArgument =
         stringArgument(PARAM_TEMPLATE_CONTENT, "--template-content") //
             .description("String to use as template.") //
@@ -322,6 +332,7 @@ public class Main {
                   jiraPasswordPatternArgument,
                   jiraBasicAuthStringPatternArgument,
                   extendedVariablesArgument,
+                  extendedHeadersArgument,
                   templateContentArgument,
                   gitHubTokenArgument,
                   ignoreCommitsWithoutIssueArgument,
@@ -351,6 +362,14 @@ public class Main {
         Object jsonObject = gson.fromJson(jsonString, type);
         Map<String, Object> extendedVariables = of("extended", jsonObject);
         changelogApiBuilder.withExtendedVariables(extendedVariables);
+      }
+
+      if (arg.wasGiven(extendedHeadersArgument)) {
+        String jsonString = arg.get(extendedHeadersArgument);
+        Gson gson = new Gson();
+        Type type = new TypeToken<Map<String, String>>() {}.getType();
+        Map<String, String> jsonObject = gson.fromJson(jsonString, type);
+        changelogApiBuilder.withExtendedHeaders(jsonObject);
       }
 
       if (arg.wasGiven(templateContentArgument)) {
