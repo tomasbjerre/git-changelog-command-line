@@ -79,6 +79,11 @@ Or from command line:
 -df, --date-format <string>                Format to use when printing dates.
                                            <string>: any string
                                            Default: YYYY-MM-dd HH:mm:ss
+-eh, --extended-headers <string>           Extended headers that will send 
+                                           when access JIRA. e.g. -eh CF-Access-
+                                           Client-ID:abcde12345xyz.access [Supports Multiple occurrences]
+                                           <string>: any string
+                                           Default: Empty list
 -ex, --extended-variables <string>         Extended variables that will be 
                                            available as {{extended.*}}. -ex "{\"var1\": 
                                            \"val1\"}" will print out "val1" for 
@@ -130,6 +135,10 @@ Or from command line:
                                            candidates and only include actual releases.
                                            <string>: any string
                                            Default: null
+-jba, --jira-basic-auth <string>           Optional token to authenticate with 
+                                           Jira.
+                                           <string>: any string
+                                           Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
 -jp, --jira-pattern <string>               Jira issue pattern.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
@@ -137,10 +146,6 @@ Or from command line:
                                            with Jira.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
--jba, --jira-basic-auth <string>           Optional token to authenticate 
-                                           with Jira.
-                                           <string>: any string
-                                           Default: 
 -js, --jiraServer <string>                 Jira server. When a Jira server is 
                                            given, the title of the Jira issues can be 
                                            used in the changelog.

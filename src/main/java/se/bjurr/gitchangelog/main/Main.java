@@ -10,19 +10,23 @@ import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class Main {
   public static final String PARAM_SETTINGS_FILE = "-sf";
@@ -69,194 +73,194 @@ public class Main {
   private static String systemOutPrintln;
   private static boolean recordSystemOutPrintln;
 
-  public static void main(String args[]) throws Exception {
-    Settings defaultSettings = defaultSettings();
-    Argument<?> helpArgument = helpArgument("-h", "--help");
+  public static void main(final String args[]) throws Exception {
+    final Settings defaultSettings = defaultSettings();
+    final Argument<?> helpArgument = helpArgument("-h", "--help");
 
-    Argument<String> settingsArgument =
+    final Argument<String> settingsArgument =
         stringArgument(PARAM_SETTINGS_FILE, "--settings-file") //
             .description("Use settings from file.") //
             .defaultValue(null) //
             .build();
-    Argument<Boolean> outputStdoutArgument =
+    final Argument<Boolean> outputStdoutArgument =
         optionArgument(PARAM_OUTPUT_STDOUT, "--stdout") //
             .description("Print builder to <STDOUT>.") //
             .build();
-    Argument<String> outputFileArgument =
+    final Argument<String> outputFileArgument =
         stringArgument(PARAM_OUTPUT_FILE, "--output-file") //
             .description("Write output to file.") //
             .build();
 
-    Argument<String> templatePathArgument =
+    final Argument<String> templatePathArgument =
         stringArgument(PARAM_TEMPLATE, "--template") //
             .description("Template to use. A default template will be used if not specified.") //
             .defaultValue(defaultSettings.getTemplatePath()) //
             .build();
 
-    Argument<String> untaggedTagNameArgument =
+    final Argument<String> untaggedTagNameArgument =
         stringArgument(PARAM_UNTAGGED_TAG_NAME, "--untagged-name") //
             .description(
                 "When listing commits per tag, this will by the name of a virtual tag that contains commits not available in any git tag.") //
             .defaultValue(defaultSettings.getUntaggedName()) //
             .build();
 
-    Argument<String> fromRepoArgument =
+    final Argument<String> fromRepoArgument =
         stringArgument(PARAM_REPO, "--repo") //
             .description("Repository.") //
             .defaultValue(defaultSettings.getFromRepo()) //
             .build();
-    Argument<String> fromRefArgument =
+    final Argument<String> fromRefArgument =
         stringArgument(PARAM_FROM_REF, "--from-ref") //
             .description("From ref.") //
             .defaultValue(defaultSettings.getFromRef().orNull()) //
             .build();
-    Argument<String> toRefArgument =
+    final Argument<String> toRefArgument =
         stringArgument(PARAM_TO_REF, "--to-ref") //
             .description("To ref.") //
             .defaultValue(defaultSettings.getToRef().orNull()) //
             .build();
-    Argument<String> fromCommitArgument =
+    final Argument<String> fromCommitArgument =
         stringArgument(PARAM_FROM_COMMIT, "--from-commit") //
             .description("From commit.") //
             .defaultValue(defaultSettings.getFromCommit().orNull()) //
             .build();
-    Argument<String> toCommitArgument =
+    final Argument<String> toCommitArgument =
         stringArgument(PARAM_TO_COMMIT, "--to-commit") //
             .description("To commit.") //
             .defaultValue(defaultSettings.getToCommit().orNull()) //
             .build();
 
-    Argument<String> ignoreCommitsIfMessageMatchesArgument =
+    final Argument<String> ignoreCommitsIfMessageMatchesArgument =
         stringArgument(PARAM_IGNORE_PATTERN, "--ignore-pattern") //
             .description("Ignore commits where pattern matches message.") //
             .defaultValue(defaultSettings.getIgnoreCommitsIfMessageMatches()) //
             .build();
 
-    Argument<String> ignoreCommitsOlderThanArgument =
+    final Argument<String> ignoreCommitsOlderThanArgument =
         stringArgument(PARAM_IGNORE_OLDER_PATTERN, "--ignore-older-than") //
             .description("Ignore commits older than " + DEFAULT_DATEFORMAT + ".") //
             .build();
 
-    Argument<String> ignoreTagsIfNameMatchesArgument =
+    final Argument<String> ignoreTagsIfNameMatchesArgument =
         stringArgument(PARAM_IGNORE_TAG_PATTERN, "--ignore-tag-pattern") //
             .description(
                 "Ignore tags that matches regular expression. Can be used to ignore release candidates and only include actual releases.") //
             .defaultValue(defaultSettings.getIgnoreTagsIfNameMatches().orNull()) //
             .build();
 
-    Argument<String> jiraServerArgument =
+    final Argument<String> jiraServerArgument =
         stringArgument(PARAM_JIRA_SERVER, "--jiraServer") //
             .description(
                 "Jira server. When a Jira server is given, the title of the Jira issues can be used in the changelog.") //
             .defaultValue(defaultSettings.getJiraServer().orNull()) //
             .build();
-    Argument<String> jiraIssuePatternArgument =
+    final Argument<String> jiraIssuePatternArgument =
         stringArgument(PARAM_JIRA_ISSUE_PATTERN, "--jira-pattern") //
             .description("Jira issue pattern.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    Argument<String> jiraUsernamePatternArgument =
+    final Argument<String> jiraUsernamePatternArgument =
         stringArgument(PARAM_JIRA_USERNAME, "--jira-username") //
             .description("Optional username to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    Argument<String> jiraPasswordPatternArgument =
+    final Argument<String> jiraPasswordPatternArgument =
         stringArgument(PARAM_JIRA_PASSWORD, "--jira-password") //
             .description("Optional password to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    Argument<String> jiraBasicAuthStringPatternArgument =
+    final Argument<String> jiraBasicAuthStringPatternArgument =
         stringArgument(PARAM_JIRA_BASIC_AUTH, "--jira-basic-auth") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
 
-    Argument<String> customIssueNameArgument =
+    final Argument<String> customIssueNameArgument =
         stringArgument(PARAM_CUSTOM_ISSUE_NAME, "--custom-issue-name") //
             .description("Custom issue name.") //
             .defaultValue(null) //
             .build();
-    Argument<String> customIssuePatternArgument =
+    final Argument<String> customIssuePatternArgument =
         stringArgument(PARAM_CUSTOM_ISSUE_PATTERN, "--custom-issue-pattern") //
             .description("Custom issue pattern.") //
             .defaultValue(null) //
             .build();
-    Argument<String> customIssueLinkArgument =
+    final Argument<String> customIssueLinkArgument =
         stringArgument(PARAM_CUSTOM_ISSUE_LINK, "--custom-issue-link") //
             .description(
                 "Custom issue link. Supports variables like ${PATTERN_GROUP_1} to inject variables from pattern.") //
             .defaultValue(null) //
             .build();
-    Argument<String> customIssueTitleArgument =
+    final Argument<String> customIssueTitleArgument =
         stringArgument(PARAM_CUSTOM_ISSUE_TITLE, "--custom-issue-title") //
             .description(
                 "Custom issue title. Supports variables like ${PATTERN_GROUP_1} to inject variables from pattern.") //
             .defaultValue(null) //
             .build();
 
-    Argument<String> timeZoneArgument =
+    final Argument<String> timeZoneArgument =
         stringArgument(PARAM_TIMEZONE, "--time-zone") //
             .description("TimeZone to use when printing dates.") //
             .defaultValue(defaultSettings.getTimeZone()) //
             .build();
-    Argument<String> dateFormatArgument =
+    final Argument<String> dateFormatArgument =
         stringArgument(PARAM_DATEFORMAT, "--date-format") //
             .description("Format to use when printing dates.") //
             .defaultValue(defaultSettings.getDateFormat()) //
             .build();
-    Argument<String> noIssueArgument =
+    final Argument<String> noIssueArgument =
         stringArgument(PARAM_NOISSUE, "--no-issue-name") //
             .description(
                 "Name of virtual issue that contains commits that has no issue associated.") //
             .defaultValue(defaultSettings.getNoIssueName()) //
             .build();
-    Argument<Boolean> ignoreCommitsWithoutIssueArgument =
+    final Argument<Boolean> ignoreCommitsWithoutIssueArgument =
         optionArgument(PARAM_IGNORE_NOISSUE, "--ignore-commits-without-issue") //
             .description("Ignore commits that is not included in any issue.") //
             .build();
-    Argument<String> readableTagNameArgument =
+    final Argument<String> readableTagNameArgument =
         stringArgument(PARAM_READABLETAGNAME, "--readable-tag-name") //
             .description("Pattern to extract readable part of tag.") //
             .defaultValue(defaultSettings.getReadableTagName()) //
             .build();
-    Argument<Boolean> removeIssueFromMessageArgument =
+    final Argument<Boolean> removeIssueFromMessageArgument =
         optionArgument(PARAM_REMOVEISSUE, "--remove-issue-from-message") //
             .description("Dont print any issues in the messages of commits.") //
             .build();
 
-    Argument<String> mediaWikiUrlArgument =
+    final Argument<String> mediaWikiUrlArgument =
         stringArgument(PARAM_MEDIAWIKIURL, "--mediawiki-url") //
             .description("Base URL of MediaWiki.") //
             .build();
-    Argument<String> mediaWikiTitleArgument =
+    final Argument<String> mediaWikiTitleArgument =
         stringArgument(PARAM_MEDIAWIKITITLE, "--mediawiki-title") //
             .description("Title of MediaWiki page.") //
             .defaultValue(null) //
             .build();
-    Argument<String> mediaWikiUserArgument =
+    final Argument<String> mediaWikiUserArgument =
         stringArgument(PARAM_MEDIAWIKIUSER, "--mediawiki-user") //
             .description("User to authenticate with MediaWiki.") //
             .defaultValue("") //
             .build();
-    Argument<String> mediaWikiPasswordArgument =
+    final Argument<String> mediaWikiPasswordArgument =
         stringArgument(PARAM_MEDIAWIKIPASSWORD, "--mediawiki-password") //
             .description("Password to authenticate with MediaWiki.") //
             .defaultValue("") //
             .build();
-    Argument<String> gitHubApiArgument =
+    final Argument<String> gitHubApiArgument =
         stringArgument(PARAM_GITHUBAPI, "--github-api") //
             .description(
                 "GitHub API. Like: https://api.github.com/repos/tomasbjerre/git-changelog-command-line/") //
             .defaultValue("") //
             .build();
-    Argument<String> gitHubTokenArgument =
+    final Argument<String> gitHubTokenArgument =
         stringArgument(PARAM_GITHUBTOKEN, "--github-token") //
             .description(
                 "GitHub API OAuth2 token. You can get it from: curl -u 'yourgithubuser' -d '{\"note\":\"Git Changelog Lib\"}' https://api.github.com/authorizations") //
             .defaultValue("") //
             .build();
 
-    Argument<String> extendedVariablesArgument =
+    final Argument<String> extendedVariablesArgument =
         stringArgument(PARAM_EXTENDED_VARIABLES, "--extended-variables") //
             .description(
                 "Extended variables that will be available as {{extended.*}}. "
@@ -265,39 +269,39 @@ public class Main {
             .defaultValue("") //
             .build();
 
-    Argument<String> extendedHeadersArgument =
+    final Argument<List<String>> extendedHeadersArgument =
         stringArgument(PARAM_EXTENDED_HEADERS, "--extended-headers") //
+        .repeated()
             .description(
                 "Extended headers that will send when access JIRA. e.g. "
                     + PARAM_EXTENDED_HEADERS
-                    + " \"{\\\"CF-Access-Client-ID\\\": \\\"abcde12345xyz.access\\\"}\"") //
-            .defaultValue("") //
+                    + " CF-Access-Client-ID:abcde12345xyz.access") //
             .build();
 
-    Argument<String> templateContentArgument =
+    final Argument<String> templateContentArgument =
         stringArgument(PARAM_TEMPLATE_CONTENT, "--template-content") //
             .description("String to use as template.") //
             .defaultValue("") //
             .build();
 
-    Argument<String> gitLabTokenArgument =
+    final Argument<String> gitLabTokenArgument =
         stringArgument(PARAM_GITLABTOKEN, "--gitlab-token") //
             .description("GitLab API token.") //
             .defaultValue("") //
             .build();
-    Argument<String> gitLabServerArgument =
+    final Argument<String> gitLabServerArgument =
         stringArgument(PARAM_GITLABSERVER, "--gitlab-server") //
             .description("GitLab server, like https://gitlab.com/.") //
             .defaultValue("") //
             .build();
-    Argument<String> gitLabProjectNameArgument =
+    final Argument<String> gitLabProjectNameArgument =
         stringArgument(PARAM_GITLABPROJECTNAME, "--gitlab-project-name") //
             .description("GitLab project name.") //
             .defaultValue("") //
             .build();
 
     try {
-      ParsedArguments arg =
+      final ParsedArguments arg =
           withArguments(
                   helpArgument,
                   settingsArgument,
@@ -342,7 +346,7 @@ public class Main {
                   gitLabProjectNameArgument) //
               .parse(args);
 
-      GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
+      final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
 
       if (arg.wasGiven(settingsArgument)) {
         changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
@@ -356,20 +360,27 @@ public class Main {
       }
 
       if (arg.wasGiven(extendedVariablesArgument)) {
-        String jsonString = arg.get(extendedVariablesArgument);
-        Gson gson = new Gson();
-        Type type = new TypeToken<Map<String, Object>>() {}.getType();
-        Object jsonObject = gson.fromJson(jsonString, type);
-        Map<String, Object> extendedVariables = of("extended", jsonObject);
+        final String jsonString = arg.get(extendedVariablesArgument);
+        final Gson gson = new Gson();
+        final Type type = new TypeToken<Map<String, Object>>() {}.getType();
+        final Object jsonObject = gson.fromJson(jsonString, type);
+        final Map<String, Object> extendedVariables = of("extended", jsonObject);
         changelogApiBuilder.withExtendedVariables(extendedVariables);
       }
 
       if (arg.wasGiven(extendedHeadersArgument)) {
-        String jsonString = arg.get(extendedHeadersArgument);
-        Gson gson = new Gson();
-        Type type = new TypeToken<Map<String, String>>() {}.getType();
-        Map<String, String> jsonObject = gson.fromJson(jsonString, type);
-        changelogApiBuilder.withExtendedHeaders(jsonObject);
+    	  final List<String> extendedHeaders = arg.get(extendedHeadersArgument);
+        final Map<String, String> headers = new HashMap<String, String>();
+        for (final String extendedHeader : extendedHeaders) {
+        	final String[] splitted = extendedHeader.split(":");
+        	if (splitted.length != 2) {
+        		throw new RuntimeException("Headers should be on format \"headername:headervalue\"");
+        	}
+        	final String key = splitted[0].trim();
+			final String value = splitted[1].trim();
+			headers.put(key, value);
+        }
+        changelogApiBuilder.withExtendedHeaders(headers);
       }
 
       if (arg.wasGiven(templateContentArgument)) {
@@ -387,7 +398,7 @@ public class Main {
             arg.get(ignoreCommitsIfMessageMatchesArgument));
       }
       if (arg.wasGiven(ignoreCommitsOlderThanArgument)) {
-        Date date =
+        final Date date =
             new SimpleDateFormat(DEFAULT_DATEFORMAT).parse(arg.get(ignoreCommitsOlderThanArgument));
         changelogApiBuilder.withIgnoreCommitsOlderThan(date);
       }
@@ -503,11 +514,11 @@ public class Main {
       }
 
       if (arg.wasGiven(outputFileArgument)) {
-        String filePath = arg.get(outputFileArgument);
+        final String filePath = arg.get(outputFileArgument);
         changelogApiBuilder.toFile(new File(filePath));
       }
 
-    } catch (ArgumentException exception) {
+    } catch (final ArgumentException exception) {
       System.out.println(exception.getMessageAndUsage());
       System.exit(1);
     }
@@ -523,7 +534,7 @@ public class Main {
     Main.recordSystemOutPrintln = true;
   }
 
-  private static void systemOutPrintln(String systemOutPrintln) {
+  private static void systemOutPrintln(final String systemOutPrintln) {
     if (Main.recordSystemOutPrintln) {
       Main.systemOutPrintln = systemOutPrintln;
     } else {
