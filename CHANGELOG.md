@@ -2,6 +2,23 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.57
+### GitHub [#7](https://github.com/tomasbjerre/git-changelog-command-line/pull/7) Support custom headers to JIRA to bypass 2 factor auth  
+
+**Adjustments after merge of PR**
+
+
+[4d2af148b1a7ba0](https://github.com/tomasbjerre/git-changelog-command-line/commit/4d2af148b1a7ba0) Tomas Bjerre *2020-11-07 15:58:51*
+
+
+### Other changes
+
+**Support custom headers to JIRA to bypass 2 factor auth**
+
+
+[2792a5046366c47](https://github.com/tomasbjerre/git-changelog-command-line/commit/2792a5046366c47) Yauheni Biruk *2020-11-07 14:57:23*
+
+
 ## 1.56
 ### Other changes
 
