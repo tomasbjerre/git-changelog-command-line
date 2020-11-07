@@ -10,6 +10,9 @@ import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -17,16 +20,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class Main {
   public static final String PARAM_SETTINGS_FILE = "-sf";
@@ -271,7 +269,7 @@ public class Main {
 
     final Argument<List<String>> extendedHeadersArgument =
         stringArgument(PARAM_EXTENDED_HEADERS, "--extended-headers") //
-        .repeated()
+            .repeated()
             .description(
                 "Extended headers that will send when access JIRA. e.g. "
                     + PARAM_EXTENDED_HEADERS
@@ -369,16 +367,16 @@ public class Main {
       }
 
       if (arg.wasGiven(extendedHeadersArgument)) {
-    	  final List<String> extendedHeaders = arg.get(extendedHeadersArgument);
+        final List<String> extendedHeaders = arg.get(extendedHeadersArgument);
         final Map<String, String> headers = new HashMap<String, String>();
         for (final String extendedHeader : extendedHeaders) {
-        	final String[] splitted = extendedHeader.split(":");
-        	if (splitted.length != 2) {
-        		throw new RuntimeException("Headers should be on format \"headername:headervalue\"");
-        	}
-        	final String key = splitted[0].trim();
-			final String value = splitted[1].trim();
-			headers.put(key, value);
+          final String[] splitted = extendedHeader.split(":");
+          if (splitted.length != 2) {
+            throw new RuntimeException("Headers should be on format \"headername:headervalue\"");
+          }
+          final String key = splitted[0].trim();
+          final String value = splitted[1].trim();
+          headers.put(key, value);
         }
         changelogApiBuilder.withExtendedHeaders(headers);
       }
