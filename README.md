@@ -50,11 +50,6 @@ Changelog for {{ownerName}} {{repoName}}.
 
 Or, with the *JAR* from Central, do `java -jar git-changelog-command-line-*.jar ....`
 
-A MediaWiki page can be created like this.
-```shell
-npx git-changelog-command-line -murl http://localhost/mediawiki -mu tomas -mp tomaskod -mt "Tomas Title" -t /home/bjerre/workspace/git-changelog-lib/changelog_mediawiki.mustache -ut "Next release"
-```
-
 There are more examples [here](https://github.com/tomasbjerre/git-changelog-command-line/blob/master/generate_changelog.sh).
 
 # Usage
@@ -155,19 +150,6 @@ Or from command line:
                                            with Jira.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
--mp, --mediawiki-password <string>         Password to authenticate with 
-                                           MediaWiki.
-                                           <string>: any string
-                                           Default: 
--mt, --mediawiki-title <string>            Title of MediaWiki page.
-                                           <string>: any string
-                                           Default: null
--mu, --mediawiki-user <string>             User to authenticate with MediaWiki.
-                                           <string>: any string
-                                           Default: 
--murl, --mediawiki-url <string>            Base URL of MediaWiki.
-                                           <string>: any string
-                                           Default: 
 -ni, --no-issue-name <string>              Name of virtual issue that contains 
                                            commits that has no issue associated.
                                            <string>: any string
