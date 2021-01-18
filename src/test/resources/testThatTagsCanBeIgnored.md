@@ -101,6 +101,13 @@ Changelog of Git Changelog Command Line.
   
 
   
+**Removing default ignore filter on message**
+
+
+
+[e91812b6eef13cf](https://github.com/tomasbjerre/git-changelog-command-line/commit/e91812b6eef13cf) Tomas Bjerre *2021-01-18 16:57:58*
+
+  
 **Support custom headers to JIRA to bypass 2 factor auth**
 
 

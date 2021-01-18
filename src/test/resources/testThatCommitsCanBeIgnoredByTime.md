@@ -11,6 +11,38 @@ Changelog of Git Changelog Command Line.
   
 
   
+**[Gradle Release Plugin] - new version commit:  '1.59-SNAPSHOT'.**
+
+
+
+[8c8bce73962f539](https://github.com/tomasbjerre/git-changelog-command-line/commit/8c8bce73962f539) Tomas Bjerre *2021-01-18 16:59:39*
+
+  
+
+ 
+
+## 1.58
+ 
+  
+  
+### No issue
+  
+
+  
+**[Gradle Release Plugin] - pre tag commit:  '1.58'.**
+
+
+
+[9c06efd169bae66](https://github.com/tomasbjerre/git-changelog-command-line/commit/9c06efd169bae66) Tomas Bjerre *2021-01-18 16:59:31*
+
+  
+**Removing default ignore filter on message**
+
+
+
+[e91812b6eef13cf](https://github.com/tomasbjerre/git-changelog-command-line/commit/e91812b6eef13cf) Tomas Bjerre *2021-01-18 16:57:58*
+
+  
 **[Gradle Release Plugin] - new version commit:  '1.58-SNAPSHOT'.**
 
 
