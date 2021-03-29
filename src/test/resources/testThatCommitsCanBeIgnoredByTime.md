@@ -5,6 +5,28 @@ Changelog of Git Changelog Command Line.
 ## Unreleased
 ### No issue
 
+**[Gradle Release Plugin] - new version commit:  '1.60-SNAPSHOT'.**
+
+
+[44c6009bc7df15a](https://github.com/tomasbjerre/git-changelog-command-line/commit/44c6009bc7df15a) Tomas Bjerre *2021-03-29 15:39:10*
+
+
+## 1.59
+### Jira JENKINS-65252   
+
+**pretty printing output JENKINS-65252**
+
+
+[e199393b7b624e2](https://github.com/tomasbjerre/git-changelog-command-line/commit/e199393b7b624e2) Tomas Bjerre *2021-03-29 15:37:29*
+
+
+### No issue
+
+**[Gradle Release Plugin] - pre tag commit:  '1.59'.**
+
+
+[7572c5ada8f619b](https://github.com/tomasbjerre/git-changelog-command-line/commit/7572c5ada8f619b) Tomas Bjerre *2021-03-29 15:39:04*
+
 **[Gradle Release Plugin] - new version commit:  '1.59-SNAPSHOT'.**
 
 

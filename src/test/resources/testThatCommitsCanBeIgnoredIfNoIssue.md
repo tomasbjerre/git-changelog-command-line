@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.59
+### Jira JENKINS-65252   
+
+**pretty printing output**
+
+
+[e199393b7b624e2](https://github.com/tomasbjerre/git-changelog-command-line/commit/e199393b7b624e2) Tomas Bjerre *2021-03-29 15:37:29*
+
+
 ## 1.57
 ### GitHub [#7](https://github.com/tomasbjerre/git-changelog-command-line/pull/7) Support custom headers to JIRA to bypass 2 factor auth  
 
