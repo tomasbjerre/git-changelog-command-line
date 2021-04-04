@@ -1,7 +1,7 @@
 #!/bin/bash
 ./gradlew clean
 
-./gradlew release || exit 1
+./gradlew releaseMinor || exit 1
 
 git reset --hard HEAD~1
 ./publish-npm.sh
