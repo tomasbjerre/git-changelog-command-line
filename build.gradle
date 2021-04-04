@@ -1,37 +1,32 @@
 apply plugin: 'java'
 
-project.ext.tags = ['git', 'changelog', 'releasenotes', 'patchnotes']
-group = 'se.bjurr.gitchangelog'
-description = 'Command line tool that generates changelog from a GIT repository.'
-project.ext.useShadowJar = true
-
-jar {
-  manifest {
-    attributes 'Main-Class': 'se.bjurr.gitchangelog.main.Main'
-  }
-}
-
 buildscript {
  repositories {
-  maven { url "https://jitpack.io" }
+  mavenCentral()
+  mavenLocal()
  }
  dependencies {
-  classpath 'com.github.tomasbjerre:gradle-scripts:master-SNAPSHOT'
+  classpath 'se.bjurr.gradle:gradle-scripts:2.+'
  }
 }
-apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
-
+project.ext.buildConfig = [
+  publishing: [
+    relocate: [
+      "org",
+      "com"
+    ]
+  ],
+  manifest: [
+    mainClass: 'se.bjurr.gitchangelog.main.Main'
+  ]
+]
+apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 
 dependencies {
- compile 'se.bjurr.gitchangelog:git-changelog-lib:1.96'
+ compile 'se.bjurr.gitchangelog:git-changelog-lib:1.+'
  compile 'se.softhouse:jargo:0.4.14'
  compile 'org.slf4j:slf4j-simple:1.8.0-beta2'
  testCompile 'junit:junit:4.12'
 }
 
-shadowJar {
- relocate 'org', 'org'
- relocate 'com', 'com'
-}
