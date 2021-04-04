@@ -3,6 +3,20 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.61.0
+### No issue
+
+**new build script**
+
+
+[3a68ef98d978e80](https://github.com/tomasbjerre/git-changelog-command-line/commit/3a68ef98d978e80) Tomas Bjerre *2021-04-04 16:57:27*
+
+**new build script**
+
+
+[d9466a8f207a417](https://github.com/tomasbjerre/git-changelog-command-line/commit/d9466a8f207a417) Tomas Bjerre *2021-04-04 16:56:41*
+
+
 ## 1.60.1
 ### No issue
 
