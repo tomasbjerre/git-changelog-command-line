@@ -10,7 +10,7 @@
   "repository": "git@github.com:tomasbjerre/git-changelog-command-line.git",
   "main": "index.js",
   "preferGlobal": true,
-  "version": "VERSION.0",
+  "version": "VERSION",
   "jdeploy": {"jar": "build/libs/git-changelog-command-line-VERSION.jar"},
   "dependencies": {"shelljs": "^0.7.5"},
   "license": "Apache 2",
