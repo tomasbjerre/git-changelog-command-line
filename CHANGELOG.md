@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.63.0
+### No issue
+
+**correcting timestamp**
+
+
+[c121c7d012855f7](https://github.com/tomasbjerre/git-changelog-command-line/commit/c121c7d012855f7) Tomas Bjerre *2021-04-04 18:52:58*
+
+
 ## 1.62.0
 ### No issue
 
