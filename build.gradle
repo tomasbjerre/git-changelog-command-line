@@ -12,8 +12,8 @@ buildscript {
 project.ext.buildConfig = [
   publishing: [
     relocate: [
-      "org",
-      "com"
+      "org:org",
+      "com:com"
     ]
   ],
   manifest: [
