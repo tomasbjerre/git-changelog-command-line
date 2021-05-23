@@ -3,6 +3,20 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.68.0
+### No issue
+
+**feat: using simple String for helpers**
+
+
+[d21a07e34cf472d](https://github.com/tomasbjerre/git-changelog-command-line/commit/d21a07e34cf472d) Tomas Bjerre *2021-05-23 19:01:26*
+
+**fiddling with semantic changelog**
+
+
+[a42e1b3f827c545](https://github.com/tomasbjerre/git-changelog-command-line/commit/a42e1b3f827c545) Tomas Bjerre *2021-05-23 18:58:25*
+
+
 ## 1.66.0
 ### No issue
 
