@@ -169,6 +169,9 @@ Or from command line:
 -phv, --print-highest-version              Print the highest version, 
                                            determined by tags in repo, and exit.
                                            Default: disabled
+-phvt, --print-highest-version-tag         Print the tag corresponding to 
+                                           highest version, and exit.
+                                           Default: disabled
 -pnv, --print-next-version                 Print the next version, determined 
                                            by commits since highest version, and 
                                            exit.

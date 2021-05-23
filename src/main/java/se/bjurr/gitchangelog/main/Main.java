@@ -28,6 +28,7 @@ import se.softhouse.jargo.ParsedArguments;
 
 public class Main {
   private static final String PARAM_PRINT_HIGHEST_VERSION = "-phv";
+  private static final String PARAM_PRINT_HIGHEST_VERSION_TAG = "-phvt";
   private static final String PARAM_PRINT_NEXT_VERSION = "-pnv";
   private static final String PARAM_MINOR_VERSION_PATTERN = "-mivp";
   private static final String PARAM_MAJOR_VERSION_PATTERN = "-mavp";
@@ -286,6 +287,12 @@ public class Main {
             .defaultValue(false)
             .build();
 
+    final Argument<Boolean> printHighestVersionTag =
+        optionArgument(PARAM_PRINT_HIGHEST_VERSION_TAG, "--print-highest-version-tag") //
+            .description("Print the tag corresponding to highest version, and exit.") //
+            .defaultValue(false)
+            .build();
+
     final Argument<Boolean> printNextVersion =
         optionArgument(PARAM_PRINT_NEXT_VERSION, "--print-next-version") //
             .description(
@@ -354,6 +361,7 @@ public class Main {
                   gitLabServerArgument,
                   gitLabProjectNameArgument,
                   printHighestVersion,
+                  printHighestVersionTag,
                   printNextVersion,
                   prependToFile,
                   majorVersionPattern,
@@ -507,6 +515,7 @@ public class Main {
               || arg.wasGiven(outputFileArgument)
               || arg.wasGiven(prependToFile)
               || arg.wasGiven(printHighestVersion)
+              || arg.wasGiven(printHighestVersionTag)
               || arg.wasGiven(printNextVersion), //
           "You must supply an output, "
               + PARAM_OUTPUT_FILE
@@ -546,6 +555,12 @@ public class Main {
       if (arg.wasGiven(printHighestVersion)) {
         final String version = changelogApiBuilder.getHighestSemanticVersion().toString();
         System.out.println(version);
+        System.exit(0);
+      }
+
+      if (arg.wasGiven(printHighestVersionTag)) {
+        final String tag = changelogApiBuilder.getHighestSemanticVersion().findTag().get();
+        System.out.println(tag);
         System.exit(0);
       }
 
