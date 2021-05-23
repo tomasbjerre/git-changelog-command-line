@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.69.0
+### No issue
+
+**feat: using simple String for helpers**
+
+
+[cbd877fa7d71fd9](https://github.com/tomasbjerre/git-changelog-command-line/commit/cbd877fa7d71fd9) Tomas Bjerre *2021-05-23 19:04:50*
+
+
 ## 1.68.0
 ### No issue
 
