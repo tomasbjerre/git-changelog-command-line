@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,7 @@ import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
 
 public class Main {
+  private static final String PARAM_REGISTER_HANDLEBARS_HELPER = "-rhh";
   private static final String PARAM_PRINT_HIGHEST_VERSION = "-phv";
   private static final String PARAM_PRINT_HIGHEST_VERSION_TAG = "-phvt";
   private static final String PARAM_PRINT_NEXT_VERSION = "-pnv";
@@ -300,6 +302,14 @@ public class Main {
             .defaultValue(false)
             .build();
 
+    final Argument<List<String>> registerHandlebarsHelper =
+        stringArgument(PARAM_REGISTER_HANDLEBARS_HELPER, "--register-handlebars-helper") //
+            .repeated()
+            .description(
+                "List of handlebar helpers, https://handlebarsjs.com/guide/block-helpers.html, to register and use in given template.") //
+            .defaultValue(new ArrayList<String>())
+            .build();
+
     final Argument<String> prependToFile =
         stringArgument(PARAM_PREPEND_TO_FILE, "--prepend-to-file") //
             .description("Add the changelog to top of given file.") //
@@ -363,12 +373,17 @@ public class Main {
                   printHighestVersion,
                   printHighestVersionTag,
                   printNextVersion,
+                  registerHandlebarsHelper,
                   prependToFile,
                   majorVersionPattern,
                   minorVersionPattern) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
+
+      for (final String helper : arg.get(registerHandlebarsHelper)) {
+        changelogApiBuilder.withHandlebarsHelper(helper);
+      }
 
       if (arg.wasGiven(settingsArgument)) {
         changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
