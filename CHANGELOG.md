@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.66.0
+### No issue
+
+**feat support semantic versioning**
+
+
+[5cbe961140bded4](https://github.com/tomasbjerre/git-changelog-command-line/commit/5cbe961140bded4) Tomas Bjerre *2021-05-23 17:00:27*
+
+
 ## 1.65.0
 ### No issue
 
