@@ -149,6 +149,16 @@ Or from command line:
                                            with Jira.
                                            <string>: any string
                                            Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
+-mavp, --major-version-pattern <string>    Commit messages matching this 
+                                           regular expression will trigger new major 
+                                           version.
+                                           <string>: any string
+                                           Default: null
+-mivp, --minor-version-pattern <string>    Commit messages matching this 
+                                           regular expression will trigger new minor 
+                                           version.
+                                           <string>: any string
+                                           Default: null
 -ni, --no-issue-name <string>              Name of virtual issue that contains 
                                            commits that has no issue associated.
                                            <string>: any string
@@ -156,6 +166,17 @@ Or from command line:
 -of, --output-file <string>                Write output to file.
                                            <string>: any string
                                            Default: 
+-phv, --print-highest-version              Print the highest version, 
+                                           determined by tags in repo, and exit.
+                                           Default: disabled
+-pnv, --print-next-version                 Print the next version, determined 
+                                           by commits since highest version, and 
+                                           exit.
+                                           Default: disabled
+-ptf, --prepend-to-file <string>           Add the changelog to top of given 
+                                           file.
+                                           <string>: any string
+                                           Default: null
 -r, --repo <string>                        Repository.
                                            <string>: any string
                                            Default: .

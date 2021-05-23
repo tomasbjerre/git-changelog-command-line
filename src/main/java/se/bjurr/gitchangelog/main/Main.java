@@ -27,6 +27,11 @@ import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
 
 public class Main {
+  private static final String PARAM_PRINT_HIGHEST_VERSION = "-phv";
+  private static final String PARAM_PRINT_NEXT_VERSION = "-pnv";
+  private static final String PARAM_MINOR_VERSION_PATTERN = "-mivp";
+  private static final String PARAM_MAJOR_VERSION_PATTERN = "-mavp";
+  private static final String PARAM_PREPEND_TO_FILE = "-ptf";
   public static final String PARAM_SETTINGS_FILE = "-sf";
   public static final String PARAM_OUTPUT_FILE = "-of";
   public static final String PARAM_OUTPUT_STDOUT = "-std";
@@ -275,6 +280,39 @@ public class Main {
             .defaultValue("") //
             .build();
 
+    final Argument<Boolean> printHighestVersion =
+        optionArgument(PARAM_PRINT_HIGHEST_VERSION, "--print-highest-version") //
+            .description("Print the highest version, determined by tags in repo, and exit.") //
+            .defaultValue(false)
+            .build();
+
+    final Argument<Boolean> printNextVersion =
+        optionArgument(PARAM_PRINT_NEXT_VERSION, "--print-next-version") //
+            .description(
+                "Print the next version, determined by commits since highest version, and exit.") //
+            .defaultValue(false)
+            .build();
+
+    final Argument<String> prependToFile =
+        stringArgument(PARAM_PREPEND_TO_FILE, "--prepend-to-file") //
+            .description("Add the changelog to top of given file.") //
+            .defaultValue(null)
+            .build();
+
+    final Argument<String> majorVersionPattern =
+        stringArgument(PARAM_MAJOR_VERSION_PATTERN, "--major-version-pattern") //
+            .description(
+                "Commit messages matching this regular expression will trigger new major version.") //
+            .defaultValue(null)
+            .build();
+
+    final Argument<String> minorVersionPattern =
+        stringArgument(PARAM_MINOR_VERSION_PATTERN, "--minor-version-pattern") //
+            .description(
+                "Commit messages matching this regular expression will trigger new minor version.") //
+            .defaultValue(null)
+            .build();
+
     try {
       final ParsedArguments arg =
           withArguments(
@@ -314,7 +352,12 @@ public class Main {
                   ignoreTagsIfNameMatchesArgument,
                   gitLabTokenArgument,
                   gitLabServerArgument,
-                  gitLabProjectNameArgument) //
+                  gitLabProjectNameArgument,
+                  printHighestVersion,
+                  printNextVersion,
+                  prependToFile,
+                  majorVersionPattern,
+                  minorVersionPattern) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
@@ -460,11 +503,21 @@ public class Main {
       }
 
       checkArgument( //
-          arg.wasGiven(outputStdoutArgument) || arg.wasGiven(outputFileArgument), //
+          arg.wasGiven(outputStdoutArgument)
+              || arg.wasGiven(outputFileArgument)
+              || arg.wasGiven(prependToFile)
+              || arg.wasGiven(printHighestVersion)
+              || arg.wasGiven(printNextVersion), //
           "You must supply an output, "
               + PARAM_OUTPUT_FILE
               + " <filename>, "
-              + PARAM_OUTPUT_STDOUT);
+              + PARAM_OUTPUT_STDOUT
+              + ", "
+              + PARAM_PREPEND_TO_FILE
+              + " <filename>, "
+              + PARAM_PRINT_HIGHEST_VERSION
+              + ", "
+              + PARAM_PRINT_NEXT_VERSION);
 
       if (arg.wasGiven(outputStdoutArgument)) {
         systemOutPrintln(changelogApiBuilder.render());
@@ -473,6 +526,33 @@ public class Main {
       if (arg.wasGiven(outputFileArgument)) {
         final String filePath = arg.get(outputFileArgument);
         changelogApiBuilder.toFile(new File(filePath));
+      }
+
+      if (arg.wasGiven(majorVersionPattern)) {
+        final String major = arg.get(majorVersionPattern);
+        changelogApiBuilder.withSemanticMajorVersionPattern(major);
+      }
+
+      if (arg.wasGiven(minorVersionPattern)) {
+        final String minor = arg.get(minorVersionPattern);
+        changelogApiBuilder.withSemanticMinorVersionPattern(minor);
+      }
+
+      if (arg.wasGiven(prependToFile)) {
+        final String filePath = arg.get(prependToFile);
+        changelogApiBuilder.prependToFile(new File(filePath));
+      }
+
+      if (arg.wasGiven(printHighestVersion)) {
+        final String version = changelogApiBuilder.getHighestSemanticVersion().toString();
+        System.out.println(version);
+        System.exit(0);
+      }
+
+      if (arg.wasGiven(printNextVersion)) {
+        final String version = changelogApiBuilder.getNextSemanticVersion().toString();
+        System.out.println(version);
+        System.exit(0);
       }
 
     } catch (final ArgumentException exception) {
