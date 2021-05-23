@@ -10,6 +10,9 @@ import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -17,16 +20,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 public class Main {
   private static final String PARAM_REGISTER_HANDLEBARS_HELPER = "-rhh";
@@ -382,8 +380,8 @@ public class Main {
       final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
 
       if (!arg.get(registerHandlebarsHelper).trim().isEmpty()) {
-		changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
-	}
+        changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
+      }
 
       if (arg.wasGiven(settingsArgument)) {
         changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
