@@ -16,7 +16,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -302,12 +301,11 @@ public class Main {
             .defaultValue(false)
             .build();
 
-    final Argument<List<String>> registerHandlebarsHelper =
+    final Argument<String> registerHandlebarsHelper =
         stringArgument(PARAM_REGISTER_HANDLEBARS_HELPER, "--register-handlebars-helper") //
-            .repeated()
             .description(
-                "List of handlebar helpers, https://handlebarsjs.com/guide/block-helpers.html, to register and use in given template.") //
-            .defaultValue(new ArrayList<String>())
+                "Handlebar helpers, https://handlebarsjs.com/guide/block-helpers.html, to register and use in given template.") //
+            .defaultValue("")
             .build();
 
     final Argument<String> prependToFile =
@@ -381,9 +379,7 @@ public class Main {
 
       final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
 
-      for (final String helper : arg.get(registerHandlebarsHelper)) {
-        changelogApiBuilder.withHandlebarsHelper(helper);
-      }
+      changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
 
       if (arg.wasGiven(settingsArgument)) {
         changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
