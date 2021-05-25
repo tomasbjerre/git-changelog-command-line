@@ -92,25 +92,25 @@ npx git-changelog-command-line \
 {{#ifReleaseTag .}}
 ## [{{name}}](https://gitlab.com/html-validate/html-validate/compare/{{name}}) ({{tagDate .}})
 
-	{{#ifContainsType commits type='feat'}}
+  {{#ifContainsType commits type='feat'}}
 ### Features
 
-		{{#commits}}
-			{{#ifCommitType . type='feat'}}
+    {{#commits}}
+      {{#ifCommitType . type='feat'}}
  - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://gitlab.com/html-validate/html-validate/commit/{{hashFull}}))
-			{{/ifCommitType}}
-		{{/commits}}
-	{{/ifContainsType}}
+      {{/ifCommitType}}
+    {{/commits}}
+  {{/ifContainsType}}
 
-	{{#ifContainsType commits type='fix'}}
+  {{#ifContainsType commits type='fix'}}
 ### Bug Fixes
 
-		{{#commits}}
-			{{#ifCommitType . type='fix'}}
+    {{#commits}}
+      {{#ifCommitType . type='fix'}}
  - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://gitlab.com/html-validate/html-validate/commit/{{hashFull}}))
-			{{/ifCommitType}}
-		{{/commits}}
-	{{/ifContainsType}}
+      {{/ifCommitType}}
+    {{/commits}}
+  {{/ifContainsType}}
 
 {{/ifReleaseTag}}
 {{/tags}}
