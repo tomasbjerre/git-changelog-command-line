@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.76.1
+### No issue
+
+**doc: updating readme**
+
+
+[3ed5c6159a15ec3](https://github.com/tomasbjerre/git-changelog-command-line/commit/3ed5c6159a15ec3) Tomas Bjerre *2021-05-25 18:43:52*
+
+
 ## 1.76.0
 ### No issue
 
