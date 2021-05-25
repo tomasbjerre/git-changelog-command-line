@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.75.0
+### No issue
+
+**updating example**
+
+
+[238cdd4c30d3cf2](https://github.com/tomasbjerre/git-changelog-command-line/commit/238cdd4c30d3cf2) Tomas Bjerre *2021-05-25 16:17:18*
+
+
 ## 1.73.0
 ### No issue
 
