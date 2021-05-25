@@ -22,39 +22,39 @@ npx git-changelog-command-line \
 # Changelog
 
 {{#tags}}
-{{#isReleaseTag .}}
+{{#ifReleaseTag .}}
 ## [{{name}}](https://gitlab.com/html-validate/html-validate/compare/{{name}}) ({{tagTime}})
-	{{#containsType commits type='feat'}}
+	{{#ifContainsType commits type='feat'}}
 ### Features
 		{{#commits}}
-		{{#isType messageTitle type='feat'}}
+		{{#ifCommitType . type='feat'}}
 {{messageTitle}}
-		{{/isType}}
+		{{/ifCommitType}}
 		{{/commits}}
 
-	{{/containsType}}
+	{{/ifContainsType}}
 
-	{{#containsType commits type='fix'}}
+	{{#ifContainsType commits type='fix'}}
 ### Bug Fixes
 		{{#commits}}
-		{{#isType messageTitle type='fix'}}
+		{{#ifCommitType . type='fix'}}
 {{messageTitle}}
-		{{/isType}}
+		{{/ifCommitType}}
 		{{/commits}}
 
-	{{/containsType}}
+	{{/ifContainsType}}
 
 
-	{{#containsType commits type='chore'}}
+	{{#ifContainsType commits type='chore'}}
 ### Chores
 		{{#commits}}
-		{{#isType messageTitle type='chore'}}
+		{{#ifCommitType . type='chore'}}
 {{messageTitle}}
-		{{/isType}}
+		{{/ifCommitType}}
 		{{/commits}}
 
-	{{/containsType}}
+	{{/ifContainsType}}
 
-{{/isReleaseTag}}
+{{/ifReleaseTag}}
 {{/tags}}
 "
