@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.81.0
+### No issue
+
+**doc: add conventional commits**
+
+
+[f74162e9bfd3b72](https://github.com/tomasbjerre/git-changelog-command-line/commit/f74162e9bfd3b72) Tomas Bjerre *2021-05-27 16:56:04*
+
+
 ## 1.79.0
 ### No issue
 
