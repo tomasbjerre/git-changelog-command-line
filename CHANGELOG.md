@@ -3,6 +3,15 @@
 
 Changelog of git-changelog-command-line.
 
+## 1.79.0
+### No issue
+
+**doc: custom helpers example in readme**
+
+
+[b9f1909af7ba38b](https://github.com/tomasbjerre/git-changelog-command-line/commit/b9f1909af7ba38b) Tomas Bjerre *2021-05-27 14:58:40*
+
+
 ## 1.76.1
 ### No issue
 
