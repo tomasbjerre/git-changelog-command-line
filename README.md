@@ -51,6 +51,16 @@ Changelog.
 
 ## Example - Semantic versioning from conventional commits
 
+If you are using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/):
+
+```shell
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
 The highest version can be determined with:
 
 ```shell
