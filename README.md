@@ -16,7 +16,7 @@ A changelog can be created like this.
 npx git-changelog-command-line -std -tec "
 # Changelog
 
-Changelog for {{ownerName}} {{repoName}}.
+Changelog.
 
 {{#tags}}
 ## {{name}}
@@ -50,13 +50,6 @@ Changelog for {{ownerName}} {{repoName}}.
 ```
 
 ## Example - Semantic versioning from conventional commits
-
-If you need a repo to fiddle with, here is a good one:
-
-```shell
-git clone https://gitlab.com/html-validate/html-validate.git
-cd html-validate
-```
 
 The highest version can be determined with:
 
@@ -114,6 +107,39 @@ npx git-changelog-command-line \
 
 {{/ifReleaseTag}}
 {{/tags}}
+"
+```
+
+## Example - custom helpers
+
+You can supply your own helpers and use them in the template.
+
+```shell
+npx git-changelog-command-line \
+ --to-ref HEAD \
+ --stdout \
+ --template-content "
+{{#commits}}
+  {{#startsWith messageTitle s='feat'}}
+    Starts with feat: "{{messageTitle}}"
+    first 10 letters of hash is: {{firstLetters hash number='10'}}
+  {{/startsWith}}
+{{/commits}}
+" \
+--register-handlebars-helper "
+Handlebars.registerHelper('firstLetters', function(input, options) {
+  const number = parseInt(options.hash['number'] || "0")
+  return input.substring(0,number);
+});
+
+Handlebars.registerHelper('startsWith', function(from, options) {
+  const s = options.hash['s']
+  if (new RegExp('^' + s + '.*').test(from)) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 "
 ```
 
