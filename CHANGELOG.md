@@ -1,7 +1,15 @@
-
 # git-changelog-command-line changelog
 
 Changelog of git-changelog-command-line.
+
+## 1.82.0
+### No issue
+
+**feat: regexp in ifCommitType and ifCommitScope**
+
+
+[aecae77be30ff4b](https://github.com/tomasbjerre/git-changelog-command-line/commit/aecae77be30ff4b) Tomas Bjerre *2021-06-02 19:12:06*
+
 
 ## 1.81.0
 ### No issue
@@ -442,9 +450,9 @@ Changelog of git-changelog-command-line.
 
 **Git Changelog Lib 1.58 -> 1.64**
 
-* Jira issueType and labels 
-* GitHub labels 
-* 10 seconds timeout to GitHub 
+  * Jira issueType and labels 
+  * GitHub labels 
+  * 10 seconds timeout to GitHub 
 
 [cd884b3291e7659](https://github.com/tomasbjerre/git-changelog-command-line/commit/cd884b3291e7659) Tomas Bjerre *2017-03-18 09:32:26*
 
@@ -703,7 +711,7 @@ Changelog of git-changelog-command-line.
 
 **Significant performance improvements**
 
-* Using lib 1.27. 
+  * Using lib 1.27. 
 
 [d2cf164af5d00c6](https://github.com/tomasbjerre/git-changelog-command-line/commit/d2cf164af5d00c6) Tomas Bjerre *2016-02-13 09:00:47*
 
@@ -744,8 +752,8 @@ Changelog of git-changelog-command-line.
 
 **Adding -tec and -ex**
 
-* -tec enables specifying template content on command line. 
-* -ex enables extended variables to be added from command line. Like -ex &quot;{\&quot;var1\&quot;: \&quot;val1\&quot;}&quot;. 
+  * -tec enables specifying template content on command line. 
+  * -ex enables extended variables to be added from command line. Like -ex &quot;{\&quot;var1\&quot;: \&quot;val1\&quot;}&quot;. 
 
 [79ebeca10883ed8](https://github.com/tomasbjerre/git-changelog-command-line/commit/79ebeca10883ed8) Tomas Bjerre *2016-02-03 17:32:18*
 
@@ -779,8 +787,9 @@ Changelog of git-changelog-command-line.
 
 **Updating CHANGELOG.md**
 
-* And correcting link to Maven Central 
+  * And correcting link to Maven Central 
 
 [e711322ff826053](https://github.com/tomasbjerre/git-changelog-command-line/commit/e711322ff826053) Tomas Bjerre *2016-01-28 18:17:38*
 
 
+    
