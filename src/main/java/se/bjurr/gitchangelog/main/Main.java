@@ -1,7 +1,5 @@
 package se.bjurr.gitchangelog.main;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.collect.ImmutableMap.of;
 import static se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder;
 import static se.bjurr.gitchangelog.api.GitChangelogApiConstants.DEFAULT_DATEFORMAT;
 import static se.bjurr.gitchangelog.internal.settings.Settings.defaultSettings;
@@ -10,7 +8,6 @@ import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.File;
@@ -113,22 +110,22 @@ public class Main {
     final Argument<String> fromRefArgument =
         stringArgument(PARAM_FROM_REF, "--from-ref") //
             .description("From ref.") //
-            .defaultValue(defaultSettings.getFromRef().orNull()) //
+            .defaultValue(defaultSettings.getFromRef().orElse(null)) //
             .build();
     final Argument<String> toRefArgument =
         stringArgument(PARAM_TO_REF, "--to-ref") //
             .description("To ref.") //
-            .defaultValue(defaultSettings.getToRef().orNull()) //
+            .defaultValue(defaultSettings.getToRef().orElse(null)) //
             .build();
     final Argument<String> fromCommitArgument =
         stringArgument(PARAM_FROM_COMMIT, "--from-commit") //
             .description("From commit.") //
-            .defaultValue(defaultSettings.getFromCommit().orNull()) //
+            .defaultValue(defaultSettings.getFromCommit().orElse(null)) //
             .build();
     final Argument<String> toCommitArgument =
         stringArgument(PARAM_TO_COMMIT, "--to-commit") //
             .description("To commit.") //
-            .defaultValue(defaultSettings.getToCommit().orNull()) //
+            .defaultValue(defaultSettings.getToCommit().orElse(null)) //
             .build();
 
     final Argument<String> ignoreCommitsIfMessageMatchesArgument =
@@ -146,14 +143,14 @@ public class Main {
         stringArgument(PARAM_IGNORE_TAG_PATTERN, "--ignore-tag-pattern") //
             .description(
                 "Ignore tags that matches regular expression. Can be used to ignore release candidates and only include actual releases.") //
-            .defaultValue(defaultSettings.getIgnoreTagsIfNameMatches().orNull()) //
+            .defaultValue(defaultSettings.getIgnoreTagsIfNameMatches().orElse(null)) //
             .build();
 
     final Argument<String> jiraServerArgument =
         stringArgument(PARAM_JIRA_SERVER, "--jiraServer") //
             .description(
                 "Jira server. When a Jira server is given, the title of the Jira issues can be used in the changelog.") //
-            .defaultValue(defaultSettings.getJiraServer().orNull()) //
+            .defaultValue(defaultSettings.getJiraServer().orElse(null)) //
             .build();
     final Argument<String> jiraIssuePatternArgument =
         stringArgument(PARAM_JIRA_ISSUE_PATTERN, "--jira-pattern") //
@@ -399,7 +396,8 @@ public class Main {
         final Gson gson = new Gson();
         final Type type = new TypeToken<Map<String, Object>>() {}.getType();
         final Object jsonObject = gson.fromJson(jsonString, type);
-        final Map<String, Object> extendedVariables = of("extended", jsonObject);
+        final Map<String, Object> extendedVariables = new HashMap<>();
+        extendedVariables.put("extended", jsonObject);
         changelogApiBuilder.withExtendedVariables(extendedVariables);
       }
 
@@ -589,12 +587,16 @@ public class Main {
     }
   }
 
-  @VisibleForTesting
+  private static void checkArgument(final boolean b, final String string) {
+    if (!b) {
+      throw new IllegalStateException(string);
+    }
+  }
+
   public static String getSystemOutPrintln() {
     return Main.systemOutPrintln;
   }
 
-  @VisibleForTesting
   public static void recordSystemOutPrintln() {
     Main.recordSystemOutPrintln = true;
   }
