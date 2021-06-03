@@ -2,794 +2,1135 @@
 
 Changelog of git-changelog-command-line.
 
-## 1.82.0
-### No issue
-
-**feat: regexp in ifCommitType and ifCommitScope**
+## [1.82.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.82.0) (2021-06-02)
 
 
-[aecae77be30ff4b](https://github.com/tomasbjerre/git-changelog-command-line/commit/aecae77be30ff4b) Tomas Bjerre *2021-06-02 19:12:06*
+
+### Features
+
+-  regexp in ifCommitType and ifCommitScope ([aecae](https://github.com/tomasbjerre/git-changelog-command-line/commit/aecae77be30ff4b))  
 
 
-## 1.81.0
-### No issue
-
-**doc: add conventional commits**
 
 
-[f74162e9bfd3b72](https://github.com/tomasbjerre/git-changelog-command-line/commit/f74162e9bfd3b72) Tomas Bjerre *2021-05-27 16:56:04*
+
+## [1.81.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.81.0) (2021-05-27)
 
 
-## 1.79.0
-### No issue
-
-**doc: custom helpers example in readme**
 
 
-[b9f1909af7ba38b](https://github.com/tomasbjerre/git-changelog-command-line/commit/b9f1909af7ba38b) Tomas Bjerre *2021-05-27 14:58:40*
 
 
-## 1.76.1
-### No issue
-
-**doc: updating readme**
 
 
-[3ed5c6159a15ec3](https://github.com/tomasbjerre/git-changelog-command-line/commit/3ed5c6159a15ec3) Tomas Bjerre *2021-05-25 18:43:52*
+## [1.79.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.79.0) (2021-05-27)
 
 
-## 1.76.0
-### No issue
-
-**doc: updating readme**
 
 
-[20224075c51891c](https://github.com/tomasbjerre/git-changelog-command-line/commit/20224075c51891c) Tomas Bjerre *2021-05-25 18:23:32*
 
 
-## 1.75.0
-### No issue
+
+
+## [1.76.1](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.76.1) (2021-05-25)
+
+
+
+
+
+
+
+
+## [1.76.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.76.0) (2021-05-25)
+
+
+
+
+
+
+
+
+## [1.75.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.75.0) (2021-05-25)
+
+
+
+
+
+
+
+### Other changes
 
 **updating example**
 
 
-[238cdd4c30d3cf2](https://github.com/tomasbjerre/git-changelog-command-line/commit/238cdd4c30d3cf2) Tomas Bjerre *2021-05-25 16:17:18*
+[238cd](https://github.com/tomasbjerre/git-changelog-command-line/commit/238cdd4c30d3cf2) Tomas Bjerre *2021-05-25 16:17:18*
+
+## [1.73.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.73.0) (2021-05-25)
 
 
-## 1.73.0
-### No issue
-
-**working on example**
 
 
-[7d05b035a3110c9](https://github.com/tomasbjerre/git-changelog-command-line/commit/7d05b035a3110c9) Tomas Bjerre *2021-05-25 15:50:51*
 
 
-## 1.72.0
-### No issue
+
+### Other changes
 
 **working on example**
 
 
-[dfc8438949f7afd](https://github.com/tomasbjerre/git-changelog-command-line/commit/dfc8438949f7afd) Tomas Bjerre *2021-05-25 14:11:10*
+[7d05b](https://github.com/tomasbjerre/git-changelog-command-line/commit/7d05b035a3110c9) Tomas Bjerre *2021-05-25 15:50:51*
+
+## [1.72.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.72.0) (2021-05-25)
 
 
-## 1.69.0
-### No issue
-
-**feat: using simple String for helpers**
 
 
-[cbd877fa7d71fd9](https://github.com/tomasbjerre/git-changelog-command-line/commit/cbd877fa7d71fd9) Tomas Bjerre *2021-05-23 19:04:50*
 
 
-## 1.68.0
-### No issue
 
-**feat: using simple String for helpers**
+### Other changes
+
+**working on example**
 
 
-[d21a07e34cf472d](https://github.com/tomasbjerre/git-changelog-command-line/commit/d21a07e34cf472d) Tomas Bjerre *2021-05-23 19:01:26*
+[dfc84](https://github.com/tomasbjerre/git-changelog-command-line/commit/dfc8438949f7afd) Tomas Bjerre *2021-05-25 14:11:10*
+
+## [1.69.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.69.0) (2021-05-23)
+
+
+
+### Features
+
+-  using simple String for helpers ([cbd87](https://github.com/tomasbjerre/git-changelog-command-line/commit/cbd877fa7d71fd9))  
+
+
+
+
+
+## [1.68.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.68.0) (2021-05-23)
+
+
+
+### Features
+
+-  using simple String for helpers ([d21a0](https://github.com/tomasbjerre/git-changelog-command-line/commit/d21a07e34cf472d))  
+
+
+
+
+### Other changes
 
 **fiddling with semantic changelog**
 
 
-[a42e1b3f827c545](https://github.com/tomasbjerre/git-changelog-command-line/commit/a42e1b3f827c545) Tomas Bjerre *2021-05-23 18:58:25*
+[a42e1](https://github.com/tomasbjerre/git-changelog-command-line/commit/a42e1b3f827c545) Tomas Bjerre *2021-05-23 18:58:25*
+
+## [1.66.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.66.0) (2021-05-23)
 
 
-## 1.66.0
-### No issue
-
-**feat support semantic versioning**
 
 
-[5cbe961140bded4](https://github.com/tomasbjerre/git-changelog-command-line/commit/5cbe961140bded4) Tomas Bjerre *2021-05-23 17:00:27*
 
 
-## 1.65.0
-### No issue
+
+### Other changes
 
 **feat support semantic versioning**
 
 
-[38d6135a1ae263f](https://github.com/tomasbjerre/git-changelog-command-line/commit/38d6135a1ae263f) Tomas Bjerre *2021-05-23 16:53:14*
+[5cbe9](https://github.com/tomasbjerre/git-changelog-command-line/commit/5cbe961140bded4) Tomas Bjerre *2021-05-23 17:00:27*
+
+## [1.65.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.65.0) (2021-05-23)
 
 
-## 1.64.0
-### No issue
+
+
+
+
+
+### Other changes
 
 **feat support semantic versioning**
 
 
-[10372d605ea2964](https://github.com/tomasbjerre/git-changelog-command-line/commit/10372d605ea2964) Tomas Bjerre *2021-05-23 16:44:35*
+[38d61](https://github.com/tomasbjerre/git-changelog-command-line/commit/38d6135a1ae263f) Tomas Bjerre *2021-05-23 16:53:14*
+
+## [1.64.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.64.0) (2021-05-23)
 
 
-## 1.63.0
-### No issue
+
+
+
+
+
+### Other changes
+
+**feat support semantic versioning**
+
+
+[10372](https://github.com/tomasbjerre/git-changelog-command-line/commit/10372d605ea2964) Tomas Bjerre *2021-05-23 16:44:35*
+
+## [1.63.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.63.0) (2021-04-04)
+
+
+
+
+
+
+
+### Other changes
 
 **correcting timestamp**
 
 
-[c121c7d012855f7](https://github.com/tomasbjerre/git-changelog-command-line/commit/c121c7d012855f7) Tomas Bjerre *2021-04-04 18:52:58*
+[c121c](https://github.com/tomasbjerre/git-changelog-command-line/commit/c121c7d012855f7) Tomas Bjerre *2021-04-04 18:52:58*
+
+## [1.62.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.62.0) (2021-04-04)
 
 
-## 1.62.0
-### No issue
+
+
+
+
+
+### Other changes
 
 **new build script**
 
 
-[c0382112885082d](https://github.com/tomasbjerre/git-changelog-command-line/commit/c0382112885082d) Tomas Bjerre *2021-04-04 18:30:58*
-
+[c0382](https://github.com/tomasbjerre/git-changelog-command-line/commit/c0382112885082d) Tomas Bjerre *2021-04-04 18:30:58*
 **doc**
 
 
-[d6d50006d3a472a](https://github.com/tomasbjerre/git-changelog-command-line/commit/d6d50006d3a472a) Tomas Bjerre *2021-04-04 17:03:17*
+[d6d50](https://github.com/tomasbjerre/git-changelog-command-line/commit/d6d50006d3a472a) Tomas Bjerre *2021-04-04 17:03:17*
+
+## [1.61.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.61.0) (2021-04-04)
 
 
-## 1.61.0
-### No issue
-
-**new build script**
 
 
-[3a68ef98d978e80](https://github.com/tomasbjerre/git-changelog-command-line/commit/3a68ef98d978e80) Tomas Bjerre *2021-04-04 16:57:27*
-
-**new build script**
 
 
-[d9466a8f207a417](https://github.com/tomasbjerre/git-changelog-command-line/commit/d9466a8f207a417) Tomas Bjerre *2021-04-04 16:56:41*
 
-
-## 1.60.1
-### No issue
+### Other changes
 
 **new build script**
 
 
-[b303742f3be2df9](https://github.com/tomasbjerre/git-changelog-command-line/commit/b303742f3be2df9) Tomas Bjerre *2021-04-04 15:57:37*
+[3a68e](https://github.com/tomasbjerre/git-changelog-command-line/commit/3a68ef98d978e80) Tomas Bjerre *2021-04-04 16:57:27*
+**new build script**
 
 
-## 1.59
-### Jira JENKINS-65252   
+[d9466](https://github.com/tomasbjerre/git-changelog-command-line/commit/d9466a8f207a417) Tomas Bjerre *2021-04-04 16:56:41*
 
-**pretty printing output**
-
-
-[e199393b7b624e2](https://github.com/tomasbjerre/git-changelog-command-line/commit/e199393b7b624e2) Tomas Bjerre *2021-03-29 15:37:29*
+## [1.60.1](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.60.1) (2021-04-04)
 
 
-## 1.58
-### No issue
+
+
+
+
+
+### Other changes
+
+**new build script**
+
+
+[b3037](https://github.com/tomasbjerre/git-changelog-command-line/commit/b303742f3be2df9) Tomas Bjerre *2021-04-04 15:57:37*
+
+## [1.59](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.59) (2021-03-29)
+
+
+
+
+
+
+
+### Other changes
+
+**pretty printing output JENKINS-65252**
+
+
+[e1993](https://github.com/tomasbjerre/git-changelog-command-line/commit/e199393b7b624e2) Tomas Bjerre *2021-03-29 15:37:29*
+
+## [1.58](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.58) (2021-01-18)
+
+
+
+
+
+
+
+### Other changes
 
 **Removing default ignore filter on message**
 
 
-[e91812b6eef13cf](https://github.com/tomasbjerre/git-changelog-command-line/commit/e91812b6eef13cf) Tomas Bjerre *2021-01-18 16:57:58*
+[e9181](https://github.com/tomasbjerre/git-changelog-command-line/commit/e91812b6eef13cf) Tomas Bjerre *2021-01-18 16:57:58*
+
+## [1.57](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.57) (2020-11-07)
 
 
-## 1.57
-### GitHub [#7](https://github.com/tomasbjerre/git-changelog-command-line/pull/7) Support custom headers to JIRA to bypass 2 factor auth  
-
-**Adjustments after merge of PR**
 
 
-[4d2af148b1a7ba0](https://github.com/tomasbjerre/git-changelog-command-line/commit/4d2af148b1a7ba0) Tomas Bjerre *2020-11-07 15:58:51*
 
 
-### No issue
 
+### Other changes
+
+**Adjustments after merge of PR #7**
+
+
+[4d2af](https://github.com/tomasbjerre/git-changelog-command-line/commit/4d2af148b1a7ba0) Tomas Bjerre *2020-11-07 15:58:51*
 **Support custom headers to JIRA to bypass 2 factor auth**
 
 
-[2792a5046366c47](https://github.com/tomasbjerre/git-changelog-command-line/commit/2792a5046366c47) Yauheni Biruk *2020-11-07 14:57:23*
+[2792a](https://github.com/tomasbjerre/git-changelog-command-line/commit/2792a5046366c47) Yauheni Biruk *2020-11-07 14:57:23*
+
+## [1.56](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.56) (2020-02-25)
 
 
-## 1.56
-### No issue
+
+
+
+
+
+### Other changes
 
 **naming**
 
 
-[0246b3a370c4f13](https://github.com/tomasbjerre/git-changelog-command-line/commit/0246b3a370c4f13) Dmitry Mamchur *2020-02-25 13:08:49*
-
+[0246b](https://github.com/tomasbjerre/git-changelog-command-line/commit/0246b3a370c4f13) Dmitry Mamchur *2020-02-25 13:08:49*
 **bump git-changelog-lib version**
 
 
-[d3b4091c0145e9f](https://github.com/tomasbjerre/git-changelog-command-line/commit/d3b4091c0145e9f) Dmitry Mamchur *2020-02-25 12:39:13*
-
+[d3b40](https://github.com/tomasbjerre/git-changelog-command-line/commit/d3b4091c0145e9f) Dmitry Mamchur *2020-02-25 12:39:13*
 **align naming with git-changelog-lib**
 
 
-[53657c77ec38f8b](https://github.com/tomasbjerre/git-changelog-command-line/commit/53657c77ec38f8b) Dmitry Mamchur *2020-02-25 12:38:51*
-
+[53657](https://github.com/tomasbjerre/git-changelog-command-line/commit/53657c77ec38f8b) Dmitry Mamchur *2020-02-25 12:38:51*
 **update readme**
 
 
-[e75d56cf326c4a9](https://github.com/tomasbjerre/git-changelog-command-line/commit/e75d56cf326c4a9) Dmitry Mamchur *2020-02-25 12:16:06*
-
+[e75d5](https://github.com/tomasbjerre/git-changelog-command-line/commit/e75d56cf326c4a9) Dmitry Mamchur *2020-02-25 12:16:06*
 **add support for jira token**
 
 
-[b48f83d7f34079a](https://github.com/tomasbjerre/git-changelog-command-line/commit/b48f83d7f34079a) Dmitry Mamchur *2020-02-20 15:41:36*
-
+[b48f8](https://github.com/tomasbjerre/git-changelog-command-line/commit/b48f83d7f34079a) Dmitry Mamchur *2020-02-20 15:41:36*
 **openjdk8**
 
 
-[0405ac4ad84c9fd](https://github.com/tomasbjerre/git-changelog-command-line/commit/0405ac4ad84c9fd) Tomas Bjerre *2019-10-09 13:14:34*
-
+[0405a](https://github.com/tomasbjerre/git-changelog-command-line/commit/0405ac4ad84c9fd) Tomas Bjerre *2019-10-09 13:14:34*
 **Create FUNDING.yml**
 
 
-[067fca4c6cbe0c5](https://github.com/tomasbjerre/git-changelog-command-line/commit/067fca4c6cbe0c5) Tomas Bjerre *2019-09-28 07:05:38*
-
+[067fc](https://github.com/tomasbjerre/git-changelog-command-line/commit/067fca4c6cbe0c5) Tomas Bjerre *2019-09-28 07:05:38*
 **Gradle 5**
 
 
-[48acc0c2ac1839e](https://github.com/tomasbjerre/git-changelog-command-line/commit/48acc0c2ac1839e) Tomas Bjerre *2019-06-11 18:03:15*
+[48acc](https://github.com/tomasbjerre/git-changelog-command-line/commit/48acc0c2ac1839e) Tomas Bjerre *2019-06-11 18:03:15*
+
+## [1.55](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.55) (2019-06-11)
 
 
-## 1.55
-### No issue
+
+
+
+
+
+### Other changes
 
 **Removing dependency on javax.xml**
 
 
-[1108865f1024786](https://github.com/tomasbjerre/git-changelog-command-line/commit/1108865f1024786) Tomas Bjerre *2019-06-11 16:58:38*
+[11088](https://github.com/tomasbjerre/git-changelog-command-line/commit/1108865f1024786) Tomas Bjerre *2019-06-11 16:58:38*
+
+## [1.54](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.54) (2019-06-11)
 
 
-## 1.54
-### No issue
+
+
+
+
+
+### Other changes
 
 **JDK 11 compatible**
 
 
-[436550774dc2ade](https://github.com/tomasbjerre/git-changelog-command-line/commit/436550774dc2ade) Tomas Bjerre *2019-06-11 16:30:00*
+[43655](https://github.com/tomasbjerre/git-changelog-command-line/commit/436550774dc2ade) Tomas Bjerre *2019-06-11 16:30:00*
+
+## [1.53](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.53) (2019-05-30)
 
 
-## 1.53
-### No issue
+
+
+
+
+
+### Other changes
 
 **slf4j**
 
 
-[e8f65b19415b1ab](https://github.com/tomasbjerre/git-changelog-command-line/commit/e8f65b19415b1ab) Tomas Bjerre *2019-05-30 13:39:40*
+[e8f65](https://github.com/tomasbjerre/git-changelog-command-line/commit/e8f65b19415b1ab) Tomas Bjerre *2019-05-30 13:39:40*
+
+## [1.52](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.52) (2019-05-29)
 
 
-## 1.52
-### No issue
-
-**doc**
 
 
-[bd8004089502412](https://github.com/tomasbjerre/git-changelog-command-line/commit/bd8004089502412) Tomas Bjerre *2019-05-29 18:04:27*
 
 
-## 1.51
-### No issue
+
+### Other changes
 
 **doc**
 
 
-[7b9120a14926f9a](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b9120a14926f9a) Tomas Bjerre *2019-05-29 17:45:51*
+[bd800](https://github.com/tomasbjerre/git-changelog-command-line/commit/bd8004089502412) Tomas Bjerre *2019-05-29 18:04:27*
+
+## [1.51](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.51) (2019-05-29)
 
 
-## 1.48
-### No issue
-
-**doc**
 
 
-[546b4634f550ac3](https://github.com/tomasbjerre/git-changelog-command-line/commit/546b4634f550ac3) Tomas Bjerre *2019-05-29 17:25:56*
 
 
-## 1.47
-### No issue
+
+### Other changes
 
 **doc**
 
 
-[b9b579705985131](https://github.com/tomasbjerre/git-changelog-command-line/commit/b9b579705985131) Tomas Bjerre *2019-05-29 17:17:19*
+[7b912](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b9120a14926f9a) Tomas Bjerre *2019-05-29 17:45:51*
+
+## [1.48](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.48) (2019-05-29)
 
 
-## 1.46
-### No issue
+
+
+
+
+
+### Other changes
 
 **doc**
 
 
-[4ad87e4ce2c0320](https://github.com/tomasbjerre/git-changelog-command-line/commit/4ad87e4ce2c0320) Tomas Bjerre *2019-05-29 17:11:56*
+[546b4](https://github.com/tomasbjerre/git-changelog-command-line/commit/546b4634f550ac3) Tomas Bjerre *2019-05-29 17:25:56*
+
+## [1.47](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.47) (2019-05-29)
+
+
+
+
+
+
+
+### Other changes
 
 **doc**
 
 
-[e3ff40ca79ec5d4](https://github.com/tomasbjerre/git-changelog-command-line/commit/e3ff40ca79ec5d4) Tomas Bjerre *2019-05-29 16:45:53*
+[b9b57](https://github.com/tomasbjerre/git-changelog-command-line/commit/b9b579705985131) Tomas Bjerre *2019-05-29 17:17:19*
 
+## [1.46](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.46) (2019-05-29)
+
+
+
+
+
+
+
+### Other changes
+
+**doc**
+
+
+[4ad87](https://github.com/tomasbjerre/git-changelog-command-line/commit/4ad87e4ce2c0320) Tomas Bjerre *2019-05-29 17:11:56*
+**doc**
+
+
+[e3ff4](https://github.com/tomasbjerre/git-changelog-command-line/commit/e3ff40ca79ec5d4) Tomas Bjerre *2019-05-29 16:45:53*
 **Adding jdeploy to release script**
 
 
-[0e7113abb20c452](https://github.com/tomasbjerre/git-changelog-command-line/commit/0e7113abb20c452) Tomas Bjerre *2019-05-29 16:27:50*
+[0e711](https://github.com/tomasbjerre/git-changelog-command-line/commit/0e7113abb20c452) Tomas Bjerre *2019-05-29 16:27:50*
+
+## [1.45](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.45) (2019-05-29)
 
 
-## 1.45
-### No issue
+
+
+
+
+
+### Other changes
 
 **Dropping Gradle application and packaging runnable jar**
 
 
-[67ec69a7683efd9](https://github.com/tomasbjerre/git-changelog-command-line/commit/67ec69a7683efd9) Tomas Bjerre *2019-05-29 16:14:46*
-
+[67ec6](https://github.com/tomasbjerre/git-changelog-command-line/commit/67ec69a7683efd9) Tomas Bjerre *2019-05-29 16:14:46*
 **Stepping lib**
 
 
-[58f760b6e6157bf](https://github.com/tomasbjerre/git-changelog-command-line/commit/58f760b6e6157bf) Tomas Bjerre *2019-02-25 15:59:02*
+[58f76](https://github.com/tomasbjerre/git-changelog-command-line/commit/58f760b6e6157bf) Tomas Bjerre *2019-02-25 15:59:02*
+
+## [180420](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/180420) (2018-04-20)
 
 
-## 180420
-### Jira JENKINS-19994   
-
-**Closing RevWalk**
 
 
-[69198a6151dc014](https://github.com/tomasbjerre/git-changelog-command-line/commit/69198a6151dc014) Tomas Bjerre *2017-12-30 20:45:19*
 
 
-### No issue
+
+### Other changes
 
 **Moving application to before shaddow plugin**
 
 
-[86de96e119f451a](https://github.com/tomasbjerre/git-changelog-command-line/commit/86de96e119f451a) Tomas Bjerre *2018-04-20 10:00:52*
+[86de9](https://github.com/tomasbjerre/git-changelog-command-line/commit/86de96e119f451a) Tomas Bjerre *2018-04-20 10:00:52*
+**Closing RevWalk JENKINS-19994**
 
+
+[69198](https://github.com/tomasbjerre/git-changelog-command-line/commit/69198a6151dc014) Tomas Bjerre *2017-12-30 20:45:19*
 **Doc**
 
 
-[090c31efd122ff4](https://github.com/tomasbjerre/git-changelog-command-line/commit/090c31efd122ff4) Tomas Bjerre *2017-12-19 12:31:32*
+[090c3](https://github.com/tomasbjerre/git-changelog-command-line/commit/090c31efd122ff4) Tomas Bjerre *2017-12-19 12:31:32*
+
+## [1.41](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.41) (2017-12-19)
 
 
-## 1.41
-### No issue
+
+
+
+
+
+### Other changes
 
 **Bumping version to fix faulty release**
 
 
-[0b6575a7726b978](https://github.com/tomasbjerre/git-changelog-command-line/commit/0b6575a7726b978) Tomas Bjerre *2017-12-19 12:02:40*
-
+[0b657](https://github.com/tomasbjerre/git-changelog-command-line/commit/0b6575a7726b978) Tomas Bjerre *2017-12-19 12:02:40*
 **Description available for Jira issues**
 
 
-[d4841fab0e3949b](https://github.com/tomasbjerre/git-changelog-command-line/commit/d4841fab0e3949b) Tomas Bjerre *2017-12-19 11:48:16*
-
+[d4841](https://github.com/tomasbjerre/git-changelog-command-line/commit/d4841fab0e3949b) Tomas Bjerre *2017-12-19 11:48:16*
 **Adjusting to Bintray**
 
 
-[79bf1fad841ef56](https://github.com/tomasbjerre/git-changelog-command-line/commit/79bf1fad841ef56) Tomas Bjerre *2017-12-19 11:43:01*
-
+[79bf1](https://github.com/tomasbjerre/git-changelog-command-line/commit/79bf1fad841ef56) Tomas Bjerre *2017-12-19 11:43:01*
 **Lib 1.72**
 
 
-[58fa0073f072ef6](https://github.com/tomasbjerre/git-changelog-command-line/commit/58fa0073f072ef6) Tomas Bjerre *2017-09-08 09:08:50*
+[58fa0](https://github.com/tomasbjerre/git-changelog-command-line/commit/58fa0073f072ef6) Tomas Bjerre *2017-09-08 09:08:50*
+
+## [1.39](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.39) (2017-07-25)
 
 
-## 1.39
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.71**
 
 
-[1074f832a4c8934](https://github.com/tomasbjerre/git-changelog-command-line/commit/1074f832a4c8934) Tomas Bjerre *2017-07-25 18:26:30*
+[1074f](https://github.com/tomasbjerre/git-changelog-command-line/commit/1074f832a4c8934) Tomas Bjerre *2017-07-25 18:26:30*
+
+## [1.38](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.38) (2017-07-24)
 
 
-## 1.38
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.70**
 
 
-[61cdd7d4b44f573](https://github.com/tomasbjerre/git-changelog-command-line/commit/61cdd7d4b44f573) Tomas Bjerre *2017-07-24 19:37:17*
+[61cdd](https://github.com/tomasbjerre/git-changelog-command-line/commit/61cdd7d4b44f573) Tomas Bjerre *2017-07-24 19:37:17*
+
+## [1.37](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.37) (2017-07-08)
 
 
-## 1.37
-### No issue
+
+
+
+
+
+### Other changes
 
 **ignoreCommitsOlderThan**
 
 
-[0d52803865316bd](https://github.com/tomasbjerre/git-changelog-command-line/commit/0d52803865316bd) Tomas Bjerre *2017-07-08 07:35:03*
+[0d528](https://github.com/tomasbjerre/git-changelog-command-line/commit/0d52803865316bd) Tomas Bjerre *2017-07-08 07:35:03*
+
+## [1.35](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.35) (2017-04-14)
 
 
-## 1.35
-### No issue
+
+
+
+
+
+### Other changes
 
 **tag time added to tag model**
 
 
-[141cb08bbee6fae](https://github.com/tomasbjerre/git-changelog-command-line/commit/141cb08bbee6fae) Tomas Bjerre *2017-04-14 09:18:12*
+[141cb](https://github.com/tomasbjerre/git-changelog-command-line/commit/141cb08bbee6fae) Tomas Bjerre *2017-04-14 09:18:12*
+
+## [1.34](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.34) (2017-03-25)
 
 
-## 1.34
-### No issue
+
+
+
+
+
+### Other changes
 
 **GitLab integration**
 
 
-[449caf097a8fc08](https://github.com/tomasbjerre/git-changelog-command-line/commit/449caf097a8fc08) Tomas Bjerre *2017-03-25 16:35:42*
+[449ca](https://github.com/tomasbjerre/git-changelog-command-line/commit/449caf097a8fc08) Tomas Bjerre *2017-03-25 16:35:42*
+
+## [1.32](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.32) (2017-03-20)
 
 
-## 1.32
-### No issue
+
+
+
+
+
+### Other changes
 
 **Fix Jira labels**
 
 
-[44794701a5eb1dc](https://github.com/tomasbjerre/git-changelog-command-line/commit/44794701a5eb1dc) Tomas Bjerre *2017-03-20 18:20:07*
+[44794](https://github.com/tomasbjerre/git-changelog-command-line/commit/44794701a5eb1dc) Tomas Bjerre *2017-03-20 18:20:07*
+
+## [1.31](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.31) (2017-03-18)
 
 
-## 1.31
-### No issue
+
+
+
+
+
+### Other changes
 
 **Git Changelog Lib 1.58 -> 1.64**
 
-  * Jira issueType and labels 
-  * GitHub labels 
-  * 10 seconds timeout to GitHub 
+* Jira issueType and labels 
+* GitHub labels 
+* 10 seconds timeout to GitHub 
 
-[cd884b3291e7659](https://github.com/tomasbjerre/git-changelog-command-line/commit/cd884b3291e7659) Tomas Bjerre *2017-03-18 09:32:26*
-
+[cd884](https://github.com/tomasbjerre/git-changelog-command-line/commit/cd884b3291e7659) Tomas Bjerre *2017-03-18 09:32:26*
 **Set theme jekyll-theme-slate**
 
 
-[5bee23a3f889712](https://github.com/tomasbjerre/git-changelog-command-line/commit/5bee23a3f889712) Tomas Bjerre *2017-02-07 20:21:48*
+[5bee2](https://github.com/tomasbjerre/git-changelog-command-line/commit/5bee23a3f889712) Tomas Bjerre *2017-02-07 20:21:48*
+
+## [1.30](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.30) (2016-10-22)
 
 
-## 1.30
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding annotation to context of tag**
 
 
-[680fd78af6e828a](https://github.com/tomasbjerre/git-changelog-command-line/commit/680fd78af6e828a) Tomas Bjerre *2016-10-22 09:46:10*
-
+[680fd](https://github.com/tomasbjerre/git-changelog-command-line/commit/680fd78af6e828a) Tomas Bjerre *2016-10-22 09:46:10*
 **doc**
 
 
-[14591c118d9d066](https://github.com/tomasbjerre/git-changelog-command-line/commit/14591c118d9d066) Tomas Bjerre *2016-10-05 18:35:59*
+[14591](https://github.com/tomasbjerre/git-changelog-command-line/commit/14591c118d9d066) Tomas Bjerre *2016-10-05 18:35:59*
+
+## [1.29](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.29) (2016-10-05)
 
 
-## 1.29
-### GitHub #35   
-
-**Adding merge boolean to commits**
 
 
-[b27d768978dc40f](https://github.com/tomasbjerre/git-changelog-command-line/commit/b27d768978dc40f) Tomas Bjerre *2016-10-05 18:32:06*
 
 
-## 1.28
-### No issue
+
+### Other changes
+
+**Adding merge boolean to commits #35**
+
+
+[b27d7](https://github.com/tomasbjerre/git-changelog-command-line/commit/b27d768978dc40f) Tomas Bjerre *2016-10-05 18:32:06*
+
+## [1.28](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.28) (2016-08-11)
+
+
+
+
+
+
+
+### Other changes
 
 **Lib 1.56 correcting link to Jira**
 
 
-[0663c27008b6c10](https://github.com/tomasbjerre/git-changelog-command-line/commit/0663c27008b6c10) Tomas Bjerre *2016-08-11 14:47:13*
+[0663c](https://github.com/tomasbjerre/git-changelog-command-line/commit/0663c27008b6c10) Tomas Bjerre *2016-08-11 14:47:13*
+
+## [1.27](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.27) (2016-08-02)
 
 
-## 1.27
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding {{hashFull}} variable**
 
 
-[eb89a06b91265d8](https://github.com/tomasbjerre/git-changelog-command-line/commit/eb89a06b91265d8) Tomas Bjerre *2016-08-02 18:24:35*
+[eb89a](https://github.com/tomasbjerre/git-changelog-command-line/commit/eb89a06b91265d8) Tomas Bjerre *2016-08-02 18:24:35*
+
+## [1.26](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.26) (2016-06-25)
 
 
-## 1.26
-### No issue
+
+
+
+
+
+### Other changes
 
 **Faster**
 
 
-[223b34816bdd780](https://github.com/tomasbjerre/git-changelog-command-line/commit/223b34816bdd780) Tomas Bjerre *2016-06-25 00:07:17*
+[223b3](https://github.com/tomasbjerre/git-changelog-command-line/commit/223b34816bdd780) Tomas Bjerre *2016-06-25 00:07:17*
+
+## [1.25](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.25) (2016-06-24)
 
 
-## 1.25
-### No issue
+
+
+
+
+
+### Other changes
 
 **Fixing merge commits... again...**
 
 
-[72a26d37a434998](https://github.com/tomasbjerre/git-changelog-command-line/commit/72a26d37a434998) Tomas Bjerre *2016-06-24 21:10:07*
+[72a26](https://github.com/tomasbjerre/git-changelog-command-line/commit/72a26d37a434998) Tomas Bjerre *2016-06-24 21:10:07*
+
+## [1.24](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.24) (2016-06-24)
 
 
-## 1.24
-### No issue
+
+
+
+
+
+### Other changes
 
 **Including commits from merges lib issue 49**
 
 
-[c1227c6120f9e28](https://github.com/tomasbjerre/git-changelog-command-line/commit/c1227c6120f9e28) Tomas Bjerre *2016-06-24 09:34:26*
-
+[c1227](https://github.com/tomasbjerre/git-changelog-command-line/commit/c1227c6120f9e28) Tomas Bjerre *2016-06-24 09:34:26*
 **Adding script to add bin to path**
 
 
-[309b65cbe000872](https://github.com/tomasbjerre/git-changelog-command-line/commit/309b65cbe000872) Tomas Bjerre *2016-06-20 19:18:51*
+[309b6](https://github.com/tomasbjerre/git-changelog-command-line/commit/309b65cbe000872) Tomas Bjerre *2016-06-20 19:18:51*
+
+## [1.23](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.23) (2016-06-02)
 
 
-## 1.23
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.49, finding first commit as parents from HEAD**
 
 
-[6c28f9b5d5bc128](https://github.com/tomasbjerre/git-changelog-command-line/commit/6c28f9b5d5bc128) Tomas Bjerre *2016-06-02 18:29:53*
+[6c28f](https://github.com/tomasbjerre/git-changelog-command-line/commit/6c28f9b5d5bc128) Tomas Bjerre *2016-06-02 18:29:53*
+
+## [1.22](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.22) (2016-05-20)
 
 
-## 1.22
-### No issue
+
+
+
+
+
+### Other changes
 
 **Ignoring trailing slash in JIRA URL**
 
 
-[4bd1a4d3366768d](https://github.com/tomasbjerre/git-changelog-command-line/commit/4bd1a4d3366768d) Tomas Bjerre *2016-05-20 19:07:37*
+[4bd1a](https://github.com/tomasbjerre/git-changelog-command-line/commit/4bd1a4d3366768d) Tomas Bjerre *2016-05-20 19:07:37*
+
+## [1.21](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.21) (2016-04-13)
 
 
-## 1.21
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.45**
 
 
-[88a91833658029d](https://github.com/tomasbjerre/git-changelog-command-line/commit/88a91833658029d) Tomas Bjerre *2016-04-13 18:38:43*
+[88a91](https://github.com/tomasbjerre/git-changelog-command-line/commit/88a91833658029d) Tomas Bjerre *2016-04-13 18:38:43*
+
+## [1.20](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.20) (2016-04-12)
 
 
-## 1.20
-### Jira JENKINS-34155   
-
-**Support short SHA**
 
 
-[56fc1410ff6b872](https://github.com/tomasbjerre/git-changelog-command-line/commit/56fc1410ff6b872) Tomas Bjerre *2016-04-12 17:00:59*
 
 
-### No issue
 
+### Other changes
+
+**JENKINS-34155 Support short SHA**
+
+
+[56fc1](https://github.com/tomasbjerre/git-changelog-command-line/commit/56fc1410ff6b872) Tomas Bjerre *2016-04-12 17:00:59*
 **doc**
 
 
-[9e890fb3151e1ec](https://github.com/tomasbjerre/git-changelog-command-line/commit/9e890fb3151e1ec) Tomas Bjerre *2016-04-10 09:17:27*
+[9e890](https://github.com/tomasbjerre/git-changelog-command-line/commit/9e890fb3151e1ec) Tomas Bjerre *2016-04-10 09:17:27*
+
+## [1.19](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.19) (2016-04-10)
 
 
-## 1.19
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.43, Parsing commits, oldest first**
 
 
-[fec08570ae03569](https://github.com/tomasbjerre/git-changelog-command-line/commit/fec08570ae03569) Tomas Bjerre *2016-04-10 09:15:29*
+[fec08](https://github.com/tomasbjerre/git-changelog-command-line/commit/fec08570ae03569) Tomas Bjerre *2016-04-10 09:15:29*
+
+## [1.18](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.18) (2016-04-10)
 
 
-## 1.18
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.42, Parsing commits, oldest first**
 
 
-[d3a83d8422b2c3f](https://github.com/tomasbjerre/git-changelog-command-line/commit/d3a83d8422b2c3f) Tomas Bjerre *2016-04-10 09:04:38*
+[d3a83](https://github.com/tomasbjerre/git-changelog-command-line/commit/d3a83d8422b2c3f) Tomas Bjerre *2016-04-10 09:04:38*
+
+## [1.17](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.17) (2016-04-09)
 
 
-## 1.17
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.41, Commits added to correct tags**
 
 
-[8865a3af376eccc](https://github.com/tomasbjerre/git-changelog-command-line/commit/8865a3af376eccc) Tomas Bjerre *2016-04-09 20:42:51*
+[8865a](https://github.com/tomasbjerre/git-changelog-command-line/commit/8865a3af376eccc) Tomas Bjerre *2016-04-09 20:42:51*
+
+## [1.16](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.16) (2016-04-07)
 
 
-## 1.16
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.40 can ignore tags by regexp**
 
 
-[24b1fd830d85fd2](https://github.com/tomasbjerre/git-changelog-command-line/commit/24b1fd830d85fd2) Tomas Bjerre *2016-04-07 18:51:58*
+[24b1f](https://github.com/tomasbjerre/git-changelog-command-line/commit/24b1fd830d85fd2) Tomas Bjerre *2016-04-07 18:51:58*
+
+## [1.15](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.15) (2016-03-20)
 
 
-## 1.15
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.39**
 
 
-[d843ab2414be0e7](https://github.com/tomasbjerre/git-changelog-command-line/commit/d843ab2414be0e7) Tomas Bjerre *2016-03-20 09:50:01*
+[d843a](https://github.com/tomasbjerre/git-changelog-command-line/commit/d843ab2414be0e7) Tomas Bjerre *2016-03-20 09:50:01*
+
+## [1.14](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.14) (2016-03-20)
 
 
-## 1.14
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.38**
 
 
-[f6371e136d5fc22](https://github.com/tomasbjerre/git-changelog-command-line/commit/f6371e136d5fc22) Tomas Bjerre *2016-03-20 09:23:18*
+[f6371](https://github.com/tomasbjerre/git-changelog-command-line/commit/f6371e136d5fc22) Tomas Bjerre *2016-03-20 09:23:18*
+
+## [1.13](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.13) (2016-03-15)
 
 
-## 1.13
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.36**
 
 
-[12a6c079e7103bc](https://github.com/tomasbjerre/git-changelog-command-line/commit/12a6c079e7103bc) Tomas Bjerre *2016-03-15 20:31:47*
+[12a6c](https://github.com/tomasbjerre/git-changelog-command-line/commit/12a6c079e7103bc) Tomas Bjerre *2016-03-15 20:31:47*
+
+## [1.12](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.12) (2016-03-15)
 
 
-## 1.12
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.35**
 
 
-[701ea9325b6c45c](https://github.com/tomasbjerre/git-changelog-command-line/commit/701ea9325b6c45c) Tomas Bjerre *2016-03-15 20:14:46*
+[701ea](https://github.com/tomasbjerre/git-changelog-command-line/commit/701ea9325b6c45c) Tomas Bjerre *2016-03-15 20:14:46*
+
+## [1.11](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.11) (2016-03-15)
 
 
-## 1.11
-### GitHub [#1](https://github.com/tomasbjerre/git-changelog-command-line/issues/1) GitHub OAuth2 Token support  
-
-**Support GitHub OAuth2 tokens**
 
 
-[7b5e98122110337](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b5e98122110337) Tomas Bjerre *2016-03-15 19:17:11*
 
 
-## 1.10
-### No issue
+
+### Other changes
+
+**Support GitHub OAuth2 tokens #1**
+
+
+[7b5e9](https://github.com/tomasbjerre/git-changelog-command-line/commit/7b5e98122110337) Tomas Bjerre *2016-03-15 19:17:11*
+
+## [1.10](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.10) (2016-02-20)
+
+
+
+
+
+
+
+### Other changes
 
 **Supplying commit in each issue mentioned in message**
 
 
-[67b997695bfe797](https://github.com/tomasbjerre/git-changelog-command-line/commit/67b997695bfe797) Tomas Bjerre *2016-02-20 08:17:23*
-
+[67b99](https://github.com/tomasbjerre/git-changelog-command-line/commit/67b997695bfe797) Tomas Bjerre *2016-02-20 08:17:23*
 **Updating CHANGELOG.md**
 
 
-[0f1d69f8049ffb7](https://github.com/tomasbjerre/git-changelog-command-line/commit/0f1d69f8049ffb7) Tomas Bjerre *2016-02-15 18:11:25*
+[0f1d6](https://github.com/tomasbjerre/git-changelog-command-line/commit/0f1d69f8049ffb7) Tomas Bjerre *2016-02-15 18:11:25*
+
+## [1.9](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.9) (2016-02-15)
 
 
-## 1.9
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.30, supporting multiple tags on same commit**
 
 
-[444d5d850a7490a](https://github.com/tomasbjerre/git-changelog-command-line/commit/444d5d850a7490a) Tomas Bjerre *2016-02-15 18:08:12*
-
+[444d5](https://github.com/tomasbjerre/git-changelog-command-line/commit/444d5d850a7490a) Tomas Bjerre *2016-02-15 18:08:12*
 **Updating CHANGELOG.md**
 
 
-[cd1b774623fff9a](https://github.com/tomasbjerre/git-changelog-command-line/commit/cd1b774623fff9a) Tomas Bjerre *2016-02-14 17:56:12*
+[cd1b7](https://github.com/tomasbjerre/git-changelog-command-line/commit/cd1b774623fff9a) Tomas Bjerre *2016-02-14 17:56:12*
+
+## [1.8](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.8) (2016-02-14)
 
 
-## 1.8
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.29**
 
 
-[f69357fac63ae1a](https://github.com/tomasbjerre/git-changelog-command-line/commit/f69357fac63ae1a) Tomas Bjerre *2016-02-14 17:42:33*
+[f6935](https://github.com/tomasbjerre/git-changelog-command-line/commit/f69357fac63ae1a) Tomas Bjerre *2016-02-14 17:42:33*
+
+## [1.7](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.7) (2016-02-14)
 
 
-## 1.7
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.28, performance optimizations**
 
 
-[e8230ac1b0ec6be](https://github.com/tomasbjerre/git-changelog-command-line/commit/e8230ac1b0ec6be) Tomas Bjerre *2016-02-14 16:52:59*
+[e8230](https://github.com/tomasbjerre/git-changelog-command-line/commit/e8230ac1b0ec6be) Tomas Bjerre *2016-02-14 16:52:59*
+
+## [1.6](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.6) (2016-02-13)
 
 
-## 1.6
-### No issue
+
+
+
+
+
+### Other changes
 
 **Significant performance improvements**
 
-  * Using lib 1.27. 
+* Using lib 1.27. 
 
-[d2cf164af5d00c6](https://github.com/tomasbjerre/git-changelog-command-line/commit/d2cf164af5d00c6) Tomas Bjerre *2016-02-13 09:00:47*
+[d2cf1](https://github.com/tomasbjerre/git-changelog-command-line/commit/d2cf164af5d00c6) Tomas Bjerre *2016-02-13 09:00:47*
+
+## [1.5](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.5) (2016-02-10)
 
 
-## 1.5
-### No issue
+
+
+
+
+
+### Other changes
 
 **Updating README.md**
 
 
-[773372ae5c8c640](https://github.com/tomasbjerre/git-changelog-command-line/commit/773372ae5c8c640) Tomas Bjerre *2016-02-10 18:28:06*
-
+[77337](https://github.com/tomasbjerre/git-changelog-command-line/commit/773372ae5c8c640) Tomas Bjerre *2016-02-10 18:28:06*
 **Git changelog lib 1.25**
 
 
-[23773c4f53f1a4c](https://github.com/tomasbjerre/git-changelog-command-line/commit/23773c4f53f1a4c) Tomas Bjerre *2016-02-10 18:27:25*
+[23773](https://github.com/tomasbjerre/git-changelog-command-line/commit/23773c4f53f1a4c) Tomas Bjerre *2016-02-10 18:27:25*
+
+## [1.4](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.4) (2016-02-09)
 
 
-## 1.4
-### GitHub [#5](https://github.com/tomasbjerre/git-changelog-command-line/pull/5) add support for jira tokens  
-
-**Added variables: messageTitle, messageBody, messageItems**
 
 
-[13c62bbb0784d0a](https://github.com/tomasbjerre/git-changelog-command-line/commit/13c62bbb0784d0a) Tomas Bjerre *2016-02-09 19:38:44*
 
 
-### No issue
 
+### Other changes
+
+**Added variables: messageTitle, messageBody, messageItems #5**
+
+
+[13c62](https://github.com/tomasbjerre/git-changelog-command-line/commit/13c62bbb0784d0a) Tomas Bjerre *2016-02-09 19:38:44*
 **Updating CHANGELOG.md**
 
 
-[496444b04e46ff6](https://github.com/tomasbjerre/git-changelog-command-line/commit/496444b04e46ff6) Tomas Bjerre *2016-02-03 19:45:06*
+[49644](https://github.com/tomasbjerre/git-changelog-command-line/commit/496444b04e46ff6) Tomas Bjerre *2016-02-03 19:45:06*
+
+## [1.3](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.3) (2016-02-03)
 
 
-## 1.3
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding -tec and -ex**
 
-  * -tec enables specifying template content on command line. 
-  * -ex enables extended variables to be added from command line. Like -ex &quot;{\&quot;var1\&quot;: \&quot;val1\&quot;}&quot;. 
+* -tec enables specifying template content on command line. 
+* -ex enables extended variables to be added from command line. Like -ex &quot;{\&quot;var1\&quot;: \&quot;val1\&quot;}&quot;. 
 
-[79ebeca10883ed8](https://github.com/tomasbjerre/git-changelog-command-line/commit/79ebeca10883ed8) Tomas Bjerre *2016-02-03 17:32:18*
-
+[79ebe](https://github.com/tomasbjerre/git-changelog-command-line/commit/79ebeca10883ed8) Tomas Bjerre *2016-02-03 17:32:18*
 **Doc**
 
 
-[3d282e2d8bc6335](https://github.com/tomasbjerre/git-changelog-command-line/commit/3d282e2d8bc6335) Tomas Bjerre *2016-01-31 21:26:10*
-
+[3d282](https://github.com/tomasbjerre/git-changelog-command-line/commit/3d282e2d8bc6335) Tomas Bjerre *2016-01-31 21:26:10*
 **Maven Central version badge in README.md**
 
 
-[2717b408666b574](https://github.com/tomasbjerre/git-changelog-command-line/commit/2717b408666b574) Tomas Bjerre *2016-01-31 21:15:58*
+[2717b](https://github.com/tomasbjerre/git-changelog-command-line/commit/2717b408666b574) Tomas Bjerre *2016-01-31 21:15:58*
+
+## [1.2](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.2) (2016-01-31)
 
 
-## 1.2
-### No issue
+
+
+
+
+
+### Other changes
 
 **Using lib 1.23**
 
 
-[6ddc200752f4c06](https://github.com/tomasbjerre/git-changelog-command-line/commit/6ddc200752f4c06) Tomas Bjerre *2016-01-31 11:21:12*
+[6ddc2](https://github.com/tomasbjerre/git-changelog-command-line/commit/6ddc200752f4c06) Tomas Bjerre *2016-01-31 11:21:12*
+
+## [1.1](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.1) (2016-01-30)
 
 
-## 1.1
-### No issue
+
+
+
+
+
+### Other changes
 
 **Lib 1.22 and test cases**
 
 
-[c66eae3ba424076](https://github.com/tomasbjerre/git-changelog-command-line/commit/c66eae3ba424076) Tomas Bjerre *2016-01-30 17:23:15*
-
+[c66ea](https://github.com/tomasbjerre/git-changelog-command-line/commit/c66eae3ba424076) Tomas Bjerre *2016-01-30 17:23:15*
 **Updating CHANGELOG.md**
 
-  * And correcting link to Maven Central 
+* And correcting link to Maven Central 
 
-[e711322ff826053](https://github.com/tomasbjerre/git-changelog-command-line/commit/e711322ff826053) Tomas Bjerre *2016-01-28 18:17:38*
-
+[e7113](https://github.com/tomasbjerre/git-changelog-command-line/commit/e711322ff826053) Tomas Bjerre *2016-01-28 18:17:38*
 
     
