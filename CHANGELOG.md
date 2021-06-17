@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.88.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.88.0) (2021-06-17)
+
+
+
+### Features
+
+-  --show-debug-info ([1ba21](https://github.com/tomasbjerre/git-changelog-command-line/commit/1ba2189a5ada2ee))  
+
+
+
+
+
 ## [1.82.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.82.0) (2021-06-02)
 
 
