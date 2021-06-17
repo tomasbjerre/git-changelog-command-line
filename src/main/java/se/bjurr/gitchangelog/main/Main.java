@@ -9,9 +9,11 @@ import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -325,6 +327,12 @@ public class Main {
             .defaultValue(null)
             .build();
 
+    final Argument<Boolean> showDebugInfo =
+        optionArgument("--show-debug-info")
+            .description(
+                "Please run your command with this parameter and supply output when reporting bugs.")
+            .build();
+
     try {
       final ParsedArguments arg =
           withArguments(
@@ -371,7 +379,8 @@ public class Main {
                   registerHandlebarsHelper,
                   prependToFile,
                   majorVersionPattern,
-                  minorVersionPattern) //
+                  minorVersionPattern,
+                  showDebugInfo) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
@@ -403,7 +412,7 @@ public class Main {
 
       if (arg.wasGiven(extendedHeadersArgument)) {
         final List<String> extendedHeaders = arg.get(extendedHeadersArgument);
-        final Map<String, String> headers = new HashMap<String, String>();
+        final Map<String, String> headers = new HashMap<>();
         for (final String extendedHeader : extendedHeaders) {
           final String[] splitted = extendedHeader.split(":");
           if (splitted.length != 2) {
@@ -561,6 +570,22 @@ public class Main {
       if (arg.wasGiven(prependToFile)) {
         final String filePath = arg.get(prependToFile);
         changelogApiBuilder.prependToFile(new File(filePath));
+      }
+
+      if (arg.wasGiven(showDebugInfo)) {
+        System.out.println(
+            "Settings:\n"
+                + new GsonBuilder()
+                    .setPrettyPrinting()
+                    .create()
+                    .toJson(changelogApiBuilder.getSettings()));
+        System.out.println("Template:\n\n" + changelogApiBuilder.getTemplateString() + "\n\n");
+        final byte[] template =
+            changelogApiBuilder.getTemplateString().getBytes(StandardCharsets.UTF_8);
+        for (final byte element : template) {
+          System.out.format("%02X ", element);
+        }
+        System.out.println();
       }
 
       if (arg.wasGiven(printHighestVersion)) {

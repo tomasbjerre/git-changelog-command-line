@@ -158,8 +158,8 @@ Handlebars.registerHelper('startsWith', function(from, options) {
 Or from command line:
 
 ```shell
--cl, --custom-issue-link <string>              Custom issue link. Supports
-                                               variables like ${PATTERN_GROUP_1} to
+-cl, --custom-issue-link <string>              Custom issue link. Supports 
+                                               variables like ${PATTERN_GROUP_1} to 
                                                inject variables from pattern.
                                                <string>: any string
                                                Default: null
@@ -169,27 +169,27 @@ Or from command line:
 -cp, --custom-issue-pattern <string>           Custom issue pattern.
                                                <string>: any string
                                                Default: null
--ct, --custom-issue-title <string>             Custom issue title. Supports
-                                               variables like ${PATTERN_GROUP_1} to
+-ct, --custom-issue-title <string>             Custom issue title. Supports 
+                                               variables like ${PATTERN_GROUP_1} to 
                                                inject variables from pattern.
                                                <string>: any string
                                                Default: null
--df, --date-format <string>                    Format to use when printing
+-df, --date-format <string>                    Format to use when printing 
                                                dates.
                                                <string>: any string
                                                Default: YYYY-MM-dd HH:mm:ss
--eh, --extended-headers <string>               Extended headers that will send
+-eh, --extended-headers <string>               Extended headers that will send 
                                                when access JIRA. e.g. -eh CF-Access-
                                                Client-ID:abcde12345xyz.access [Supports Multiple occurrences]
                                                <string>: any string
                                                Default: Empty list
--ex, --extended-variables <string>             Extended variables that will be
+-ex, --extended-variables <string>             Extended variables that will be 
                                                available as {{extended.*}}. -ex "{\"
-                                               var1\": \"val1\"}" will print out
+                                               var1\": \"val1\"}" will print out 
                                                "val1" for a template like "{{extended.
                                                var1}}"
                                                <string>: any string
-                                               Default:
+                                               Default: 
 -fc, --from-commit <string>                    From commit.
                                                <string>: any string
                                                Default: 0000000000000000000000000000000000000000
@@ -200,136 +200,140 @@ Or from command line:
                                                github.com/repos/tomasbjerre/git-
                                                changelog-command-line/
                                                <string>: any string
-                                               Default:
+                                               Default: 
 -glpn, --gitlab-project-name <string>          GitLab project name.
                                                <string>: any string
-                                               Default:
+                                               Default: 
 -gls, --gitlab-server <string>                 GitLab server, like https:
                                                //gitlab.com/.
                                                <string>: any string
-                                               Default:
+                                               Default: 
 -glt, --gitlab-token <string>                  GitLab API token.
                                                <string>: any string
-                                               Default:
--gtok, --github-token <string>                 GitHub API OAuth2 token. You
-                                               can get it from: curl -u
-                                               'yourgithubuser' -d '{"note":"Git Changelog
+                                               Default: 
+-gtok, --github-token <string>                 GitHub API OAuth2 token. You 
+                                               can get it from: curl -u 
+                                               'yourgithubuser' -d '{"note":"Git Changelog 
                                                Lib"}' https://api.github.
                                                com/authorizations
                                                <string>: any string
-                                               Default:
+                                               Default: 
 -h, --help <argument-to-print-help-for>        <argument-to-print-help-for>: an argument to print help for
                                                Default: If no specific parameter is given the whole usage text is given
--ini, --ignore-commits-without-issue           Ignore commits that is not
+-ini, --ignore-commits-without-issue           Ignore commits that is not 
                                                included in any issue.
                                                Default: disabled
 -iot, --ignore-older-than <string>             Ignore commits older than YYYY-
                                                MM-dd HH:mm:ss.
                                                <string>: any string
-                                               Default:
--ip, --ignore-pattern <string>                 Ignore commits where pattern
+                                               Default: 
+-ip, --ignore-pattern <string>                 Ignore commits where pattern 
                                                matches message.
                                                <string>: any string
-                                               Default: ^\[maven-release-plugin\].*|^\[Gradle Release Plugin\].*|^Merge.*
--itp, --ignore-tag-pattern <string>            Ignore tags that matches
-                                               regular expression. Can be used to
-                                               ignore release candidates and only
+                                               Default: ^Merge.*
+-itp, --ignore-tag-pattern <string>            Ignore tags that matches 
+                                               regular expression. Can be used to 
+                                               ignore release candidates and only 
                                                include actual releases.
                                                <string>: any string
                                                Default: null
--jba, --jira-basic-auth <string>               Optional token to authenticate
+-jba, --jira-basic-auth <string>               Optional token to authenticate 
                                                with Jira.
                                                <string>: any string
-                                               Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
+                                               Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
 -jp, --jira-pattern <string>                   Jira issue pattern.
                                                <string>: any string
-                                               Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
--jpw, --jira-password <string>                 Optional password to
+                                               Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
+-jpw, --jira-password <string>                 Optional password to 
                                                authenticate with Jira.
                                                <string>: any string
-                                               Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
--js, --jiraServer <string>                     Jira server. When a Jira server
-                                               is given, the title of the Jira
+                                               Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
+-js, --jiraServer <string>                     Jira server. When a Jira server 
+                                               is given, the title of the Jira 
                                                issues can be used in the changelog.
                                                <string>: any string
-                                               Default:
--ju, --jira-username <string>                  Optional username to
+                                               Default: null
+-ju, --jira-username <string>                  Optional username to 
                                                authenticate with Jira.
                                                <string>: any string
-                                               Default: \b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\b
--mavp, --major-version-pattern <string>        Commit messages matching this
-                                               regular expression will trigger new
+                                               Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
+-mavp, --major-version-pattern <string>        Commit messages matching this 
+                                               regular expression will trigger new 
                                                major version.
                                                <string>: any string
                                                Default: null
--mivp, --minor-version-pattern <string>        Commit messages matching this
-                                               regular expression will trigger new
+-mivp, --minor-version-pattern <string>        Commit messages matching this 
+                                               regular expression will trigger new 
                                                minor version.
                                                <string>: any string
                                                Default: null
--ni, --no-issue-name <string>                  Name of virtual issue that
-                                               contains commits that has no issue
+-ni, --no-issue-name <string>                  Name of virtual issue that 
+                                               contains commits that has no issue 
                                                associated.
                                                <string>: any string
                                                Default: No issue
 -of, --output-file <string>                    Write output to file.
                                                <string>: any string
-                                               Default:
--phv, --print-highest-version                  Print the highest version,
+                                               Default: 
+-phv, --print-highest-version                  Print the highest version, 
                                                determined by tags in repo, and exit.
                                                Default: disabled
--phvt, --print-highest-version-tag             Print the tag corresponding to
+-phvt, --print-highest-version-tag             Print the tag corresponding to 
                                                highest version, and exit.
                                                Default: disabled
--pnv, --print-next-version                     Print the next version,
-                                               determined by commits since highest
+-pnv, --print-next-version                     Print the next version, 
+                                               determined by commits since highest 
                                                version, and exit.
                                                Default: disabled
--ptf, --prepend-to-file <string>               Add the changelog to top of
+-ptf, --prepend-to-file <string>               Add the changelog to top of 
                                                given file.
                                                <string>: any string
                                                Default: null
 -r, --repo <string>                            Repository.
                                                <string>: any string
                                                Default: .
--rhh, --register-handlebars-helper <string>    List of handlebar helpers,
-                                               https://handlebarsjs.com/guide/block-
-                                               helpers.html, to register and use in
-                                               given template. [Supports Multiple occurrences]
+-rhh, --register-handlebars-helper <string>    Handlebar helpers, https:
+                                               //handlebarsjs.com/guide/block-helpers.html, 
+                                               to register and use in given 
+                                               template.
                                                <string>: any string
-                                               Default: Empty list
--ri, --remove-issue-from-message               Dont print any issues in the
+                                               Default: 
+-ri, --remove-issue-from-message               Dont print any issues in the 
                                                messages of commits.
                                                Default: disabled
--rt, --readable-tag-name <string>              Pattern to extract readable
+-rt, --readable-tag-name <string>              Pattern to extract readable 
                                                part of tag.
                                                <string>: any string
                                                Default: /([^/]+?)$
 -sf, --settings-file <string>                  Use settings from file.
                                                <string>: any string
                                                Default: null
+--show-debug-info                              Please run your command with 
+                                               this parameter and supply output 
+                                               when reporting bugs.
+                                               Default: disabled
 -std, --stdout                                 Print builder to <STDOUT>.
                                                Default: disabled
--t, --template <string>                        Template to use. A default
+-t, --template <string>                        Template to use. A default 
                                                template will be used if not specified.
                                                <string>: any string
-                                               Default: git-changelog-template.mustache
+                                               Default: changelog.mustache
 -tc, --to-commit <string>                      To commit.
                                                <string>: any string
                                                Default: null
 -tec, --template-content <string>              String to use as template.
                                                <string>: any string
-                                               Default:
+                                               Default: 
 -tr, --to-ref <string>                         To ref.
                                                <string>: any string
                                                Default: refs/heads/master
--tz, --time-zone <string>                      TimeZone to use when printing
+-tz, --time-zone <string>                      TimeZone to use when printing 
                                                dates.
                                                <string>: any string
                                                Default: UTC
--ut, --untagged-name <string>                  When listing commits per tag,
-                                               this will by the name of a virtual
-                                               tag that contains commits not
+-ut, --untagged-name <string>                  When listing commits per tag, 
+                                               this will by the name of a virtual 
+                                               tag that contains commits not 
                                                available in any git tag.
                                                <string>: any string
                                                Default: No tag
