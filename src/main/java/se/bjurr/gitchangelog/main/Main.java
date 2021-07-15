@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import se.bjurr.gitchangelog.api.GitChangelogApi;
+import se.bjurr.gitchangelog.api.GitChangelogApiConstants;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
@@ -316,15 +317,15 @@ public class Main {
     final Argument<String> majorVersionPattern =
         stringArgument(PARAM_MAJOR_VERSION_PATTERN, "--major-version-pattern") //
             .description(
-                "Commit messages matching this regular expression will trigger new major version.") //
+                "Commit messages matching this, optional, regular expression will trigger new major version.") //
             .defaultValue(null)
             .build();
 
     final Argument<String> minorVersionPattern =
         stringArgument(PARAM_MINOR_VERSION_PATTERN, "--minor-version-pattern") //
             .description(
-                "Commit messages matching this regular expression will trigger new minor version.") //
-            .defaultValue(null)
+                "Commit messages matching this, optional, regular expression will trigger new minor version.") //
+            .defaultValue(GitChangelogApiConstants.DEFAULT_MINOR_PATTERN)
             .build();
 
     final Argument<Boolean> showDebugInfo =

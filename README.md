@@ -75,8 +75,6 @@ Next version to release can be determined with:
 
 ```shell
 nextVersion=$(npx git-changelog-command-line \
- --major-version-pattern "^[Bb]reaking.*" \
- --minor-version-pattern "^[Ff]eat.*" \
  --print-next-version)
 
 echo Next release based on commits is: $nextVersion
@@ -257,16 +255,16 @@ Or from command line:
                                                authenticate with Jira.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
--mavp, --major-version-pattern <string>        Commit messages matching this 
-                                               regular expression will trigger new 
-                                               major version.
+-mavp, --major-version-pattern <string>        Commit messages matching this, 
+                                               optional, regular expression will trigger 
+                                               new major version.
                                                <string>: any string
                                                Default: null
--mivp, --minor-version-pattern <string>        Commit messages matching this 
-                                               regular expression will trigger new 
-                                               minor version.
+-mivp, --minor-version-pattern <string>        Commit messages matching this, 
+                                               optional, regular expression will trigger 
+                                               new minor version.
                                                <string>: any string
-                                               Default: null
+                                               Default: ^[Ff]eat.*
 -ni, --no-issue-name <string>                  Name of virtual issue that 
                                                contains commits that has no issue 
                                                associated.
