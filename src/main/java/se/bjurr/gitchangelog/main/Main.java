@@ -31,6 +31,7 @@ public class Main {
   private static final String PARAM_PRINT_HIGHEST_VERSION = "-phv";
   private static final String PARAM_PRINT_HIGHEST_VERSION_TAG = "-phvt";
   private static final String PARAM_PRINT_NEXT_VERSION = "-pnv";
+  private static final String PARAM_PATCH_VERSION_PATTERN = "-pavp";
   private static final String PARAM_MINOR_VERSION_PATTERN = "-mivp";
   private static final String PARAM_MAJOR_VERSION_PATTERN = "-mavp";
   private static final String PARAM_PREPEND_TO_FILE = "-ptf";
@@ -328,6 +329,13 @@ public class Main {
             .defaultValue(GitChangelogApiConstants.DEFAULT_MINOR_PATTERN)
             .build();
 
+    final Argument<String> patchVersionPattern =
+        stringArgument(PARAM_PATCH_VERSION_PATTERN, "--patch-version-pattern") //
+            .description(
+                "Commit messages matching this, optional, regular expression will trigger new patch version.") //
+            .defaultValue(GitChangelogApiConstants.DEFAULT_PATCH_PATTERN)
+            .build();
+
     final Argument<Boolean> showDebugInfo =
         optionArgument("--show-debug-info")
             .description(
@@ -381,6 +389,7 @@ public class Main {
                   prependToFile,
                   majorVersionPattern,
                   minorVersionPattern,
+                  patchVersionPattern,
                   showDebugInfo) //
               .parse(args);
 
@@ -566,6 +575,11 @@ public class Main {
       if (arg.wasGiven(minorVersionPattern)) {
         final String minor = arg.get(minorVersionPattern);
         changelogApiBuilder.withSemanticMinorVersionPattern(minor);
+      }
+
+      if (arg.wasGiven(patchVersionPattern)) {
+        final String patch = arg.get(patchVersionPattern);
+        changelogApiBuilder.withSemanticPatchVersionPattern(patch);
       }
 
       if (arg.wasGiven(prependToFile)) {
