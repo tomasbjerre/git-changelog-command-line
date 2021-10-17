@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.90.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.90.0) (2021-10-17)
+
+
+
+### Features
+
+-  only step patch if matching pattern ([11d06](https://github.com/tomasbjerre/git-changelog-command-line/commit/11d06d7b1128dc1))  
+
+
+
+
+
 ## [1.89.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.89.0) (2021-07-15)
 
 
