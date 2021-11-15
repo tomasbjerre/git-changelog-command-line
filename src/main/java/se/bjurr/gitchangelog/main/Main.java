@@ -52,6 +52,11 @@ public class Main {
   public static final String PARAM_JIRA_USERNAME = "-ju";
   public static final String PARAM_JIRA_PASSWORD = "-jpw";
   public static final String PARAM_JIRA_BASIC_AUTH = "-jba";
+  public static final String PARAM_REDMINE_SERVER = "-rms";
+  public static final String PARAM_REDMINE_ISSUE_PATTERN = "-rmp";
+  public static final String PARAM_REDMINE_USERNAME = "-rmu";
+  public static final String PARAM_REDMINE_PASSWORD = "-rmpw";
+  public static final String PARAM_REDMINE_TOKEN = "-rmt";
   public static final String PARAM_CUSTOM_ISSUE_NAME = "-cn";
   public static final String PARAM_CUSTOM_ISSUE_PATTERN = "-cp";
   public static final String PARAM_CUSTOM_ISSUE_LINK = "-cl";
@@ -175,6 +180,30 @@ public class Main {
         stringArgument(PARAM_JIRA_BASIC_AUTH, "--jira-basic-auth") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
+            .build();
+
+    final Argument<String> redmineServerArgument =
+        stringArgument(PARAM_REDMINE_SERVER, "--redmine-server") //
+            .description(
+                "Redmine server. When a Redmine server is given, the title of the Redmine issues can be used in the changelog.") //
+            .defaultValue(defaultSettings.getRedmineServer().orElse(null)) //
+            .build();
+    final Argument<String> redmineIssuePatternArgument =
+        stringArgument(PARAM_REDMINE_ISSUE_PATTERN, "--redmine-pattern") //
+            .description("Redmine issue pattern.") //
+            .defaultValue(defaultSettings.getRedmineIssuePattern()) //
+            .build();
+    final Argument<String> redmineUsernameArgument =
+        stringArgument(PARAM_REDMINE_USERNAME, "--redmine-username") //
+            .description("Optional username to authenticate with Redmine.") //
+            .build();
+    final Argument<String> redminePasswordArgument =
+        stringArgument(PARAM_REDMINE_PASSWORD, "--redmine-password") //
+            .description("Optional password to authenticate with Redmine.") //
+            .build();
+    final Argument<String> redmineTokenArgument =
+        stringArgument(PARAM_REDMINE_TOKEN, "--redmine-token") //
+            .description("Optional token/api-key to authenticate with Redmine.") //
             .build();
 
     final Argument<String> customIssueNameArgument =
@@ -358,6 +387,8 @@ public class Main {
                   untaggedTagNameArgument,
                   jiraIssuePatternArgument,
                   jiraServerArgument,
+                  redmineIssuePatternArgument,
+                  redmineServerArgument,
                   ignoreCommitsIfMessageMatchesArgument,
                   ignoreCommitsOlderThanArgument,
                   customIssueLinkArgument,
@@ -373,6 +404,9 @@ public class Main {
                   jiraUsernamePatternArgument,
                   jiraPasswordPatternArgument,
                   jiraBasicAuthStringPatternArgument,
+                  redmineUsernameArgument,
+                  redminePasswordArgument,
+                  redmineTokenArgument,
                   extendedVariablesArgument,
                   extendedHeadersArgument,
                   templateContentArgument,
@@ -474,6 +508,21 @@ public class Main {
       }
       if (arg.wasGiven(jiraBasicAuthStringPatternArgument)) {
         changelogApiBuilder.withJiraBasicAuthString(arg.get(jiraBasicAuthStringPatternArgument));
+      }
+      if (arg.wasGiven(redmineIssuePatternArgument)) {
+        changelogApiBuilder.withRedmineIssuePattern(arg.get(redmineIssuePatternArgument));
+      }
+      if (arg.wasGiven(redmineServerArgument)) {
+        changelogApiBuilder.withRedmineServer(arg.get(redmineServerArgument));
+      }
+      if (arg.wasGiven(redmineUsernameArgument)) {
+        changelogApiBuilder.withRedmineUsername(arg.get(redmineUsernameArgument));
+      }
+      if (arg.wasGiven(redminePasswordArgument)) {
+        changelogApiBuilder.withRedminePassword(arg.get(redminePasswordArgument));
+      }
+      if (arg.wasGiven(redmineTokenArgument)) {
+        changelogApiBuilder.withRedmineToken(arg.get(redmineTokenArgument));
       }
       if (arg.wasGiven(timeZoneArgument)) {
         changelogApiBuilder.withTimeZone(arg.get(timeZoneArgument));

@@ -299,6 +299,27 @@ Or from command line:
 -ri, --remove-issue-from-message               Dont print any issues in the 
                                                messages of commits.
                                                Default: disabled
+-rmp, --redmine-pattern <string>               Redmine issue pattern.
+                                               <string>: any string
+                                               Default: #([0-9]+)
+-rmpw, --redmine-password <string>             Optional password to 
+                                               authenticate with Redmine.
+                                               <string>: any string
+                                               Default: 
+-rms, --redmine-server <string>                Redmine server. When a Redmine 
+                                               server is given, the title of the 
+                                               Redmine issues can be used in the 
+                                               changelog.
+                                               <string>: any string
+                                               Default: null
+-rmt, --redmine-token <string>                 Optional token/api-key to 
+                                               authenticate with Redmine.
+                                               <string>: any string
+                                               Default: 
+-rmu, --redmine-username <string>              Optional username to 
+                                               authenticate with Redmine.
+                                               <string>: any string
+                                               Default: 
 -rt, --readable-tag-name <string>              Pattern to extract readable 
                                                part of tag.
                                                <string>: any string
