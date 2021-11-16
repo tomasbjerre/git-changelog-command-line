@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.94.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.94.0) (2021-11-16)
+
+
+
+### Features
+
+-  Redmine Support ([8c08a](https://github.com/tomasbjerre/git-changelog-command-line/commit/8c08aaf58cd1647))  
+
+
+
+
+
 ## [1.90.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.90.0) (2021-10-17)
 
 
