@@ -1,6 +1,6 @@
 {
   "name": "git-changelog-command-line-test",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/tomasbjerre/git-changelog-command-line",
   "repository": "git@github.com:tomasbjerre/git-changelog-command-line.git",
   "author": "Tomas Bjerre",
