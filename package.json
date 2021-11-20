@@ -5,7 +5,7 @@
   "repository": "git@github.com:tomasbjerre/git-changelog-command-line.git",
   "author": "Tomas Bjerre",
   "description": "Command line tool for generating a changelog, or releasenotes, from a GIT repository.",
-  "runnable-jar-regexp": ".*build/libs/.*\\d+\\.\\d+\\.\\d+\\.jar",
+  "runnable-jar-regexp": ".*build/libs/.*\\d+\\.\\d+\\.\\d+\\.jar$",
   "files": [
     "build/libs"
   ],
