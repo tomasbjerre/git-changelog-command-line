@@ -11,4 +11,7 @@ temp
 couscous.phar
 .okhttpcache
 node_modules
-
+index.js
+package.json
+package-lock.json
+node_modules
