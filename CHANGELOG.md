@@ -2,6 +2,34 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.96.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.96.0) (2021-11-20)
+
+
+
+
+
+### Bug Fixes
+
+-  match Windows paths ([bea28](https://github.com/tomasbjerre/git-changelog-command-line/commit/bea28843cf58a5d))  
+
+
+
+## [v1.95.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/v1.95.0) (2021-11-20)
+
+
+
+
+
+
+
+### Other changes
+
+**1.95.0**
+
+
+[8c2c3](https://github.com/tomasbjerre/git-changelog-command-line/commit/8c2c36252d2403e) Tomas Bjerre *2021-11-20 12:23:43*
+
+
 ## [1.95.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.95.0) (2021-11-20)
 
 
