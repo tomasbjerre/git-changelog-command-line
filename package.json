@@ -1,12 +1,14 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": "git-changelog-command-line-test",
   "homepage": "https://github.com/tomasbjerre/git-changelog-command-line",
   "repository": "git@github.com:tomasbjerre/git-changelog-command-line.git",
   "author": "Tomas Bjerre",
   "description": "Command line tool for generating a changelog, or releasenotes, from a GIT repository.",
-  "runnable-jar-regexp":".*build/libs/.*\\d+\\.\\d+\\.\\d+\\.jar",
-  "files": ["build/libs"],
+  "runnable-jar-regexp": ".*build/libs/.*\\d+\\.\\d+\\.\\d+\\.jar",
+  "files": [
+    "build/libs"
+  ],
   "bin": "./index.js",
   "scripts": {
     "release": "npm version minor && npm publish && git push --follow-tags"
