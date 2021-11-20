@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.95.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.95.0) (2021-11-20)
+
+
+
+### Features
+
+-  npm-java-runner ([72e92](https://github.com/tomasbjerre/git-changelog-command-line/commit/72e923e6add5f0b))  
+
+
+
+
+
 ## [1.94.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.94.0) (2021-11-16)
 
 
