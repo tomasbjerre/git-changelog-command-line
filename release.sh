@@ -1,4 +1,3 @@
 #!/bin/bash
-./gradlew releaseMinor
-./publish-npm.sh
-
+./gradlew releaseMinor && \
+    npm run release
