@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.96.4](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.96.4) (2021-11-20)
+
+
+
+
+
+### Bug Fixes
+
+-  COMMAND type ([7a2fc](https://github.com/tomasbjerre/git-changelog-command-line/commit/7a2fc45e1c64411))  
+
+
+
 ## [1.96.2](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.96.2) (2021-11-20)
 
 
