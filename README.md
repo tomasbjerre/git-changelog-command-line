@@ -273,6 +273,11 @@ Or from command line:
 -of, --output-file <string>                    Write output to file.
                                                <string>: any string
                                                Default: 
+-pavp, --patch-version-pattern <string>        Commit messages matching this, 
+                                               optional, regular expression will trigger 
+                                               new patch version.
+                                               <string>: any string
+                                               Default: null
 -phv, --print-highest-version                  Print the highest version, 
                                                determined by tags in repo, and exit.
                                                Default: disabled
@@ -337,12 +342,18 @@ Or from command line:
                                                template will be used if not specified.
                                                <string>: any string
                                                Default: changelog.mustache
+-tbd, --template-base-dir <string>             Base dir of templates.
+                                               <string>: any string
+                                               Default: null
 -tc, --to-commit <string>                      To commit.
                                                <string>: any string
                                                Default: null
 -tec, --template-content <string>              String to use as template.
                                                <string>: any string
                                                Default: 
+-tps, --template-partial-suffix <string>       File ending for partials.
+                                               <string>: any string
+                                               Default: .hbs
 -tr, --to-ref <string>                         To ref.
                                                <string>: any string
                                                Default: refs/heads/master

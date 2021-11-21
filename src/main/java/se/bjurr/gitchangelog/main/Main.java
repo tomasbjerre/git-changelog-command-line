@@ -39,6 +39,8 @@ public class Main {
   public static final String PARAM_OUTPUT_FILE = "-of";
   public static final String PARAM_OUTPUT_STDOUT = "-std";
   public static final String PARAM_TEMPLATE = "-t";
+  public static final String PARAM_TEMPLATE_BASE_DIR = "-tbd";
+  public static final String PARAM_TEMPLATE_PARTIAL_SUFFIX = "-tps";
   public static final String PARAM_REPO = "-r";
   public static final String PARAM_FROM_REF = "-fr";
   public static final String PARAM_TO_REF = "-tr";
@@ -102,6 +104,18 @@ public class Main {
         stringArgument(PARAM_TEMPLATE, "--template") //
             .description("Template to use. A default template will be used if not specified.") //
             .defaultValue(defaultSettings.getTemplatePath()) //
+            .build();
+
+    final Argument<String> templateBaseDirArgument =
+        stringArgument(PARAM_TEMPLATE_BASE_DIR, "--template-base-dir") //
+            .description("Base dir of templates.") //
+            .defaultValue(defaultSettings.getTemplateBaseDir()) //
+            .build();
+
+    final Argument<String> templatePartialSuffixArgument =
+        stringArgument(PARAM_TEMPLATE_PARTIAL_SUFFIX, "--template-partial-suffix") //
+            .description("File ending for partials.") //
+            .defaultValue(defaultSettings.getTemplateSuffix()) //
             .build();
 
     final Argument<String> untaggedTagNameArgument =
@@ -379,6 +393,8 @@ public class Main {
                   outputStdoutArgument,
                   outputFileArgument,
                   templatePathArgument,
+                  templateBaseDirArgument,
+                  templatePartialSuffixArgument,
                   fromCommitArgument,
                   fromRefArgument,
                   fromRepoArgument,
@@ -471,6 +487,14 @@ public class Main {
 
       if (arg.wasGiven(templateContentArgument)) {
         changelogApiBuilder.withTemplateContent(arg.get(templateContentArgument));
+      }
+
+      if (arg.wasGiven(templateBaseDirArgument)) {
+        changelogApiBuilder.withTemplateBaseDir(arg.get(templateBaseDirArgument));
+      }
+
+      if (arg.wasGiven(templatePartialSuffixArgument)) {
+        changelogApiBuilder.withTemplateSuffix(arg.get(templatePartialSuffixArgument));
       }
 
       if (arg.wasGiven(fromRepoArgument)) {
