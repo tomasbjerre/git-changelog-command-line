@@ -2,6 +2,25 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.97.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.97.0) (2021-11-21)
+
+
+
+### Features
+
+-  partials ([996d4](https://github.com/tomasbjerre/git-changelog-command-line/commit/996d494bca15f39))  
+
+
+
+
+### Other changes
+
+**Delete release.sh**
+
+
+[2dfde](https://github.com/tomasbjerre/git-changelog-command-line/commit/2dfdefdbf506424) Tomas Bjerre *2021-11-20 21:11:12*
+
+
 ## [1.96.6](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.96.6) (2021-11-20)
 
 
