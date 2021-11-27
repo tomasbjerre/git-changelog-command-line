@@ -1,6 +1,5 @@
 # Git Changelog Command Line
 
-[![Build Status](https://travis-ci.org/tomasbjerre/git-changelog-command-line.svg?branch=master)](https://travis-ci.org/tomasbjerre/git-changelog-command-line)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line)
 [![NPM](https://img.shields.io/npm/v/git-changelog-command-line.svg?style=flat-square)](https://www.npmjs.com/package/git-changelog-command-line)
 
@@ -71,6 +70,8 @@ highestTag=$(npx git-changelog-command-line \
 echo Last release detected as $highestTag
 ```
 
+You can also get the tag with `--print-highest-version-tag`. Highest version may be `1.2.3` and highest tag may be `v1.2.3`.
+
 Next version to release can be determined with:
 
 ```shell
@@ -79,6 +80,12 @@ nextVersion=$(npx git-changelog-command-line \
 
 echo Next release based on commits is: $nextVersion
 ```
+
+There are default patterns, but you can specify the patterns with:
+
+- `--major-version-pattern REGEXP`
+- `--minor-version-pattern REGEXP`
+- `--patch-version-pattern REGEXP`
 
 A changelog can be rendered (using [Helpers](https://github.com/tomasbjerre/git-changelog-lib#Helpers)) like this:
 
@@ -156,8 +163,8 @@ Handlebars.registerHelper('startsWith', function(from, options) {
 Or from command line:
 
 ```shell
--cl, --custom-issue-link <string>              Custom issue link. Supports 
-                                               variables like ${PATTERN_GROUP_1} to 
+-cl, --custom-issue-link <string>              Custom issue link. Supports
+                                               variables like ${PATTERN_GROUP_1} to
                                                inject variables from pattern.
                                                <string>: any string
                                                Default: null
@@ -167,27 +174,27 @@ Or from command line:
 -cp, --custom-issue-pattern <string>           Custom issue pattern.
                                                <string>: any string
                                                Default: null
--ct, --custom-issue-title <string>             Custom issue title. Supports 
-                                               variables like ${PATTERN_GROUP_1} to 
+-ct, --custom-issue-title <string>             Custom issue title. Supports
+                                               variables like ${PATTERN_GROUP_1} to
                                                inject variables from pattern.
                                                <string>: any string
                                                Default: null
--df, --date-format <string>                    Format to use when printing 
+-df, --date-format <string>                    Format to use when printing
                                                dates.
                                                <string>: any string
                                                Default: YYYY-MM-dd HH:mm:ss
--eh, --extended-headers <string>               Extended headers that will send 
+-eh, --extended-headers <string>               Extended headers that will send
                                                when access JIRA. e.g. -eh CF-Access-
                                                Client-ID:abcde12345xyz.access [Supports Multiple occurrences]
                                                <string>: any string
                                                Default: Empty list
--ex, --extended-variables <string>             Extended variables that will be 
+-ex, --extended-variables <string>             Extended variables that will be
                                                available as {{extended.*}}. -ex "{\"
-                                               var1\": \"val1\"}" will print out 
+                                               var1\": \"val1\"}" will print out
                                                "val1" for a template like "{{extended.
                                                var1}}"
                                                <string>: any string
-                                               Default: 
+                                               Default:
 -fc, --from-commit <string>                    From commit.
                                                <string>: any string
                                                Default: 0000000000000000000000000000000000000000
@@ -198,97 +205,97 @@ Or from command line:
                                                github.com/repos/tomasbjerre/git-
                                                changelog-command-line/
                                                <string>: any string
-                                               Default: 
+                                               Default:
 -glpn, --gitlab-project-name <string>          GitLab project name.
                                                <string>: any string
-                                               Default: 
+                                               Default:
 -gls, --gitlab-server <string>                 GitLab server, like https:
                                                //gitlab.com/.
                                                <string>: any string
-                                               Default: 
+                                               Default:
 -glt, --gitlab-token <string>                  GitLab API token.
                                                <string>: any string
-                                               Default: 
--gtok, --github-token <string>                 GitHub API OAuth2 token. You 
-                                               can get it from: curl -u 
-                                               'yourgithubuser' -d '{"note":"Git Changelog 
+                                               Default:
+-gtok, --github-token <string>                 GitHub API OAuth2 token. You
+                                               can get it from: curl -u
+                                               'yourgithubuser' -d '{"note":"Git Changelog
                                                Lib"}' https://api.github.
                                                com/authorizations
                                                <string>: any string
-                                               Default: 
+                                               Default:
 -h, --help <argument-to-print-help-for>        <argument-to-print-help-for>: an argument to print help for
                                                Default: If no specific parameter is given the whole usage text is given
--ini, --ignore-commits-without-issue           Ignore commits that is not 
+-ini, --ignore-commits-without-issue           Ignore commits that is not
                                                included in any issue.
                                                Default: disabled
 -iot, --ignore-older-than <string>             Ignore commits older than YYYY-
                                                MM-dd HH:mm:ss.
                                                <string>: any string
-                                               Default: 
--ip, --ignore-pattern <string>                 Ignore commits where pattern 
+                                               Default:
+-ip, --ignore-pattern <string>                 Ignore commits where pattern
                                                matches message.
                                                <string>: any string
                                                Default: ^Merge.*
--itp, --ignore-tag-pattern <string>            Ignore tags that matches 
-                                               regular expression. Can be used to 
-                                               ignore release candidates and only 
+-itp, --ignore-tag-pattern <string>            Ignore tags that matches
+                                               regular expression. Can be used to
+                                               ignore release candidates and only
                                                include actual releases.
                                                <string>: any string
                                                Default: null
--jba, --jira-basic-auth <string>               Optional token to authenticate 
+-jba, --jira-basic-auth <string>               Optional token to authenticate
                                                with Jira.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
 -jp, --jira-pattern <string>                   Jira issue pattern.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
--jpw, --jira-password <string>                 Optional password to 
+-jpw, --jira-password <string>                 Optional password to
                                                authenticate with Jira.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
--js, --jiraServer <string>                     Jira server. When a Jira server 
-                                               is given, the title of the Jira 
+-js, --jiraServer <string>                     Jira server. When a Jira server
+                                               is given, the title of the Jira
                                                issues can be used in the changelog.
                                                <string>: any string
                                                Default: null
--ju, --jira-username <string>                  Optional username to 
+-ju, --jira-username <string>                  Optional username to
                                                authenticate with Jira.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
--mavp, --major-version-pattern <string>        Commit messages matching this, 
-                                               optional, regular expression will trigger 
+-mavp, --major-version-pattern <string>        Commit messages matching this,
+                                               optional, regular expression will trigger
                                                new major version.
                                                <string>: any string
                                                Default: null
--mivp, --minor-version-pattern <string>        Commit messages matching this, 
-                                               optional, regular expression will trigger 
+-mivp, --minor-version-pattern <string>        Commit messages matching this,
+                                               optional, regular expression will trigger
                                                new minor version.
                                                <string>: any string
                                                Default: ^[Ff]eat.*
--ni, --no-issue-name <string>                  Name of virtual issue that 
-                                               contains commits that has no issue 
+-ni, --no-issue-name <string>                  Name of virtual issue that
+                                               contains commits that has no issue
                                                associated.
                                                <string>: any string
                                                Default: No issue
 -of, --output-file <string>                    Write output to file.
                                                <string>: any string
-                                               Default: 
--pavp, --patch-version-pattern <string>        Commit messages matching this, 
-                                               optional, regular expression will trigger 
+                                               Default:
+-pavp, --patch-version-pattern <string>        Commit messages matching this,
+                                               optional, regular expression will trigger
                                                new patch version.
                                                <string>: any string
                                                Default: null
--phv, --print-highest-version                  Print the highest version, 
+-phv, --print-highest-version                  Print the highest version,
                                                determined by tags in repo, and exit.
                                                Default: disabled
--phvt, --print-highest-version-tag             Print the tag corresponding to 
+-phvt, --print-highest-version-tag             Print the tag corresponding to
                                                highest version, and exit.
                                                Default: disabled
--pnv, --print-next-version                     Print the next version, 
-                                               determined by commits since highest 
+-pnv, --print-next-version                     Print the next version,
+                                               determined by commits since highest
                                                version, and exit.
                                                Default: disabled
--ptf, --prepend-to-file <string>               Add the changelog to top of 
+-ptf, --prepend-to-file <string>               Add the changelog to top of
                                                given file.
                                                <string>: any string
                                                Default: null
@@ -296,49 +303,49 @@ Or from command line:
                                                <string>: any string
                                                Default: .
 -rhh, --register-handlebars-helper <string>    Handlebar helpers, https:
-                                               //handlebarsjs.com/guide/block-helpers.html, 
-                                               to register and use in given 
+                                               //handlebarsjs.com/guide/block-helpers.html,
+                                               to register and use in given
                                                template.
                                                <string>: any string
-                                               Default: 
--ri, --remove-issue-from-message               Dont print any issues in the 
+                                               Default:
+-ri, --remove-issue-from-message               Dont print any issues in the
                                                messages of commits.
                                                Default: disabled
 -rmp, --redmine-pattern <string>               Redmine issue pattern.
                                                <string>: any string
                                                Default: #([0-9]+)
--rmpw, --redmine-password <string>             Optional password to 
+-rmpw, --redmine-password <string>             Optional password to
                                                authenticate with Redmine.
                                                <string>: any string
-                                               Default: 
--rms, --redmine-server <string>                Redmine server. When a Redmine 
-                                               server is given, the title of the 
-                                               Redmine issues can be used in the 
+                                               Default:
+-rms, --redmine-server <string>                Redmine server. When a Redmine
+                                               server is given, the title of the
+                                               Redmine issues can be used in the
                                                changelog.
                                                <string>: any string
                                                Default: null
--rmt, --redmine-token <string>                 Optional token/api-key to 
+-rmt, --redmine-token <string>                 Optional token/api-key to
                                                authenticate with Redmine.
                                                <string>: any string
-                                               Default: 
--rmu, --redmine-username <string>              Optional username to 
+                                               Default:
+-rmu, --redmine-username <string>              Optional username to
                                                authenticate with Redmine.
                                                <string>: any string
-                                               Default: 
--rt, --readable-tag-name <string>              Pattern to extract readable 
+                                               Default:
+-rt, --readable-tag-name <string>              Pattern to extract readable
                                                part of tag.
                                                <string>: any string
                                                Default: /([^/]+?)$
 -sf, --settings-file <string>                  Use settings from file.
                                                <string>: any string
                                                Default: null
---show-debug-info                              Please run your command with 
-                                               this parameter and supply output 
+--show-debug-info                              Please run your command with
+                                               this parameter and supply output
                                                when reporting bugs.
                                                Default: disabled
 -std, --stdout                                 Print builder to <STDOUT>.
                                                Default: disabled
--t, --template <string>                        Template to use. A default 
+-t, --template <string>                        Template to use. A default
                                                template will be used if not specified.
                                                <string>: any string
                                                Default: changelog.mustache
@@ -350,23 +357,51 @@ Or from command line:
                                                Default: null
 -tec, --template-content <string>              String to use as template.
                                                <string>: any string
-                                               Default: 
+                                               Default:
 -tps, --template-partial-suffix <string>       File ending for partials.
                                                <string>: any string
                                                Default: .hbs
 -tr, --to-ref <string>                         To ref.
                                                <string>: any string
                                                Default: refs/heads/master
--tz, --time-zone <string>                      TimeZone to use when printing 
+-tz, --time-zone <string>                      TimeZone to use when printing
                                                dates.
                                                <string>: any string
                                                Default: UTC
--ut, --untagged-name <string>                  When listing commits per tag, 
-                                               this will by the name of a virtual 
-                                               tag that contains commits not 
+-ut, --untagged-name <string>                  When listing commits per tag,
+                                               this will by the name of a virtual
+                                               tag that contains commits not
                                                available in any git tag.
                                                <string>: any string
                                                Default: No tag
 ```
 
-Checkout the [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib) for more documentation.
+## Usage - template base dir
+
+You can use [partials](http://jknack.github.io/handlebars.java/reuse.html) in your templates.
+
+`/dir/changelog.hbs`
+
+```hbs
+{{#commits}}
+{{> commit}}
+{{/commits}}
+```
+
+`/dir/base/commit.partial`
+
+```hbs
+## {{authorName}} - {{commitTime}}
+[{{hashFull}}](https://server/{{hash}})
+{{{message}}}
+```
+
+This is configured like:
+
+```sh
+npx git-changelog-command-line -std \
+ --template-base-dir /dir/base \
+ --template /dir/changelog.hbs
+```
+
+If partials have a different ending, you can specify that with `--template-partial-suffix`.
