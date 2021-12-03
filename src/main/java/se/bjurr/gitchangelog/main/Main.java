@@ -54,6 +54,7 @@ public class Main {
   public static final String PARAM_JIRA_USERNAME = "-ju";
   public static final String PARAM_JIRA_PASSWORD = "-jpw";
   public static final String PARAM_JIRA_BASIC_AUTH = "-jba";
+  public static final String PARAM_JIRA_BEARER = "-jbt";
   public static final String PARAM_REDMINE_SERVER = "-rms";
   public static final String PARAM_REDMINE_ISSUE_PATTERN = "-rmp";
   public static final String PARAM_REDMINE_USERNAME = "-rmu";
@@ -192,6 +193,11 @@ public class Main {
             .build();
     final Argument<String> jiraBasicAuthStringPatternArgument =
         stringArgument(PARAM_JIRA_BASIC_AUTH, "--jira-basic-auth") //
+            .description("Optional token to authenticate with Jira.") //
+            .defaultValue(defaultSettings.getJiraIssuePattern()) //
+            .build();
+    final Argument<String> jiraBearerArgument =
+        stringArgument(PARAM_JIRA_BEARER, "--jira-bearer") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
@@ -420,6 +426,7 @@ public class Main {
                   jiraUsernamePatternArgument,
                   jiraPasswordPatternArgument,
                   jiraBasicAuthStringPatternArgument,
+                  jiraBearerArgument,
                   redmineUsernameArgument,
                   redminePasswordArgument,
                   redmineTokenArgument,
@@ -532,6 +539,9 @@ public class Main {
       }
       if (arg.wasGiven(jiraBasicAuthStringPatternArgument)) {
         changelogApiBuilder.withJiraBasicAuthString(arg.get(jiraBasicAuthStringPatternArgument));
+      }
+      if (arg.wasGiven(jiraBearerArgument)) {
+        changelogApiBuilder.withJiraBearer(arg.get(jiraBearerArgument));
       }
       if (arg.wasGiven(redmineIssuePatternArgument)) {
         changelogApiBuilder.withRedmineIssuePattern(arg.get(redmineIssuePatternArgument));
