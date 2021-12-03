@@ -2,6 +2,22 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.98.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.98.0) (2021-12-03)
+
+
+
+
+
+
+
+### Other changes
+
+**feat Support bearer authorization for Jira**
+
+
+[67272](https://github.com/tomasbjerre/git-changelog-command-line/commit/672722b33a64c67) Lumír Návrat *2021-12-01 19:56:44*
+
+
 ## [1.97.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.97.0) (2021-11-21)
 
 
