@@ -3,6 +3,7 @@ package se.bjurr.gitchangelog.main;
 import static se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder;
 import static se.bjurr.gitchangelog.api.GitChangelogApiConstants.DEFAULT_DATEFORMAT;
 import static se.bjurr.gitchangelog.internal.settings.Settings.defaultSettings;
+import static se.softhouse.jargo.Arguments.fileArgument;
 import static se.softhouse.jargo.Arguments.helpArgument;
 import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
@@ -14,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -358,6 +360,11 @@ public class Main {
             .defaultValue("")
             .build();
 
+    final Argument<File> handlebarsHelperFile =
+        fileArgument("-handlebars-helper-file", "-hhf")
+            .description("Can be used to add extra helpers.")
+            .build();
+
     final Argument<String> prependToFile =
         stringArgument(PARAM_PREPEND_TO_FILE, "--prepend-to-file") //
             .description("Add the changelog to top of given file.") //
@@ -447,13 +454,20 @@ public class Main {
                   majorVersionPattern,
                   minorVersionPattern,
                   patchVersionPattern,
-                  showDebugInfo) //
+                  showDebugInfo,
+                  handlebarsHelperFile) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
 
       if (!arg.get(registerHandlebarsHelper).trim().isEmpty()) {
         changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
+      }
+
+      if (arg.wasGiven(handlebarsHelperFile)) {
+        final byte[] content = Files.readAllBytes(arg.get(handlebarsHelperFile).toPath());
+        final String contentString = new String(content, StandardCharsets.UTF_8);
+        changelogApiBuilder.withHandlebarsHelper(contentString);
       }
 
       if (arg.wasGiven(settingsArgument)) {
