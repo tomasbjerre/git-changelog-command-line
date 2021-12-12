@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.99.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.99.0) (2021-12-12)
+
+
+
+### Features
+
+-  handlebarsHelperFile ([bcaf1](https://github.com/tomasbjerre/git-changelog-command-line/commit/bcaf1753409f48a))  
+
+
+
+
+
 ## [1.98.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.98.0) (2021-12-03)
 
 
