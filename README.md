@@ -206,6 +206,12 @@ Or from command line:
                                                changelog-command-line/
                                                <string>: any string
                                                Default: 
+-ge, --github-enabled                          Enable parsing for GitHub 
+                                               issues.
+                                               Default: disabled
+-gl, --gitlab-enabled                          Enable parsing for GitLab 
+                                               issues.
+                                               Default: disabled
 -glpn, --gitlab-project-name <string>          GitLab project name.
                                                <string>: any string
                                                Default: 
@@ -232,7 +238,7 @@ Or from command line:
 -ini, --ignore-commits-without-issue           Ignore commits that is not 
                                                included in any issue.
                                                Default: disabled
--iot, --ignore-older-than <string>             Ignore commits older than YYYY-
+-iot, --ignore-older-than <string>             Ignore commits older than yyyy-
                                                MM-dd HH:mm:ss.
                                                <string>: any string
                                                Default: 
@@ -254,6 +260,8 @@ Or from command line:
                                                with Jira.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
+-je, --jira-enabled                            Enable parsing for Jira issues.
+                                               Default: disabled
 -jp, --jira-pattern <string>                   Jira issue pattern.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
@@ -261,7 +269,7 @@ Or from command line:
                                                authenticate with Jira.
                                                <string>: any string
                                                Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
--js, --jiraServer <string>                     Jira server. When a Jira server 
+-js, --jiraServer, --jira-server <string>      Jira server. When a Jira server 
                                                is given, the title of the Jira 
                                                issues can be used in the changelog.
                                                <string>: any string
@@ -310,6 +318,9 @@ Or from command line:
 -r, --repo <string>                            Repository.
                                                <string>: any string
                                                Default: .
+-re, --redmine-enabled                         Enable parsing for Redmine 
+                                               issues.
+                                               Default: disabled
 -rhh, --register-handlebars-helper <string>    Handlebar helpers, https:
                                                //handlebarsjs.com/guide/block-helpers.html, 
                                                to register and use in given 

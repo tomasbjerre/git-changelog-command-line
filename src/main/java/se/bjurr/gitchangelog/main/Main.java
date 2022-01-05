@@ -173,7 +173,7 @@ public class Main {
             .build();
 
     final Argument<String> jiraServerArgument =
-        stringArgument(PARAM_JIRA_SERVER, "--jiraServer") //
+        stringArgument(PARAM_JIRA_SERVER, "--jiraServer", "--jira-server") //
             .description(
                 "Jira server. When a Jira server is given, the title of the Jira issues can be used in the changelog.") //
             .defaultValue(defaultSettings.getJiraServer().orElse(null)) //
@@ -398,6 +398,26 @@ public class Main {
                 "Please run your command with this parameter and supply output when reporting bugs.")
             .build();
 
+    final Argument<Boolean> jiraEnabledArgument =
+        optionArgument("-je", "--jira-enabled") //
+            .description("Enable parsing for Jira issues.") //
+            .build();
+
+    final Argument<Boolean> githubEnabledArgument =
+        optionArgument("-ge", "--github-enabled") //
+            .description("Enable parsing for GitHub issues.") //
+            .build();
+
+    final Argument<Boolean> gitlabEnabledArgument =
+        optionArgument("-gl", "--gitlab-enabled") //
+            .description("Enable parsing for GitLab issues.") //
+            .build();
+
+    final Argument<Boolean> redmineEnabledArgument =
+        optionArgument("-re", "--redmine-enabled") //
+            .description("Enable parsing for Redmine issues.") //
+            .build();
+
     try {
       final ParsedArguments arg =
           withArguments(
@@ -455,10 +475,19 @@ public class Main {
                   minorVersionPattern,
                   patchVersionPattern,
                   showDebugInfo,
-                  handlebarsHelperFile) //
+                  handlebarsHelperFile,
+                  jiraEnabledArgument,
+                  githubEnabledArgument,
+                  gitlabEnabledArgument,
+                  redmineEnabledArgument) //
               .parse(args);
 
-      final GitChangelogApi changelogApiBuilder = gitChangelogApiBuilder();
+      final GitChangelogApi changelogApiBuilder =
+          gitChangelogApiBuilder()
+              .withJiraEnabled(arg.wasGiven(jiraEnabledArgument))
+              .withRedmineEnabled(arg.wasGiven(redmineEnabledArgument))
+              .withGitHubEnabled(arg.wasGiven(githubEnabledArgument))
+              .withGitLabEnabled(arg.wasGiven(gitlabEnabledArgument));
 
       if (!arg.get(registerHandlebarsHelper).trim().isEmpty()) {
         changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
