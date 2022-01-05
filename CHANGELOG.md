@@ -2,6 +2,18 @@
 
 Changelog of git-changelog-command-line.
 
+## [1.99.3](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.99.3) (2022-01-05)
+
+
+
+
+
+### Bug Fixes
+
+-  only parse enabled issues ([03dbb](https://github.com/tomasbjerre/git-changelog-command-line/commit/03dbb4dc89f02a3))  
+
+
+
 ## [1.99.0](https://github.com/tomasbjerre/git-changelog-command-line/releases/tag/1.99.0) (2021-12-12)
 
 
