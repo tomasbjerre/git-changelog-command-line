@@ -12,6 +12,12 @@ This is a Java application (runnable `jar`) packaged into an `NPM` package for c
 A changelog can be created like this.
 
 ```shell
+npx git-changelog-command-line -std
+```
+
+Or, you can specify a template:
+
+```shell
 npx git-changelog-command-line -std -tec "
 # Changelog
 
@@ -387,6 +393,9 @@ Or from command line:
                                                dates.
                                                <string>: any string
                                                Default: UTC
+-ui, --use-integrations                        Use integrations to get more 
+                                               details on commits.
+                                               Default: disabled
 -ut, --untagged-name <string>                  When listing commits per tag, 
                                                this will by the name of a virtual 
                                                tag that contains commits not 

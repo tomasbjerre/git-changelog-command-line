@@ -418,6 +418,11 @@ public class Main {
             .description("Enable parsing for Redmine issues.") //
             .build();
 
+    final Argument<Boolean> useIntegrationsArgument =
+        optionArgument("-ui", "--use-integrations") //
+            .description("Use integrations to get more details on commits.") //
+            .build();
+
     try {
       final ParsedArguments arg =
           withArguments(
@@ -479,11 +484,13 @@ public class Main {
                   jiraEnabledArgument,
                   githubEnabledArgument,
                   gitlabEnabledArgument,
-                  redmineEnabledArgument) //
+                  redmineEnabledArgument,
+                  useIntegrationsArgument) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder =
           gitChangelogApiBuilder()
+              .withUseIntegrations(arg.wasGiven(useIntegrationsArgument))
               .withJiraEnabled(arg.wasGiven(jiraEnabledArgument))
               .withRedmineEnabled(arg.wasGiven(redmineEnabledArgument))
               .withGitHubEnabled(arg.wasGiven(githubEnabledArgument))
