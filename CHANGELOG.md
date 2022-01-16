@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.99.5
+### No issue
+
+**doc: patch version pattern**
+
+
+[481993eeddf0511](https://github.com/tomasbjerre/git-changelog-command-line/commit/481993eeddf0511) Tomas Bjerre *2022-01-16 09:36:06*
+
+
 ## 1.99.4
 ### No issue
 
