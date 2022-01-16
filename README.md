@@ -93,6 +93,23 @@ There are default patterns, but you can specify the patterns with:
 - `--minor-version-pattern REGEXP`
 - `--patch-version-pattern REGEXP`
 
+By default it will match anything as patch, like `chore: whatever` and not only `fix: whatever`. You can change that with:
+
+```shell
+highestTag=$(npx git-changelog-command-line \
+ --print-highest-version-tag)
+
+nextVersion=$(npx git-changelog-command-line \
+ --patch-version-pattern "fix:.*" \
+ --print-next-version)
+
+if [ "$nextVersion" == "$highestTag" ]; then
+    echo "No changes made that can be released"
+else
+    echo "Changes detected and a new $nextVersion release can be made"
+fi
+```
+
 A changelog can be rendered (using [Helpers](https://github.com/tomasbjerre/git-changelog-lib#Helpers)) like this:
 
 ```shell
