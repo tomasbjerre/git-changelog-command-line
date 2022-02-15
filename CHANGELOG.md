@@ -952,3 +952,12 @@ Changelog of Git Changelog Command Line.
 [e711322ff826053](https://github.com/tomasbjerre/git-changelog-command-line/commit/e711322ff826053) Tomas Bjerre *2016-01-28 18:17:38*
 
 
+## 1.0
+### No issue
+
+**Initial commit**
+
+
+[3dd0012f113ba82](https://github.com/tomasbjerre/git-changelog-command-line/commit/3dd0012f113ba82) Tomas Bjerre *2016-01-27 18:29:52*
+
+
