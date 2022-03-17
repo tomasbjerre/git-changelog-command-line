@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.100.0
+### No issue
+
+**feat: fall back on HEAD and MASTER if no toRef is given**
+
+
+[b22c3fbcb67b6d3](https://github.com/tomasbjerre/git-changelog-command-line/commit/b22c3fbcb67b6d3) Tomas Bjerre *2022-03-17 19:32:59*
+
+
 ## 1.99.5
 ### No issue
 
