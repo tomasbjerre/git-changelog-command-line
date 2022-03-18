@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.api.GitChangelogApiConstants;
+import se.bjurr.gitchangelog.internal.semantic.SemanticVersion;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
@@ -743,7 +744,9 @@ public class Main {
       }
 
       if (arg.wasGiven(printHighestVersionTag)) {
-        final String tag = changelogApiBuilder.getHighestSemanticVersion().findTag().get();
+        final SemanticVersion highestSemanticVersion =
+            changelogApiBuilder.getHighestSemanticVersion();
+        final String tag = highestSemanticVersion.findTag().orElse("");
         System.out.println(tag);
         System.exit(0);
       }
