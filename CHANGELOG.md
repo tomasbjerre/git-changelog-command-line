@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.100.1
+### No issue
+
+**fix: handle case when no tag in repo**
+
+
+[293a8451a7b273d](https://github.com/tomasbjerre/git-changelog-command-line/commit/293a8451a7b273d) Tomas Bjerre *2022-03-18 20:05:37*
+
+
 ## 1.100.0
 ### No issue
 
