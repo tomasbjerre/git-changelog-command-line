@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -424,6 +425,12 @@ public class Main {
             .description("Use integrations to get more details on commits.") //
             .build();
 
+    final Argument<String> encodingArgument =
+        stringArgument("-en", "--encoding") //
+            .description("Encoding to use when writing content.") //
+            .defaultValue(StandardCharsets.UTF_8.name())
+            .build();
+
     try {
       final ParsedArguments arg =
           withArguments(
@@ -486,7 +493,8 @@ public class Main {
                   githubEnabledArgument,
                   gitlabEnabledArgument,
                   redmineEnabledArgument,
-                  useIntegrationsArgument) //
+                  useIntegrationsArgument,
+                  encodingArgument) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder =
@@ -495,7 +503,8 @@ public class Main {
               .withJiraEnabled(arg.wasGiven(jiraEnabledArgument))
               .withRedmineEnabled(arg.wasGiven(redmineEnabledArgument))
               .withGitHubEnabled(arg.wasGiven(githubEnabledArgument))
-              .withGitLabEnabled(arg.wasGiven(gitlabEnabledArgument));
+              .withGitLabEnabled(arg.wasGiven(gitlabEnabledArgument))
+              .withEncoding(Charset.forName(arg.get(encodingArgument)));
 
       if (!arg.get(registerHandlebarsHelper).trim().isEmpty()) {
         changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));

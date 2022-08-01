@@ -211,6 +211,10 @@ Or from command line:
                                                Client-ID:abcde12345xyz.access [Supports Multiple occurrences]
                                                <string>: any string
                                                Default: Empty list
+-en, --encoding <string>                       Encoding to use when writing 
+                                               content.
+                                               <string>: any string
+                                               Default: UTF-8
 -ex, --extended-variables <string>             Extended variables that will be 
                                                available as {{extended.*}}. -ex "{\"
                                                var1\": \"val1\"}" will print out 
