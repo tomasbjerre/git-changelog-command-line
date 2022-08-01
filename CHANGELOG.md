@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.0
+### No issue
+
+**feat: adding encoding config in API**
+
+
+[80d60d9e51a238b](https://github.com/tomasbjerre/git-changelog-command-line/commit/80d60d9e51a238b) Tomas Bjerre *2022-08-01 14:22:53*
+
+
 ## 1.100.1
 ### No issue
 
