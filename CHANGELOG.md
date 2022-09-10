@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.2
+### No issue
+
+**fix: detecting missing patch-version as 0**
+
+
+[bf8fb0b19ab5b1f](https://github.com/tomasbjerre/git-changelog-command-line/commit/bf8fb0b19ab5b1f) Tomas Bjerre *2022-09-10 06:52:42*
+
+
 ## 1.101.0
 ### No issue
 
