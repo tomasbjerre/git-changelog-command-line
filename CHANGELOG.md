@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.3
+### No issue
+
+**fix: stepping dependencies to fix CVE-2022-42889**
+
+
+[8686b3865698caf](https://github.com/tomasbjerre/git-changelog-command-line/commit/8686b3865698caf) Tomas Bjerre *2022-10-24 17:51:41*
+
+
 ## 1.101.2
 ### No issue
 
