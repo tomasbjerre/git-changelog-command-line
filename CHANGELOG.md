@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.4
+### No issue
+
+**fix: let semantic tag have priority if several tags on same commit**
+
+
+[94862c1aac67471](https://github.com/tomasbjerre/git-changelog-command-line/commit/94862c1aac67471) Tomas Bjerre *2022-12-03 08:44:37*
+
+
 ## 1.101.3
 ### No issue
 
