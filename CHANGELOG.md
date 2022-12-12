@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.5
+### No issue
+
+**fix: making semantic version match not greedy**
+
+
+[162cc2fdd7df2ee](https://github.com/tomasbjerre/git-changelog-command-line/commit/162cc2fdd7df2ee) Tomas Bjerre *2022-12-12 16:17:05*
+
+
 ## 1.101.4
 ### No issue
 
