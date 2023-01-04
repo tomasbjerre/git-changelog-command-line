@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.7
+### No issue
+
+**fix: allow space before : in commit message**
+
+
+[d40b944bab8d77a](https://github.com/tomasbjerre/git-changelog-command-line/commit/d40b944bab8d77a) Tomas Bjerre *2023-01-04 16:02:38*
+
+
 ## 1.101.5
 ### No issue
 
