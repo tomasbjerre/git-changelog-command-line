@@ -25,9 +25,9 @@ apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 
 dependencies {
- implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.168.6'
+ implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.168.7'
  implementation 'se.softhouse:jargo:0.4.14'
- implementation 'org.slf4j:slf4j-simple:2.0.5'
+ implementation 'org.slf4j:slf4j-simple:2.0.6'
  implementation 'com.google.code.gson:gson:2.10'
 
  testImplementation 'junit:junit:4.13.2'
