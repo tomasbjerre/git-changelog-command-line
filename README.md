@@ -148,6 +148,28 @@ npx git-changelog-command-line \
 "
 ```
 
+### Example NPM and `package.json`
+
+If you are using NPM, you may want to add this to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "build": "echo build it...",
+    "release": "npm run set-version; npm run build && npm publish && npm run changelog",
+    "set-version": "npm version $(npx git-changelog-command-line --print-next-version)",
+    "changelog": "npx git-changelog-command-line -of CHANGELOG.md && git commit -a -m 'chore: changelog' && git push --follow-tags"
+  }
+}
+```
+
+And if you do `npm run release` it will:
+
+- Set version in `package.json`
+- Build the repo
+- Publish it
+- Update CHANGELOG.md
+
 ## Example - custom helpers
 
 You can supply your own helpers and use them in the template.
