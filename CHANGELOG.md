@@ -2,6 +2,20 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.8
+### No issue
+
+**fix: parsing newest commits first**
+
+
+[3df18f5b17be14b](https://github.com/tomasbjerre/git-changelog-command-line/commit/3df18f5b17be14b) Tomas Bjerre *2023-02-16 20:16:33*
+
+**docs: readme**
+
+
+[699abb07106c2ec](https://github.com/tomasbjerre/git-changelog-command-line/commit/699abb07106c2ec) Tomas Bjerre *2023-01-15 18:14:18*
+
+
 ## 1.101.7
 ### No issue
 
