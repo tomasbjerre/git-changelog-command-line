@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.101.10
+### No issue
+
+**fix: reduce logging**
+
+
+[9e38dfa2fd581bf](https://github.com/tomasbjerre/git-changelog-command-line/commit/9e38dfa2fd581bf) Tomas Bjerre *2023-03-12 06:51:55*
+
+
 ## 1.101.8
 ### No issue
 
