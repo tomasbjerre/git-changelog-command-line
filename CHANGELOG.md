@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.102.0
+### No issue
+
+**feat: stringHelpers**
+
+
+[40d34fce6df839d](https://github.com/tomasbjerre/git-changelog-command-line/commit/40d34fce6df839d) Tomas Bjerre *2023-04-22 11:47:56*
+
+
 ## 1.101.10
 ### No issue
 
