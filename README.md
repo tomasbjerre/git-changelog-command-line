@@ -121,14 +121,14 @@ npx git-changelog-command-line \
 
 {{#tags}}
 {{#ifReleaseTag .}}
-## [{{name}}](https://gitlab.com/html-validate/html-validate/compare/{{name}}) ({{tagDate .}})
+## [{{name}}](https://github.com/tomasbjerre/someproject/compare/{{name}}) ({{tagDate .}})
 
   {{#ifContainsType commits type='feat'}}
 ### Features
 
     {{#commits}}
       {{#ifCommitType . type='feat'}}
- - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://gitlab.com/html-validate/html-validate/commit/{{hashFull}}))
+ - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/tomasbjerre/someproject/commit/{{hashFull}}))
       {{/ifCommitType}}
     {{/commits}}
   {{/ifContainsType}}
@@ -138,13 +138,43 @@ npx git-changelog-command-line \
 
     {{#commits}}
       {{#ifCommitType . type='fix'}}
- - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://gitlab.com/html-validate/html-validate/commit/{{hashFull}}))
+ - {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/tomasbjerre/someproject/commit/{{hashFull}}))
       {{/ifCommitType}}
     {{/commits}}
   {{/ifContainsType}}
 
 {{/ifReleaseTag}}
 {{/tags}}
+"
+```
+
+Or you can prepend to the current changelog. You may get `$nextVersion` from `--print-next-version` and `$highestTag` from `--print-highest-version-tag`. Somehting like this:
+
+```shell
+npx git-changelog-command-line \
+ --from-ref $highestTag \
+ --to-ref HEAD \
+ --prepend-to-file CHANGELOG.md \
+ --template-content "
+## $nextVersion
+
+{{#ifContainsType commits type='feat'}}
+## Features
+  {{#commits}}
+    {{#ifCommitType . type='feat'}}
+  {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/tomasbjerre/someproject/commit/{{hashFull}}))
+    {{/ifCommitType}}
+  {{/commits}}
+{{/ifContainsType}}
+
+{{#ifContainsType commits type='fix'}}
+## Bug Fixes
+  {{#commits}}
+    {{#ifCommitType . type='fix'}}
+  {{#eachCommitScope .}} **{{.}}** {{/eachCommitScope}} {{{commitDescription .}}} ([{{hash}}](https://github.com/tomasbjerre/someproject/commit/{{hashFull}}))
+    {{/ifCommitType}}
+  {{/commits}}
+{{/ifContainsType}}
 "
 ```
 
