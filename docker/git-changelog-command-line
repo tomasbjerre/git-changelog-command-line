@@ -1,3 +1,0 @@
-#!/bin/bash
-
-java -jar /usr/local/bin/git-changelog-command-line.jar "$@"
