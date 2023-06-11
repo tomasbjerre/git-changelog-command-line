@@ -2,10 +2,16 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line)
 [![NPM](https://img.shields.io/npm/v/git-changelog-command-line.svg?style=flat-square)](https://www.npmjs.com/package/git-changelog-command-line)
+[![NPM Downloads](https://img.shields.io/npm/dm/git-changelog-command-line.svg?style=flat)](https://www.npmjs.com/package/git-changelog-command-line)
+[![Docker Pulls](https://badgen.net/docker/pulls/tomasbjerre/git-changelog-command-line?icon=docker&label=pulls)](https://hub.docker.com/r/tomasbjerre/git-changelog-command-line/)
 
 This is a command line tool for generating a changelog, or releasenotes, from a GIT repository. It uses the [Git Changelog Lib](https://github.com/tomasbjerre/git-changelog-lib).
 
-This is a Java application (runnable `jar`) packaged into an `NPM` package for convenience. The runnable `jar` can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) and used like `java -jar git-changelog-command-line-*.jar ....`. The `npm` package can be found in [NPM](https://www.npmjs.com/package/git-changelog-command-line).
+This is a Java application (runnable `jar`) packaged into an `NPM` package for convenience.
+
+- The runnable `jar` can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) and used like `java -jar git-changelog-command-line-*.jar ....`.
+- The `npm` package can be found in [NPM](https://www.npmjs.com/package/git-changelog-command-line).
+- The `Docker` image can be found in [Dockerhub](https://hub.docker.com/r/tomasbjerre/git-changelog-command-line) and used like `docker run --mount src="$(pwd)",target=/usr/src/git-changelog-command-line,type=bind tomasbjerre/git-changelog-command-line:X --stdout`.
 
 ## Example - Simple
 

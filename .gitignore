@@ -15,4 +15,4 @@ index.js
 package.json
 package-lock.json
 node_modules
-
+docker/git-changelog-command-line.jar
