@@ -59,6 +59,7 @@ public class Main {
   public static final String PARAM_JIRA_PASSWORD = "-jpw";
   public static final String PARAM_JIRA_BASIC_AUTH = "-jba";
   public static final String PARAM_JIRA_BEARER = "-jbt";
+  public static final String PARAM_JIRA_ADDITIONAL_FIELD = "-jaf";
   public static final String PARAM_REDMINE_SERVER = "-rms";
   public static final String PARAM_REDMINE_ISSUE_PATTERN = "-rmp";
   public static final String PARAM_REDMINE_USERNAME = "-rmu";
@@ -204,6 +205,12 @@ public class Main {
         stringArgument(PARAM_JIRA_BEARER, "--jira-bearer") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
+            .build();
+    final Argument<List<String>> jiraAdditionalFieldArgument =
+        stringArgument(PARAM_JIRA_ADDITIONAL_FIELD, "--jira-additional-field") //
+            .repeated()
+            .description(
+                "Adds an additional field for Jira. When configured, we will return from Jira the result of this field, if it exists.") //
             .build();
 
     final Argument<String> redmineServerArgument =
@@ -467,6 +474,7 @@ public class Main {
                   jiraPasswordPatternArgument,
                   jiraBasicAuthStringPatternArgument,
                   jiraBearerArgument,
+                  jiraAdditionalFieldArgument,
                   redmineUsernameArgument,
                   redminePasswordArgument,
                   redmineTokenArgument,
@@ -602,6 +610,9 @@ public class Main {
       }
       if (arg.wasGiven(jiraBearerArgument)) {
         changelogApiBuilder.withJiraBearer(arg.get(jiraBearerArgument));
+      }
+      if (arg.wasGiven(jiraAdditionalFieldArgument)) {
+        arg.get(jiraAdditionalFieldArgument).forEach(changelogApiBuilder::withJiraIssueAdditionalField);
       }
       if (arg.wasGiven(redmineIssuePatternArgument)) {
         changelogApiBuilder.withRedmineIssuePattern(arg.get(redmineIssuePatternArgument));
