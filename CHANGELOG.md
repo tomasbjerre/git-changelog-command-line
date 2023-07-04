@@ -2,6 +2,30 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.103.0
+### No issue
+
+**Adds additonal fields flag**
+
+
+[9cea3efe18ded74](https://github.com/tomasbjerre/git-changelog-command-line/commit/9cea3efe18ded74) Taylore *2023-07-03 17:05:29*
+
+**chore: build-docker.sh**
+
+
+[2c4403d3c17d856](https://github.com/tomasbjerre/git-changelog-command-line/commit/2c4403d3c17d856) Tomas Bjerre *2023-06-11 12:42:11*
+
+**feat: docker image**
+
+
+[8f3b2b455963288](https://github.com/tomasbjerre/git-changelog-command-line/commit/8f3b2b455963288) Tomas Bjerre *2023-06-11 08:13:09*
+
+**docs: pepend**
+
+
+[1de1d681e204389](https://github.com/tomasbjerre/git-changelog-command-line/commit/1de1d681e204389) Tomas Bjerre *2023-06-10 06:11:43*
+
+
 ## 1.102.0
 ### No issue
 
