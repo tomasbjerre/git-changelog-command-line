@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.103.2
+### No issue
+
+**chore: string in gradle.properties description**
+
+
+[1e3bdc4f7d2de11](https://github.com/tomasbjerre/git-changelog-command-line/commit/1e3bdc4f7d2de11) Tomas Bjerre *2023-07-04 05:45:45*
+
+
 ## 1.103.0
 ### No issue
 
