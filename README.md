@@ -337,6 +337,12 @@ Or from command line:
                                                include actual releases.
                                                <string>: any string
                                                Default: null
+-jaf, --jira-additional-field <string>         Adds an additional field for Jira.
+                                               When configured, we will return
+                                               from Jira the result of this
+                                               field, if it exists. [Supports Multiple occurrences]
+                                               <string>: any string
+                                               Default: Empty list
 -jba, --jira-basic-auth <string>               Optional token to authenticate 
                                                with Jira.
                                                <string>: any string
