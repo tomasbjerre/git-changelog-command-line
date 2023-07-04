@@ -612,7 +612,8 @@ public class Main {
         changelogApiBuilder.withJiraBearer(arg.get(jiraBearerArgument));
       }
       if (arg.wasGiven(jiraAdditionalFieldArgument)) {
-        arg.get(jiraAdditionalFieldArgument).forEach(changelogApiBuilder::withJiraIssueAdditionalField);
+        arg.get(jiraAdditionalFieldArgument)
+            .forEach(changelogApiBuilder::withJiraIssueAdditionalField);
       }
       if (arg.wasGiven(redmineIssuePatternArgument)) {
         changelogApiBuilder.withRedmineIssuePattern(arg.get(redmineIssuePatternArgument));
