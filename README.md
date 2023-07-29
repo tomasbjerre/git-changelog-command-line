@@ -280,12 +280,9 @@ Or from command line:
                                                var1}}"
                                                <string>: any string
                                                Default: 
--fc, --from-commit <string>                    From commit.
+-fre, --from-revision <string>                 From revision.
                                                <string>: any string
                                                Default: 0000000000000000000000000000000000000000
--fr, --from-ref <string>                       From ref.
-                                               <string>: any string
-                                               Default: null
 -gapi, --github-api <string>                   GitHub API. Like: https://api.
                                                github.com/repos/tomasbjerre/git-
                                                changelog-command-line/
@@ -337,10 +334,10 @@ Or from command line:
                                                include actual releases.
                                                <string>: any string
                                                Default: null
--jaf, --jira-additional-field <string>         Adds an additional field for Jira.
-                                               When configured, we will return
-                                               from Jira the result of this
-                                               field, if it exists. [Supports Multiple occurrences]
+-jaf, --jira-additional-field <string>         Adds an additional field for 
+                                               Jira. When configured, we will return 
+                                               from Jira the result of this field, 
+                                               if it exists. [Supports Multiple occurrences]
                                                <string>: any string
                                                Default: Empty list
 -jba, --jira-basic-auth <string>               Optional token to authenticate 
@@ -462,16 +459,13 @@ Or from command line:
 -tbd, --template-base-dir <string>             Base dir of templates.
                                                <string>: any string
                                                Default: null
--tc, --to-commit <string>                      To commit.
-                                               <string>: any string
-                                               Default: null
 -tec, --template-content <string>              String to use as template.
                                                <string>: any string
                                                Default: 
 -tps, --template-partial-suffix <string>       File ending for partials.
                                                <string>: any string
                                                Default: .hbs
--tr, --to-ref <string>                         To ref.
+-tre, --to-revision <string>                   To revision.
                                                <string>: any string
                                                Default: refs/heads/master
 -tz, --time-zone <string>                      TimeZone to use when printing 

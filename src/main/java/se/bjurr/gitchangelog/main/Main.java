@@ -9,9 +9,6 @@ import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
@@ -22,6 +19,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.api.GitChangelogApiConstants;
 import se.bjurr.gitchangelog.internal.semantic.SemanticVersion;
@@ -48,6 +50,8 @@ public class Main {
   public static final String PARAM_REPO = "-r";
   public static final String PARAM_FROM_REF = "-fr";
   public static final String PARAM_TO_REF = "-tr";
+  public static final String PARAM_FROM_REV = "-fre";
+  public static final String PARAM_TO_REV = "-tre";
   public static final String PARAM_FROM_COMMIT = "-fc";
   public static final String PARAM_TO_COMMIT = "-tc";
   public static final String PARAM_IGNORE_PATTERN = "-ip";
@@ -136,25 +140,39 @@ public class Main {
             .description("Repository.") //
             .defaultValue(defaultSettings.getFromRepo()) //
             .build();
+    final Argument<String> fromRevArgument =
+            stringArgument(PARAM_FROM_REV, "--from-revision") //
+                .description("From revision.") //
+                .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
+                .build();
+        final Argument<String> toRevArgument =
+            stringArgument(PARAM_TO_REV, "--to-revision") //
+                .description("To revision.") //
+                .defaultValue(defaultSettings.getToRevision().orElse(null)) //
+                .build();
     final Argument<String> fromRefArgument =
         stringArgument(PARAM_FROM_REF, "--from-ref") //
             .description("From ref.") //
-            .defaultValue(defaultSettings.getFromRef().orElse(null)) //
+            .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
+            .hideFromUsage() //
             .build();
     final Argument<String> toRefArgument =
         stringArgument(PARAM_TO_REF, "--to-ref") //
             .description("To ref.") //
-            .defaultValue(defaultSettings.getToRef().orElse(null)) //
+            .defaultValue(defaultSettings.getToRevision().orElse(null)) //
+            .hideFromUsage() //
             .build();
     final Argument<String> fromCommitArgument =
         stringArgument(PARAM_FROM_COMMIT, "--from-commit") //
             .description("From commit.") //
-            .defaultValue(defaultSettings.getFromCommit().orElse(null)) //
+            .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
+            .hideFromUsage() //
             .build();
     final Argument<String> toCommitArgument =
         stringArgument(PARAM_TO_COMMIT, "--to-commit") //
             .description("To commit.") //
-            .defaultValue(defaultSettings.getToCommit().orElse(null)) //
+            .defaultValue(defaultSettings.getToRevision().orElse(null)) //
+            .hideFromUsage() //
             .build();
 
     final Argument<String> ignoreCommitsIfMessageMatchesArgument =
@@ -449,6 +467,8 @@ public class Main {
                   templateBaseDirArgument,
                   templatePartialSuffixArgument,
                   fromCommitArgument,
+                  fromRevArgument,
+                  toRevArgument,
                   fromRefArgument,
                   fromRepoArgument,
                   toCommitArgument,
@@ -643,20 +663,22 @@ public class Main {
         changelogApiBuilder.withReadableTagName(arg.get(readableTagNameArgument));
       }
 
+      if (arg.wasGiven(fromRevArgument)) {
+        changelogApiBuilder.withFromRevision(arg.get(fromRevArgument));
+      }
+      if (arg.wasGiven(toRevArgument)) {
+          changelogApiBuilder.withToRevision(arg.get(toRevArgument));
+        }
       if (arg.wasGiven(fromCommitArgument)) {
         changelogApiBuilder.withFromCommit(arg.get(fromCommitArgument));
-        changelogApiBuilder.withFromRef(null);
       }
       if (arg.wasGiven(fromRefArgument)) {
-        changelogApiBuilder.withFromCommit(null);
         changelogApiBuilder.withFromRef(arg.get(fromRefArgument));
       }
       if (arg.wasGiven(toCommitArgument)) {
         changelogApiBuilder.withToCommit(arg.get(toCommitArgument));
-        changelogApiBuilder.withToRef(null);
       }
       if (arg.wasGiven(toRefArgument)) {
-        changelogApiBuilder.withToCommit(null);
         changelogApiBuilder.withToRef(arg.get(toRefArgument));
       }
       if (arg.wasGiven(gitHubApiArgument)) {

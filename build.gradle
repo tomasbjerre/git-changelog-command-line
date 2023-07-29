@@ -25,7 +25,22 @@ apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 
 dependencies {
- implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.170.0'
+ implementation('se.bjurr.gitchangelog:git-changelog-lib:1.172.0') {
+   /**
+    * Jackson contains class files with more recent java-version in ./META-INF/versions/19
+    * This causes problems for Shadow when creating fat jar.
+    *
+    * java.lang.IllegalArgumentException: Unsupported class file major version 61
+    *     at shadow.org.objectweb.asm.ClassReader.<init>(ClassReader.java:184)
+    */
+   exclude group: "com.fasterxml.jackson.core", module: "jackson-core"
+   exclude group: "com.fasterxml.jackson.core", module: "jackson-databind"
+   exclude group: "com.fasterxml.jackson.datatype", module: "jackson-datatype-jsr310"
+ }
+ implementation 'com.fasterxml.jackson.core:jackson-core:2.5.3'
+ implementation 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+ implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.3'
+
  implementation 'se.softhouse:jargo:0.4.14'
  implementation 'org.slf4j:slf4j-simple:2.0.6'
  implementation 'com.google.code.gson:gson:2.10.1'
