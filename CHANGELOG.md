@@ -2,6 +2,30 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.104.0
+### No issue
+
+**feat: from/to inclusiveness**
+
+
+[9f7e7c8b2f838ba](https://github.com/tomasbjerre/git-changelog-command-line/commit/9f7e7c8b2f838ba) Tomas Bjerre *2023-07-29 16:07:33*
+
+**feat: ifContainsIssueLabel, ifIssueLabel and from/to revision**
+
+
+[1fc6324794fab16](https://github.com/tomasbjerre/git-changelog-command-line/commit/1fc6324794fab16) Tomas Bjerre *2023-07-29 15:56:27*
+
+**chore: gradle action**
+
+
+[0e5b11e65bdf3a4](https://github.com/tomasbjerre/git-changelog-command-line/commit/0e5b11e65bdf3a4) Tomas Bjerre *2023-07-29 14:56:35*
+
+**chore: gradle 7.6**
+
+
+[58bf5d28350cd20](https://github.com/tomasbjerre/git-changelog-command-line/commit/58bf5d28350cd20) Tomas Bjerre *2023-07-29 13:51:58*
+
+
 ## 1.103.2
 ### No issue
 
