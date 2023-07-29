@@ -3,6 +3,7 @@ package se.bjurr.gitchangelog.main;
 import static se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder;
 import static se.bjurr.gitchangelog.api.GitChangelogApiConstants.DEFAULT_DATEFORMAT;
 import static se.bjurr.gitchangelog.internal.settings.Settings.defaultSettings;
+import static se.softhouse.jargo.Arguments.enumArgument;
 import static se.softhouse.jargo.Arguments.fileArgument;
 import static se.softhouse.jargo.Arguments.helpArgument;
 import static se.softhouse.jargo.Arguments.optionArgument;
@@ -26,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.api.GitChangelogApiConstants;
+import se.bjurr.gitchangelog.api.InclusivenessStrategy;
 import se.bjurr.gitchangelog.internal.semantic.SemanticVersion;
 import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
@@ -51,7 +53,9 @@ public class Main {
   public static final String PARAM_FROM_REF = "-fr";
   public static final String PARAM_TO_REF = "-tr";
   public static final String PARAM_FROM_REV = "-fre";
+  public static final String PARAM_FROM_REV_INCLUDE = "-frei";
   public static final String PARAM_TO_REV = "-tre";
+  public static final String PARAM_TO_REV_INCLUDE = "-trei";
   public static final String PARAM_FROM_COMMIT = "-fc";
   public static final String PARAM_TO_COMMIT = "-tc";
   public static final String PARAM_IGNORE_PATTERN = "-ip";
@@ -145,10 +149,20 @@ public class Main {
                 .description("From revision.") //
                 .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
                 .build();
-        final Argument<String> toRevArgument =
-            stringArgument(PARAM_TO_REV, "--to-revision") //
-                .description("To revision.") //
-                .defaultValue(defaultSettings.getToRevision().orElse(null)) //
+    final Argument<InclusivenessStrategy> fromRevInclusivenessStrategyArgument =
+            enumArgument(InclusivenessStrategy.class, PARAM_FROM_REV_INCLUDE, "--from-revision-inclusiveness") //
+                .description("Include, or exclude, specified revision.") //
+                .defaultValue(defaultSettings.getFromRevisionStrategy()) //
+                .build();
+    final Argument<String> toRevArgument =
+        stringArgument(PARAM_TO_REV, "--to-revision") //
+            .description("To revision.") //
+            .defaultValue(defaultSettings.getToRevision().orElse(null)) //
+            .build();
+    final Argument<InclusivenessStrategy> toRevInclusivenessStrategyArgument =
+            enumArgument(InclusivenessStrategy.class, PARAM_TO_REV_INCLUDE, "--to-revision-inclusiveness") //
+                .description("Include, or exclude, specified revision.") //
+                .defaultValue(defaultSettings.getFromRevisionStrategy()) //
                 .build();
     final Argument<String> fromRefArgument =
         stringArgument(PARAM_FROM_REF, "--from-ref") //
@@ -469,6 +483,8 @@ public class Main {
                   fromCommitArgument,
                   fromRevArgument,
                   toRevArgument,
+                  toRevInclusivenessStrategyArgument,
+                  fromRevInclusivenessStrategyArgument,
                   fromRefArgument,
                   fromRepoArgument,
                   toCommitArgument,
@@ -664,10 +680,18 @@ public class Main {
       }
 
       if (arg.wasGiven(fromRevArgument)) {
-        changelogApiBuilder.withFromRevision(arg.get(fromRevArgument));
+        if (arg.wasGiven(fromRevInclusivenessStrategyArgument)) {
+            changelogApiBuilder.withFromRevision(arg.get(fromRevArgument), arg.get(fromRevInclusivenessStrategyArgument));
+          } else {
+              changelogApiBuilder.withFromRevision(arg.get(fromRevArgument));
+          }
       }
       if (arg.wasGiven(toRevArgument)) {
-          changelogApiBuilder.withToRevision(arg.get(toRevArgument));
+          if (arg.wasGiven(toRevInclusivenessStrategyArgument)) {
+              changelogApiBuilder.withToRevision(arg.get(toRevArgument), arg.get(toRevInclusivenessStrategyArgument));
+            } else {
+                changelogApiBuilder.withToRevision(arg.get(toRevArgument));
+            }
         }
       if (arg.wasGiven(fromCommitArgument)) {
         changelogApiBuilder.withFromCommit(arg.get(fromCommitArgument));
