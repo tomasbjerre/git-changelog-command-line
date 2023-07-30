@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.104.1
+### No issue
+
+**fix: look for exact revision name before finding using endswith**
+
+
+[d65bfa4d504ab5d](https://github.com/tomasbjerre/git-changelog-command-line/commit/d65bfa4d504ab5d) Tomas Bjerre *2023-07-30 10:53:01*
+
+
 ## 1.104.0
 ### No issue
 
