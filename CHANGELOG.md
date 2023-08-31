@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.105.0
+### No issue
+
+**feat: prioritizing commits semantically when adding to tags**
+
+
+[48fcc1f6300daaa](https://github.com/tomasbjerre/git-changelog-command-line/commit/48fcc1f6300daaa) Tomas Bjerre *2023-08-31 15:31:35*
+
+
 ## 1.104.1
 ### No issue
 
