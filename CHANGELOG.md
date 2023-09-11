@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.106.0
+### No issue
+
+**feat: add filtering for footer tokens**
+
+
+[5cb28fe1c9e8aa0](https://github.com/tomasbjerre/git-changelog-command-line/commit/5cb28fe1c9e8aa0) Tomas Bjerre *2023-09-11 15:52:56*
+
+
 ## 1.105.0
 ### No issue
 
