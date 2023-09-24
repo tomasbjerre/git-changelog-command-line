@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.107.1
+### No issue
+
+**fix: current version**
+
+
+[59578cc2a659593](https://github.com/tomasbjerre/git-changelog-command-line/commit/59578cc2a659593) Tomas Bjerre *2023-09-24 17:44:11*
+
+
 ## 1.107.0
 ### No issue
 
