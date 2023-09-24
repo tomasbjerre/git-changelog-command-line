@@ -25,7 +25,7 @@ apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 
 dependencies {
- implementation('se.bjurr.gitchangelog:git-changelog-lib:1.173.0') {
+ implementation('se.bjurr.gitchangelog:git-changelog-lib:1.174.0') {
    /**
     * Jackson contains class files with more recent java-version in ./META-INF/versions/19
     * This causes problems for Shadow when creating fat jar.

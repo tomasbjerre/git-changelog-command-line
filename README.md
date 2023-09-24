@@ -405,6 +405,12 @@ Or from command line:
                                                         trigger new patch version.
                                                         <string>: any string
                                                         Default: null
+-pcv, --print-current-version                           Like --print-next-
+                                                        version unless the current 
+                                                        commit is tagged with a 
+                                                        version, if so it will print 
+                                                        that version.
+                                                        Default: disabled
 -phv, --print-highest-version                           Print the highest 
                                                         version, determined by tags in 
                                                         repo, and exit.

@@ -37,6 +37,7 @@ public class Main {
   private static final String PARAM_PRINT_HIGHEST_VERSION = "-phv";
   private static final String PARAM_PRINT_HIGHEST_VERSION_TAG = "-phvt";
   private static final String PARAM_PRINT_NEXT_VERSION = "-pnv";
+  private static final String PARAM_PRINT_CURRENT_VERSION = "-pcv";
   private static final String PARAM_PATCH_VERSION_PATTERN = "-pavp";
   private static final String PARAM_MINOR_VERSION_PATTERN = "-mivp";
   private static final String PARAM_MAJOR_VERSION_PATTERN = "-mavp";
@@ -398,6 +399,13 @@ public class Main {
             .defaultValue(false)
             .build();
 
+    final Argument<Boolean> printCurrentVersion =
+        optionArgument(PARAM_PRINT_CURRENT_VERSION, "--print-current-version") //
+            .description(
+                "Like --print-next-version unless the current commit is tagged with a version, if so it will print that version.") //
+            .defaultValue(false)
+            .build();
+
     final Argument<String> registerHandlebarsHelper =
         stringArgument(PARAM_REGISTER_HANDLEBARS_HELPER, "--register-handlebars-helper") //
             .description(
@@ -530,6 +538,7 @@ public class Main {
                   printHighestVersion,
                   printHighestVersionTag,
                   printNextVersion,
+                  printCurrentVersion,
                   registerHandlebarsHelper,
                   prependToFile,
                   majorVersionPattern,
@@ -753,7 +762,8 @@ public class Main {
               || arg.wasGiven(prependToFile)
               || arg.wasGiven(printHighestVersion)
               || arg.wasGiven(printHighestVersionTag)
-              || arg.wasGiven(printNextVersion), //
+              || arg.wasGiven(printNextVersion)
+              || arg.wasGiven(printCurrentVersion), //
           "You must supply an output, "
               + PARAM_OUTPUT_FILE
               + " <filename>, "
@@ -763,7 +773,9 @@ public class Main {
               + " <filename>, "
               + PARAM_PRINT_HIGHEST_VERSION
               + ", "
-              + PARAM_PRINT_NEXT_VERSION);
+              + PARAM_PRINT_NEXT_VERSION
+              + ", "
+              + PARAM_PRINT_CURRENT_VERSION);
 
       if (arg.wasGiven(outputStdoutArgument)) {
         systemOutPrintln(changelogApiBuilder.render());
@@ -826,6 +838,12 @@ public class Main {
 
       if (arg.wasGiven(printNextVersion)) {
         final String version = changelogApiBuilder.getNextSemanticVersion().toString();
+        System.out.println(version);
+        System.exit(0);
+      }
+
+      if (arg.wasGiven(printCurrentVersion)) {
+        final String version = changelogApiBuilder.getCurrentSemanticVersion().toString();
         System.out.println(version);
         System.exit(0);
       }
