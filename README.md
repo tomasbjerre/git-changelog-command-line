@@ -106,7 +106,7 @@ highestTag=$(npx git-changelog-command-line \
  --print-highest-version-tag)
 
 nextVersion=$(npx git-changelog-command-line \
- --patch-version-pattern "fix:.*" \
+ --patch-version-pattern "^fix.*" \
  --print-next-version)
 
 if [ "$nextVersion" == "$highestTag" ]; then
