@@ -2,6 +2,21 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.108.0
+### No issue
+
+**feat: Added gitlab issue pattern option**
+
+
+[5d264c354349deb](https://github.com/tomasbjerre/git-changelog-command-line/commit/5d264c354349deb) Antoine de Choudens *2023-10-16 13:17:34*
+
+**docs(README): '--patch-version-pattern' example respecting commit scope**
+
+ * Given example for &#x27;--patch-version-pattern&#x27; usage would omit those &#x27;fix&#x27; commits, which contain a conventionalcommt-scope 
+
+[64b39d8fe913ee5](https://github.com/tomasbjerre/git-changelog-command-line/commit/64b39d8fe913ee5) Markus Schulte *2023-09-29 12:40:23*
+
+
 ## 1.107.1
 ### No issue
 
