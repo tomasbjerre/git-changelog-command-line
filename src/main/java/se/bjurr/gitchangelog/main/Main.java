@@ -91,6 +91,7 @@ public class Main {
   public static final String PARAM_GITLABTOKEN = "-glt";
   public static final String PARAM_GITLABSERVER = "-gls";
   public static final String PARAM_GITLABPROJECTNAME = "-glpn";
+  public static final String PARAM_GITLABISSUEPATTERN = "-glp";
 
   private static String systemOutPrintln;
   private static boolean recordSystemOutPrintln;
@@ -379,6 +380,11 @@ public class Main {
             .description("GitLab project name.") //
             .defaultValue("") //
             .build();
+    final Argument<String> gitLabProjectIssuePattern =
+        stringArgument(PARAM_GITLABISSUEPATTERN, "--gitlab-issue-pattern") //
+            .description("GitLab issue pattern.") //
+            .defaultValue("") //
+            .build();
 
     final Argument<Boolean> printHighestVersion =
         optionArgument(PARAM_PRINT_HIGHEST_VERSION, "--print-highest-version") //
@@ -535,6 +541,7 @@ public class Main {
                   gitLabTokenArgument,
                   gitLabServerArgument,
                   gitLabProjectNameArgument,
+                  gitLabProjectIssuePattern,
                   printHighestVersion,
                   printHighestVersionTag,
                   printNextVersion,
@@ -735,6 +742,9 @@ public class Main {
       }
       if (arg.wasGiven(gitLabTokenArgument)) {
         changelogApiBuilder.withGitLabToken(arg.get(gitLabTokenArgument));
+      }
+      if (arg.wasGiven(gitLabProjectIssuePattern)) {
+        changelogApiBuilder.withGitLabIssuePattern(arg.get(gitLabProjectIssuePattern));
       }
 
       if ( //
