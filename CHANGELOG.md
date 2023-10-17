@@ -2,6 +2,20 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.108.1
+### No issue
+
+**fix: fixed gitlab issues url**
+
+
+[b8f9ae61d1916c5](https://github.com/tomasbjerre/git-changelog-command-line/commit/b8f9ae61d1916c5) Tomas Bjerre *2023-10-17 15:52:24*
+
+**docs(README): Added '--gitlab-issue-pattern' to the possible commands**
+
+
+[67187676975509a](https://github.com/tomasbjerre/git-changelog-command-line/commit/67187676975509a) Antoine de Choudens *2023-10-17 14:59:33*
+
+
 ## 1.108.0
 ### No issue
 
