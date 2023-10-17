@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.108.3
+### No issue
+
+**fix: triggering new version, after faulty release**
+
+
+[a37f76746f20703](https://github.com/tomasbjerre/git-changelog-command-line/commit/a37f76746f20703) Tomas Bjerre *2023-10-17 16:01:31*
+
+
 ## 1.108.1
 ### No issue
 
