@@ -305,6 +305,9 @@ Or from command line:
 -glpn, --gitlab-project-name <string>                   GitLab project name.
                                                         <string>: any string
                                                         Default: 
+-glp, --gitlab-issue-pattern <string>                   GitLab issue pattern.
+                                                        <string>: any string
+                                                        Default: 
 -gls, --gitlab-server <string>                          GitLab server, like 
                                                         https://gitlab.com/.
                                                         <string>: any string
