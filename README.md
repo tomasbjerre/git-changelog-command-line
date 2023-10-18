@@ -102,14 +102,18 @@ There are default patterns, but you can specify the patterns with:
 By default it will match anything as patch, like `chore: whatever` and not only `fix: whatever`. You can change that with:
 
 ```shell
-highestTag=$(npx git-changelog-command-line \
- --print-highest-version-tag)
+highestVersion=$(npx git-changelog-command-line \
+ --print-highest-version)
 
 nextVersion=$(npx git-changelog-command-line \
  --patch-version-pattern "^fix.*" \
  --print-next-version)
 
-if [ "$nextVersion" == "$highestTag" ]; then
+highestVersionTag=$(npx git-changelog-command-line --print-highest-version-tag)
+if [ -z "$highestVersionTag" ]; then
+  echo "This is the first version in the repo, using 0.0.1 as version"
+  nextVersion=0.0.1
+else if [ "$nextVersion" == "$highestVersion" ]; then
     echo "No changes made that can be released"
 else
     echo "Changes detected and a new $nextVersion release can be made"
