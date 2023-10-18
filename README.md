@@ -105,18 +105,20 @@ By default it will match anything as patch, like `chore: whatever` and not only 
 highestVersion=$(npx git-changelog-command-line \
  --print-highest-version)
 
-nextVersion=$(npx git-changelog-command-line \
- --patch-version-pattern "^fix.*" \
- --print-next-version)
+highestVersionTag=$(npx git-changelog-command-line \
+ --print-highest-version-tag)
 
-highestVersionTag=$(npx git-changelog-command-line --print-highest-version-tag)
+currentVersion=$(npx git-changelog-command-line \
+ --patch-version-pattern "^fix.*" \
+ --print-current-version)
+
 if [ -z "$highestVersionTag" ]; then
   echo "This is the first version in the repo, using 0.0.1 as version"
-  nextVersion=0.0.1
-else if [ "$nextVersion" == "$highestVersion" ]; then
+  currentVersion=0.0.1
+else if [ "$currentVersion" == "$highestVersion" ]; then
     echo "No changes made that can be released"
 else
-    echo "Changes detected and a new $nextVersion release can be made"
+    echo "Changes detected and a new $currentVersion release can be made"
 fi
 ```
 
