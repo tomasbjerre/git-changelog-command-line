@@ -308,10 +308,10 @@ Or from command line:
 -gl, --gitlab-enabled                                   Enable parsing for 
                                                         GitLab issues.
                                                         Default: disabled
--glpn, --gitlab-project-name <string>                   GitLab project name.
+-glp, --gitlab-issue-pattern <string>                   GitLab issue pattern.
                                                         <string>: any string
                                                         Default: 
--glp, --gitlab-issue-pattern <string>                   GitLab issue pattern.
+-glpn, --gitlab-project-name <string>                   GitLab project name.
                                                         <string>: any string
                                                         Default: 
 -gls, --gitlab-server <string>                          GitLab server, like 
@@ -420,6 +420,10 @@ Or from command line:
                                                         version, if so it will print 
                                                         that version.
                                                         Default: disabled
+-pf, --path-filters <string>                            Paths on the 
+                                                        filesystem to filter on. [Supports Multiple occurrences]
+                                                        <string>: any string
+                                                        Default: Empty list
 -phv, --print-highest-version                           Print the highest 
                                                         version, determined by tags in 
                                                         repo, and exit.

@@ -488,6 +488,13 @@ public class Main {
             .defaultValue(StandardCharsets.UTF_8.name())
             .build();
 
+    final Argument<List<String>> pathsArgument =
+        stringArgument("-pf", "--path-filters") //
+            .repeated()
+            .description("Paths on the filesystem to filter on.") //
+            .defaultValue(defaultSettings.getPathFilters())
+            .build();
+
     try {
       final ParsedArguments arg =
           withArguments(
@@ -558,7 +565,8 @@ public class Main {
                   gitlabEnabledArgument,
                   redmineEnabledArgument,
                   useIntegrationsArgument,
-                  encodingArgument) //
+                  encodingArgument,
+                  pathsArgument) //
               .parse(args);
 
       final GitChangelogApi changelogApiBuilder =
@@ -568,7 +576,8 @@ public class Main {
               .withRedmineEnabled(arg.wasGiven(redmineEnabledArgument))
               .withGitHubEnabled(arg.wasGiven(githubEnabledArgument))
               .withGitLabEnabled(arg.wasGiven(gitlabEnabledArgument))
-              .withEncoding(Charset.forName(arg.get(encodingArgument)));
+              .withEncoding(Charset.forName(arg.get(encodingArgument)))
+              .withPathFilters(arg.get(pathsArgument).toArray(new String[0]));
 
       if (!arg.get(registerHandlebarsHelper).trim().isEmpty()) {
         changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
