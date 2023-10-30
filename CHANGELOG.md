@@ -2,6 +2,25 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.109.0
+### No issue
+
+**feat: adding path filters**
+
+
+[3f3bd7a48bc271e](https://github.com/tomasbjerre/git-changelog-command-line/commit/3f3bd7a48bc271e) Tomas Bjerre *2023-10-30 17:38:49*
+
+**docs: Update README.md**
+
+
+[39de179ae4de5d8](https://github.com/tomasbjerre/git-changelog-command-line/commit/39de179ae4de5d8) Tomas Bjerre *2023-10-18 07:02:01*
+
+**docs: readme updated with example of first release**
+
+
+[a3cb64550f42327](https://github.com/tomasbjerre/git-changelog-command-line/commit/a3cb64550f42327) Tomas Bjerre *2023-10-18 06:50:59*
+
+
 ## 1.108.3
 ### No issue
 
