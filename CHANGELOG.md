@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 1.109.1
+### No issue
+
+**fix: mapping commits to lowest possible semantic tag**
+
+
+[6d4ec6e497f7d2a](https://github.com/tomasbjerre/git-changelog-command-line/commit/6d4ec6e497f7d2a) Tomas Bjerre *2023-12-01 17:25:02*
+
+
 ## 1.109.0
 ### No issue
 
