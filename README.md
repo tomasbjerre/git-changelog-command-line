@@ -11,7 +11,7 @@ This is a Java application (runnable `jar`) packaged into an `NPM` package for c
 
 - The runnable `jar` can be found in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22git-changelog-command-line%22) and used like `java -jar git-changelog-command-line-*.jar ....`.
 - The `npm` package can be found in [NPM](https://www.npmjs.com/package/git-changelog-command-line).
-- The `Docker` image can be found in [Dockerhub](https://hub.docker.com/r/tomasbjerre/git-changelog-command-line) and used like `docker run --mount src="$(pwd)",target=/usr/src/git-changelog-command-line,type=bind tomasbjerre/git-changelog-command-line:X --stdout`.
+- The `Docker` image can be found in [Dockerhub](https://hub.docker.com/r/tomasbjerre/git-changelog-command-line) and used like `docker run --mount src="$(pwd)",target=/usr/src/git-changelog-command-line,type=bind tomasbjerre/git-changelog-command-line:X --help`.
 
 ## Example - Simple
 
