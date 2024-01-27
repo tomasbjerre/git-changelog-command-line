@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 2.0.0
+### No issue
+
+**breaking: JGit 6 and Java 11**
+
+
+[340e2f3472b0f25](https://github.com/tomasbjerre/git-changelog-command-line/commit/340e2f3472b0f25) Tomas Bjerre *2024-01-27 08:53:00*
+
+
 ## 1.109.1
 ### No issue
 
