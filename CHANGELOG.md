@@ -2,6 +2,25 @@
 
 Changelog of Git Changelog Command Line.
 
+## 2.1.0
+### No issue
+
+**feat(conventional-commits): allow whitespace, colon and comma as separator in scope**
+
+
+[69b3100b1092291](https://github.com/tomasbjerre/git-changelog-command-line/commit/69b3100b1092291) Tomas Bjerre *2024-02-10 06:59:37*
+
+**chore: script**
+
+
+[cc0e0eec8e527ed](https://github.com/tomasbjerre/git-changelog-command-line/commit/cc0e0eec8e527ed) Tomas Bjerre *2024-01-27 09:22:43*
+
+**chore: script**
+
+
+[5c54e3f9b04fb59](https://github.com/tomasbjerre/git-changelog-command-line/commit/5c54e3f9b04fb59) Tomas Bjerre *2024-01-27 09:19:34*
+
+
 ## 2.0.0
 ### No issue
 
