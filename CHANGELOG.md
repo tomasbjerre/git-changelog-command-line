@@ -2,6 +2,20 @@
 
 Changelog of Git Changelog Command Line.
 
+## 2.2.0
+### No issue
+
+**chore: gradle 8**
+
+
+[9fbe16d361e943b](https://github.com/tomasbjerre/git-changelog-command-line/commit/9fbe16d361e943b) Tomas Bjerre *2024-02-25 18:29:43*
+
+**feat: bundling it with Nashorn to enable javascript helpers in java 11+**
+
+
+[544d9eead974946](https://github.com/tomasbjerre/git-changelog-command-line/commit/544d9eead974946) Tomas Bjerre *2024-02-25 15:46:48*
+
+
 ## 2.1.0
 ### No issue
 
