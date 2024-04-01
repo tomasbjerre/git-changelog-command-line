@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 2.2.2
+### No issue
+
+**chore: ci**
+
+
+[4013e65cb2db2ca](https://github.com/tomasbjerre/git-changelog-command-line/commit/4013e65cb2db2ca) Tomas Bjerre *2024-03-30 19:53:43*
+
+
 ## 2.2.0
 ### No issue
 
