@@ -2,6 +2,20 @@
 
 Changelog of Git Changelog Command Line.
 
+## 2.2.3
+### No issue
+
+**chore: ignoring files in relocate**
+
+
+[f357b279bca5981](https://github.com/tomasbjerre/git-changelog-command-line/commit/f357b279bca5981) Tomas Bjerre *2024-07-06 07:15:13*
+
+**fix: updating dependencies (refs #19)**
+
+
+[1f32f4c620fde24](https://github.com/tomasbjerre/git-changelog-command-line/commit/1f32f4c620fde24) Tomas Bjerre *2024-07-06 07:06:18*
+
+
 ## 2.2.2
 ### No issue
 
