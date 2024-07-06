@@ -24,7 +24,6 @@ project.ext.buildConfig = [
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 shadowJar {
-  exclude 'META-INF/versions/17/**'
   exclude 'META-INF/versions/21/**'
 }
 
