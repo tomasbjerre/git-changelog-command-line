@@ -2,6 +2,15 @@
 
 Changelog of Git Changelog Command Line.
 
+## 2.3.0
+### No issue
+
+**feat: build with java 17**
+
+
+[a60eb48de6359b7](https://github.com/tomasbjerre/git-changelog-command-line/commit/a60eb48de6359b7) Tomas Bjerre *2024-07-06 07:30:06*
+
+
 ## 2.2.3
 ### No issue
 
