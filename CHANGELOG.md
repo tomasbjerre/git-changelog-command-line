@@ -1,3 +1,14 @@
+## Unreleased ()
+
+### Features
+
+-  using new build scripts ([ad7cb](https://github.com/tomasbjerre/git-changelog-command-line/commit/ad7cb428b3d9f3c) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  maby fixed build script for release ([fef9f](https://github.com/tomasbjerre/git-changelog-command-line/commit/fef9f8de9223b0f) Tomas Bjerre)  
+-  stepping dependencies ([ff8a5](https://github.com/tomasbjerre/git-changelog-command-line/commit/ff8a53c435d49ce) Tomas Bjerre)  
+
 # Git Changelog Command Line changelog
 
 Changelog of Git Changelog Command Line.
