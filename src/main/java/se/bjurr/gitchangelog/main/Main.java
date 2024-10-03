@@ -649,7 +649,8 @@ public class Main {
       }
       if (arg.wasGiven(ignoreCommitsOlderThanArgument)) {
         final Date date =
-            new SimpleDateFormat(DEFAULT_DATEFORMAT).parse(arg.get(ignoreCommitsOlderThanArgument));
+            new SimpleDateFormat(DEFAULT_DATEFORMAT) // NOPMD
+                .parse(arg.get(ignoreCommitsOlderThanArgument));
         changelogApiBuilder.withIgnoreCommitsOlderThan(date);
       }
       if (arg.wasGiven(ignoreTagsIfNameMatchesArgument)) {
@@ -826,24 +827,25 @@ public class Main {
       }
 
       if (arg.wasGiven(showDebugInfo)) {
-        System.out.println(
+        System.out.println( // NOPMD
             "Settings:\n"
                 + new GsonBuilder()
                     .setPrettyPrinting()
                     .create()
                     .toJson(changelogApiBuilder.getSettings()));
-        System.out.println("Template:\n\n" + changelogApiBuilder.getTemplateString() + "\n\n");
+        System.out.println( // NOPMD
+            "Template:\n\n" + changelogApiBuilder.getTemplateString() + "\n\n"); // NOPMD
         final byte[] template =
             changelogApiBuilder.getTemplateString().getBytes(StandardCharsets.UTF_8);
         for (final byte element : template) {
           System.out.format("%02X ", element);
         }
-        System.out.println();
+        System.out.println(); // NOPMD
       }
 
       if (arg.wasGiven(printHighestVersion)) {
         final String version = changelogApiBuilder.getHighestSemanticVersion().toString();
-        System.out.println(version);
+        System.out.println(version); // NOPMD
         System.exit(0);
       }
 
@@ -851,24 +853,24 @@ public class Main {
         final SemanticVersion highestSemanticVersion =
             changelogApiBuilder.getHighestSemanticVersion();
         final String tag = highestSemanticVersion.findTag().orElse("");
-        System.out.println(tag);
+        System.out.println(tag); // NOPMD
         System.exit(0);
       }
 
       if (arg.wasGiven(printNextVersion)) {
         final String version = changelogApiBuilder.getNextSemanticVersion().toString();
-        System.out.println(version);
+        System.out.println(version); // NOPMD
         System.exit(0);
       }
 
       if (arg.wasGiven(printCurrentVersion)) {
         final String version = changelogApiBuilder.getCurrentSemanticVersion().toString();
-        System.out.println(version);
+        System.out.println(version); // NOPMD
         System.exit(0);
       }
 
     } catch (final ArgumentException exception) {
-      System.out.println(exception.getMessageAndUsage());
+      System.out.println(exception.getMessageAndUsage()); // NOPMD
       System.exit(1);
     }
   }
@@ -891,7 +893,7 @@ public class Main {
     if (Main.recordSystemOutPrintln) {
       Main.systemOutPrintln = systemOutPrintln;
     } else {
-      System.out.println(systemOutPrintln);
+      System.out.println(systemOutPrintln); // NOPMD
     }
   }
 }
