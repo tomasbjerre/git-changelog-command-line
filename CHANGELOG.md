@@ -1,3 +1,9 @@
+## 2.4.1 (2024-10-03)
+
+### Bug Fixes
+
+-  trying to fix build script ([7e78a](https://github.com/tomasbjerre/git-changelog-command-line/commit/7e78a55704e33f8) Tomas Bjerre)  
+
 ## Unreleased ()
 
 ### Features
