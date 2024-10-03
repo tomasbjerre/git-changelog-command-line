@@ -4,8 +4,6 @@
 
 -  trying to fix build script ([7e78a](https://github.com/tomasbjerre/git-changelog-command-line/commit/7e78a55704e33f8) Tomas Bjerre)  
 
-## Unreleased ()
-
 ### Features
 
 -  using new build scripts ([ad7cb](https://github.com/tomasbjerre/git-changelog-command-line/commit/ad7cb428b3d9f3c) Tomas Bjerre)  
