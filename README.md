@@ -13,6 +13,12 @@ This is a Java application (runnable `jar`) packaged into an `NPM` package for c
 - The `npm` package can be found in [NPM](https://www.npmjs.com/package/git-changelog-command-line).
 - The `Docker` image can be found in [Dockerhub](https://hub.docker.com/r/tomasbjerre/git-changelog-command-line) and used like `docker run --mount src="$(pwd)",target=/usr/src/git-changelog-command-line,type=bind tomasbjerre/git-changelog-command-line:X --help`.
 
+| Version                  | Java Version |
+| ------------------------ | ------------ |
+| version < 2.0.0          | 8            |
+| 2.0.0 <= version < 2.3.0 | 11           |
+| 2.3.0 <= version         | 17           |
+
 ## Example - Simple
 
 A changelog can be created like this.
