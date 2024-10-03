@@ -15,10 +15,6 @@
 -  maby fixed build script for release ([fef9f](https://github.com/tomasbjerre/git-changelog-command-line/commit/fef9f8de9223b0f) Tomas Bjerre)  
 -  stepping dependencies ([ff8a5](https://github.com/tomasbjerre/git-changelog-command-line/commit/ff8a53c435d49ce) Tomas Bjerre)  
 
-# Git Changelog Command Line changelog
-
-Changelog of Git Changelog Command Line.
-
 ## 2.3.0
 ### No issue
 
