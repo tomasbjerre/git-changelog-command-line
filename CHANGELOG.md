@@ -1,3 +1,9 @@
+## 2.5.0 (2024-10-16)
+
+### Features
+
+-  scope helpers to support chore(deps) ([c6105](https://github.com/tomasbjerre/git-changelog-command-line/commit/c6105a193017afb) Tomas Bjerre)  
+
 ## 2.4.1 (2024-10-03)
 
 ### Bug Fixes
