@@ -1,3 +1,8 @@
+## 2.5.1 (2024-10-16)
+
+### Dependency updates
+
+- show dependency updates in changelog ([f4ade](https://github.com/tomasbjerre/git-changelog-command-line/commit/f4ade639678d650) Tomas Bjerre)  
 ## 2.5.0 (2024-10-16)
 
 ### Features
