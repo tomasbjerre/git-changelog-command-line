@@ -1,3 +1,8 @@
+## 2.5.2 (2025-01-18)
+
+### Dependency updates
+
+- upgrading dependencies ([904e7](https://github.com/tomasbjerre/git-changelog-command-line/commit/904e7fc55f0e3a4) Tomas Bjerre)  
 ## 2.5.1 (2024-10-16)
 
 ### Dependency updates
