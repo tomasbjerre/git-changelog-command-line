@@ -1,3 +1,9 @@
+## 2.5.3 (2025-01-26)
+
+### Bug Fixes
+
+-  reverse order in eachUrlPart ([d55bb](https://github.com/tomasbjerre/git-changelog-command-line/commit/d55bb21391f29a0) Tomas Bjerre)  
+
 ## 2.5.2 (2025-01-18)
 
 ### Dependency updates
