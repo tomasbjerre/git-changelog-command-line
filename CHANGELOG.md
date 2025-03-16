@@ -1,3 +1,8 @@
+## 2.5.5 (2025-03-16)
+
+### Dependency updates
+
+- git-changelog-lib ([81e7d](https://github.com/tomasbjerre/git-changelog-command-line/commit/81e7ddd085397a0) Tomas Bjerre)  
 ## 2.5.4 (2025-03-16)
 
 ### Dependency updates
