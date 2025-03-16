@@ -9,7 +9,7 @@ shadowJar {
 }
 
 dependencies {
-	implementation 'se.bjurr.gitchangelog:git-changelog-lib:2.5.2'
+	implementation 'se.bjurr.gitchangelog:git-changelog-lib:2.6.0'
 	implementation 'se.softhouse:jargo:0.4.14'
 	implementation 'org.slf4j:slf4j-simple:2.0.17'
 	implementation 'com.google.code.gson:gson:2.12.1'
