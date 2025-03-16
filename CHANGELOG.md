@@ -1,3 +1,8 @@
+## 2.5.4 (2025-03-16)
+
+### Dependency updates
+
+- git-changelog-lib, gson, slf4j, json-smart, commons-io, jackson ([44b9c](https://github.com/tomasbjerre/git-changelog-command-line/commit/44b9c81fd488597) Tomas Bjerre)  
 ## 2.5.3 (2025-01-26)
 
 ### Bug Fixes
