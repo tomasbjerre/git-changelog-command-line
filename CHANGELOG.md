@@ -1,3 +1,9 @@
+## 2.5.6 (2025-04-07)
+
+### Bug Fixes
+
+-  adding missing --prepend-template ([5eadf](https://github.com/tomasbjerre/git-changelog-command-line/commit/5eadf8413fd31b7) Tomas Bjerre)  
+
 ## 2.5.5 (2025-03-16)
 
 ### Dependency updates
