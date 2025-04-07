@@ -443,6 +443,12 @@ Or from command line:
                                                         since highest version, and 
                                                         exit.
                                                         Default: disabled
+-pt, --prepend-template <string>                        Template to use when 
+                                                        prepending. A default template 
+                                                        will be used if not 
+                                                        specified.
+                                                        <string>: any string
+                                                        Default: changelog-prepend.mustache
 -ptf, --prepend-to-file <string>                        Add the changelog to 
                                                         top of given file.
                                                         <string>: any string

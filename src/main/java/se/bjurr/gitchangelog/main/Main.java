@@ -46,6 +46,7 @@ public class Main {
   public static final String PARAM_OUTPUT_FILE = "-of";
   public static final String PARAM_OUTPUT_STDOUT = "-std";
   public static final String PARAM_TEMPLATE = "-t";
+  public static final String PARAM_PREPEND_TEMPLATE = "-pt";
   public static final String PARAM_TEMPLATE_BASE_DIR = "-tbd";
   public static final String PARAM_TEMPLATE_PARTIAL_SUFFIX = "-tps";
   public static final String PARAM_REPO = "-r";
@@ -118,6 +119,13 @@ public class Main {
         stringArgument(PARAM_TEMPLATE, "--template") //
             .description("Template to use. A default template will be used if not specified.") //
             .defaultValue(defaultSettings.getTemplatePath()) //
+            .build();
+
+    final Argument<String> prependTemplatePathArgument =
+        stringArgument(PARAM_PREPEND_TEMPLATE, "--prepend-template") //
+            .description(
+                "Template to use when prepending. A default template will be used if not specified.") //
+            .defaultValue(defaultSettings.getPrependTemplatePath()) //
             .build();
 
     final Argument<String> templateBaseDirArgument =
@@ -503,6 +511,7 @@ public class Main {
                   outputStdoutArgument,
                   outputFileArgument,
                   templatePathArgument,
+                  prependTemplatePathArgument,
                   templateBaseDirArgument,
                   templatePartialSuffixArgument,
                   fromCommitArgument,
@@ -658,6 +667,9 @@ public class Main {
       }
       if (arg.wasGiven(templatePathArgument)) {
         changelogApiBuilder.withTemplatePath(arg.get(templatePathArgument));
+      }
+      if (arg.wasGiven(prependTemplatePathArgument)) {
+        changelogApiBuilder.withPrependTemplatePath(arg.get(prependTemplatePathArgument));
       }
       if (arg.wasGiven(jiraIssuePatternArgument)) {
         changelogApiBuilder.withJiraIssuePattern(arg.get(jiraIssuePatternArgument));
