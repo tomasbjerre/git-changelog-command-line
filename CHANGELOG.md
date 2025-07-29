@@ -1,3 +1,8 @@
+## 2.5.7 (2025-07-29)
+
+### Dependency updates
+
+- dependency updates ([08bb9](https://github.com/tomasbjerre/git-changelog-command-line/commit/08bb9431b0cb398) Tomas Bjerre)  
 ## 2.5.6 (2025-04-07)
 
 ### Bug Fixes
