@@ -9,10 +9,10 @@ shadowJar {
 }
 
 dependencies {
-	implementation 'se.bjurr.gitchangelog:git-changelog-lib:2.6.0'
+	implementation 'se.bjurr.gitchangelog:git-changelog-lib:2.6.1'
 	implementation 'se.softhouse:jargo:0.4.14'
 	implementation 'org.slf4j:slf4j-simple:2.0.17'
-	implementation 'com.google.code.gson:gson:2.12.1'
+	implementation 'com.google.code.gson:gson:2.13.1'
 	implementation 'org.openjdk.nashorn:nashorn-core:15.6'
 
 	testImplementation 'junit:junit:4.13.2'
