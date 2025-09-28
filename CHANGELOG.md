@@ -8,6 +8,11 @@
 ### Dependency updates
 
 - dependencies ([05498](https://github.com/tomasbjerre/git-changelog-command-line/commit/054983fec444a2b) Tomas Bjerre)  
+## 2.5.8 (2025-09-28)
+
+### Dependency updates
+
+- dependencies ([05498](https://github.com/tomasbjerre/git-changelog-command-line/commit/054983fec444a2b) Tomas Bjerre)  
 ## 2.5.7 (2025-07-29)
 
 ### Dependency updates
