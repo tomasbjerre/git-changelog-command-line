@@ -1,3 +1,8 @@
+## 2.5.9 (2025-09-28)
+
+### Dependency updates
+
+- dependencies ([d782e](https://github.com/tomasbjerre/git-changelog-command-line/commit/d782e269bcd2f30) Tomas Bjerre)  
 ## 2.5.8 (2025-09-28)
 
 ### Dependency updates
