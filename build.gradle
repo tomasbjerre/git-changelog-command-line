@@ -1,20 +1,29 @@
 plugins {
-	id "se.bjurr.gradle.conventional-release" version "0.+"
-	id "se.bjurr.gradle.update-versions" version "0.+"
-	id "se.bjurr.gradle.java-convention" version "0.+"
+	id "se.bjurr.gradle.bundle-command-shadow" version "1.2.0"
+}
+
+dependencies {
+	implementation "se.bjurr.gitchangelog:git-changelog-lib:2.6.2"
+	implementation 'se.softhouse:jargo:0.4.14'
+	implementation 'org.slf4j:slf4j-simple:2.0.17'
+	implementation "com.google.code.gson:gson:2.13.2"
+	implementation "org.openjdk.nashorn:nashorn-core:15.7"
+}
+
+javaExtension {
+	javaVersion = 17
 }
 
 shadowJar {
 	exclude 'META-INF/versions/21/**'
 }
 
-dependencies {
-	implementation 'se.bjurr.gitchangelog:git-changelog-lib:2.6.1'
-	implementation 'se.softhouse:jargo:0.4.14'
-	implementation 'org.slf4j:slf4j-simple:2.0.17'
-	implementation 'com.google.code.gson:gson:2.13.1'
-	implementation 'org.openjdk.nashorn:nashorn-core:15.6'
+shadowExtension {
+	mainClass.set("se.bjurr.gitchangelog.main.Main")
+	relocate.set("org:org,com:com")
+}
 
-	testImplementation 'junit:junit:4.13.2'
+staticCodeAnalysisExtension {
+	maxViolations.set(0)
 }
 
