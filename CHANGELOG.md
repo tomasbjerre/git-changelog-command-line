@@ -1,3 +1,16 @@
+## 3.0.0 (2025-10-07)
+
+### Breaking changes
+
+-  nodejs 22 support ([ab3d6](https://github.com/tomasbjerre/git-changelog-command-line/commit/ab3d6358e94a52a) Tomas Bjerre)  
+
+### Features
+
+-  nodejs 22 support ([ab3d6](https://github.com/tomasbjerre/git-changelog-command-line/commit/ab3d6358e94a52a) Tomas Bjerre)  
+
+### Dependency updates
+
+- gradle 9 ([179a1](https://github.com/tomasbjerre/git-changelog-command-line/commit/179a127ef2c0f73) Tomas Bjerre)  
 ## 2.5.9 (2025-09-28)
 
 ### Dependency updates
