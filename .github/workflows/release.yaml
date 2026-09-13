@@ -59,3 +59,6 @@ jobs:
             --repository-url "file://$HOME/.m2/repository"
         env:
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          # runnable-jar-to-docker's README-sync step (docker-pushrm) reads this
+          # lowercase name directly, mirroring the old local build-docker.sh.
+          dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
