@@ -1,3 +1,19 @@
+## 4.0.0 (2026-09-13)
+
+### Breaking changes
+
+-  migrate jargo to picocli ([a5aaa](https://github.com/tomasbjerre/git-changelog-command-line/commit/a5aaa54ffb62e4c) Tomas Bjerre)  
+-  replace gson with jackson 3 ([f80f4](https://github.com/tomasbjerre/git-changelog-command-line/commit/f80f4d0f66a5c4a) Tomas Bjerre)  
+
+### Features
+
+-  migrate jargo to picocli ([a5aaa](https://github.com/tomasbjerre/git-changelog-command-line/commit/a5aaa54ffb62e4c) Tomas Bjerre)  
+-  replace gson with jackson 3 ([f80f4](https://github.com/tomasbjerre/git-changelog-command-line/commit/f80f4d0f66a5c4a) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  adapt to git-changelog-lib 3 for settings debug output ([918ad](https://github.com/tomasbjerre/git-changelog-command-line/commit/918ada3b902b04d) Tomas Bjerre)  
+
 ## 3.0.0 (2025-10-07)
 
 ### Breaking changes
