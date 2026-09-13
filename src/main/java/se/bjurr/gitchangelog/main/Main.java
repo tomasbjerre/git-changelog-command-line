@@ -10,10 +10,7 @@ import static se.softhouse.jargo.Arguments.optionArgument;
 import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.io.File;
-import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -30,6 +27,8 @@ import se.bjurr.gitchangelog.internal.settings.Settings;
 import se.softhouse.jargo.Argument;
 import se.softhouse.jargo.ArgumentException;
 import se.softhouse.jargo.ParsedArguments;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.json.JsonMapper;
 
 public class Main {
   private static final String PARAM_REGISTER_HANDLEBARS_HELPER = "-rhh";
@@ -610,9 +609,9 @@ public class Main {
 
       if (arg.wasGiven(extendedVariablesArgument)) {
         final String jsonString = arg.get(extendedVariablesArgument);
-        final Gson gson = new Gson();
-        final Type type = new TypeToken<Map<String, Object>>() {}.getType();
-        final Object jsonObject = gson.fromJson(jsonString, type);
+        final JsonMapper jsonMapper = JsonMapper.builder().build();
+        final Map<String, Object> jsonObject =
+            jsonMapper.readValue(jsonString, new TypeReference<Map<String, Object>>() {});
         final Map<String, Object> extendedVariables = new HashMap<>();
         extendedVariables.put("extended", jsonObject);
         changelogApiBuilder.withExtendedVariables(extendedVariables);
