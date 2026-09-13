@@ -50,6 +50,9 @@ jobs:
         run: |
           MAVEN_VERSION=$(grep '^version=' gradle.properties | cut -d= -f2)
           MAVEN_GROUP=$(grep '^group=' gradle.properties | cut -d= -f2)
+          # runnable-jar-to-docker's README-sync step (docker-pushrm) reads this
+          # lowercase name directly, mirroring the old local build-docker.sh.
+          export dockerhub_token="$DOCKERHUB_TOKEN"
           npx runnable-jar-to-docker@latest \
             --docker-username tomasbjerre \
             --docker-password "$DOCKERHUB_TOKEN" \
@@ -59,6 +62,3 @@ jobs:
             --repository-url "file://$HOME/.m2/repository"
         env:
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          # runnable-jar-to-docker's README-sync step (docker-pushrm) reads this
-          # lowercase name directly, mirroring the old local build-docker.sh.
-          dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
