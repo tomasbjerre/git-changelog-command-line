@@ -3,12 +3,6 @@ package se.bjurr.gitchangelog.main;
 import static se.bjurr.gitchangelog.api.GitChangelogApi.gitChangelogApiBuilder;
 import static se.bjurr.gitchangelog.api.GitChangelogApiConstants.DEFAULT_DATEFORMAT;
 import static se.bjurr.gitchangelog.internal.settings.Settings.defaultSettings;
-import static se.softhouse.jargo.Arguments.enumArgument;
-import static se.softhouse.jargo.Arguments.fileArgument;
-import static se.softhouse.jargo.Arguments.helpArgument;
-import static se.softhouse.jargo.Arguments.optionArgument;
-import static se.softhouse.jargo.Arguments.stringArgument;
-import static se.softhouse.jargo.CommandLineParser.withArguments;
 
 import java.io.File;
 import java.nio.charset.Charset;
@@ -19,14 +13,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import picocli.CommandLine;
+import picocli.CommandLine.Model.CommandSpec;
+import picocli.CommandLine.Model.OptionSpec;
+import picocli.CommandLine.ParameterException;
+import picocli.CommandLine.ParseResult;
 import se.bjurr.gitchangelog.api.GitChangelogApi;
 import se.bjurr.gitchangelog.api.GitChangelogApiConstants;
 import se.bjurr.gitchangelog.api.InclusivenessStrategy;
 import se.bjurr.gitchangelog.internal.semantic.SemanticVersion;
 import se.bjurr.gitchangelog.internal.settings.Settings;
-import se.softhouse.jargo.Argument;
-import se.softhouse.jargo.ArgumentException;
-import se.softhouse.jargo.ParsedArguments;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -95,260 +91,267 @@ public class Main {
   private static String systemOutPrintln;
   private static boolean recordSystemOutPrintln;
 
+  private static OptionSpec.Builder stringOption(final String... names) {
+    return OptionSpec.builder(names).type(String.class);
+  }
+
+  private static OptionSpec.Builder flagOption(final String... names) {
+    return OptionSpec.builder(names).type(Boolean.class).arity("0");
+  }
+
+  private static OptionSpec.Builder repeatedStringOption(final String... names) {
+    return OptionSpec.builder(names).type(List.class).auxiliaryTypes(String.class);
+  }
+
   public static void main(final String args[]) throws Exception {
     final Settings defaultSettings = defaultSettings();
-    final Argument<?> helpArgument = helpArgument("-h", "--help");
 
-    final Argument<String> settingsArgument =
-        stringArgument(PARAM_SETTINGS_FILE, "--settings-file") //
-            .description("Use settings from file.") //
-            .defaultValue(null) //
+    final OptionSpec helpArgument =
+        OptionSpec.builder("-h", "--help") //
+            .usageHelp(true) //
+            .description("Show this help message and exit.") //
             .build();
-    final Argument<Boolean> outputStdoutArgument =
-        optionArgument(PARAM_OUTPUT_STDOUT, "--stdout") //
+
+    final OptionSpec settingsArgument =
+        stringOption(PARAM_SETTINGS_FILE, "--settings-file") //
+            .description("Use settings from file.") //
+            .build();
+    final OptionSpec outputStdoutArgument =
+        flagOption(PARAM_OUTPUT_STDOUT, "--stdout") //
             .description("Print builder to <STDOUT>.") //
             .build();
-    final Argument<String> outputFileArgument =
-        stringArgument(PARAM_OUTPUT_FILE, "--output-file") //
+    final OptionSpec outputFileArgument =
+        stringOption(PARAM_OUTPUT_FILE, "--output-file") //
             .description("Write output to file.") //
             .build();
 
-    final Argument<String> templatePathArgument =
-        stringArgument(PARAM_TEMPLATE, "--template") //
+    final OptionSpec templatePathArgument =
+        stringOption(PARAM_TEMPLATE, "--template") //
             .description("Template to use. A default template will be used if not specified.") //
             .defaultValue(defaultSettings.getTemplatePath()) //
             .build();
 
-    final Argument<String> prependTemplatePathArgument =
-        stringArgument(PARAM_PREPEND_TEMPLATE, "--prepend-template") //
+    final OptionSpec prependTemplatePathArgument =
+        stringOption(PARAM_PREPEND_TEMPLATE, "--prepend-template") //
             .description(
                 "Template to use when prepending. A default template will be used if not specified.") //
             .defaultValue(defaultSettings.getPrependTemplatePath()) //
             .build();
 
-    final Argument<String> templateBaseDirArgument =
-        stringArgument(PARAM_TEMPLATE_BASE_DIR, "--template-base-dir") //
+    final OptionSpec templateBaseDirArgument =
+        stringOption(PARAM_TEMPLATE_BASE_DIR, "--template-base-dir") //
             .description("Base dir of templates.") //
             .defaultValue(defaultSettings.getTemplateBaseDir()) //
             .build();
 
-    final Argument<String> templatePartialSuffixArgument =
-        stringArgument(PARAM_TEMPLATE_PARTIAL_SUFFIX, "--template-partial-suffix") //
+    final OptionSpec templatePartialSuffixArgument =
+        stringOption(PARAM_TEMPLATE_PARTIAL_SUFFIX, "--template-partial-suffix") //
             .description("File ending for partials.") //
             .defaultValue(defaultSettings.getTemplateSuffix()) //
             .build();
 
-    final Argument<String> untaggedTagNameArgument =
-        stringArgument(PARAM_UNTAGGED_TAG_NAME, "--untagged-name") //
+    final OptionSpec untaggedTagNameArgument =
+        stringOption(PARAM_UNTAGGED_TAG_NAME, "--untagged-name") //
             .description(
                 "When listing commits per tag, this will by the name of a virtual tag that contains commits not available in any git tag.") //
             .defaultValue(defaultSettings.getUntaggedName()) //
             .build();
 
-    final Argument<String> fromRepoArgument =
-        stringArgument(PARAM_REPO, "--repo") //
+    final OptionSpec fromRepoArgument =
+        stringOption(PARAM_REPO, "--repo") //
             .description("Repository.") //
             .defaultValue(defaultSettings.getFromRepo()) //
             .build();
-    final Argument<String> fromRevArgument =
-        stringArgument(PARAM_FROM_REV, "--from-revision") //
+    final OptionSpec fromRevArgument =
+        stringOption(PARAM_FROM_REV, "--from-revision") //
             .description("From revision.") //
             .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
             .build();
-    final Argument<InclusivenessStrategy> fromRevInclusivenessStrategyArgument =
-        enumArgument(
-                InclusivenessStrategy.class,
-                PARAM_FROM_REV_INCLUDE,
-                "--from-revision-inclusiveness") //
+    final OptionSpec fromRevInclusivenessStrategyArgument =
+        OptionSpec.builder(PARAM_FROM_REV_INCLUDE, "--from-revision-inclusiveness") //
+            .type(InclusivenessStrategy.class) //
             .description("Include, or exclude, specified revision.") //
-            .defaultValue(defaultSettings.getFromRevisionStrategy()) //
+            .defaultValue(defaultSettings.getFromRevisionStrategy().name()) //
             .build();
-    final Argument<String> toRevArgument =
-        stringArgument(PARAM_TO_REV, "--to-revision") //
+    final OptionSpec toRevArgument =
+        stringOption(PARAM_TO_REV, "--to-revision") //
             .description("To revision.") //
             .defaultValue(defaultSettings.getToRevision().orElse(null)) //
             .build();
-    final Argument<InclusivenessStrategy> toRevInclusivenessStrategyArgument =
-        enumArgument(
-                InclusivenessStrategy.class,
-                PARAM_TO_REV_INCLUDE,
-                "--to-revision-inclusiveness") //
+    final OptionSpec toRevInclusivenessStrategyArgument =
+        OptionSpec.builder(PARAM_TO_REV_INCLUDE, "--to-revision-inclusiveness") //
+            .type(InclusivenessStrategy.class) //
             .description("Include, or exclude, specified revision.") //
-            .defaultValue(defaultSettings.getFromRevisionStrategy()) //
+            .defaultValue(defaultSettings.getFromRevisionStrategy().name()) //
             .build();
-    final Argument<String> fromRefArgument =
-        stringArgument(PARAM_FROM_REF, "--from-ref") //
+    final OptionSpec fromRefArgument =
+        stringOption(PARAM_FROM_REF, "--from-ref") //
             .description("From ref.") //
             .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
-            .hideFromUsage() //
+            .hidden(true) //
             .build();
-    final Argument<String> toRefArgument =
-        stringArgument(PARAM_TO_REF, "--to-ref") //
+    final OptionSpec toRefArgument =
+        stringOption(PARAM_TO_REF, "--to-ref") //
             .description("To ref.") //
             .defaultValue(defaultSettings.getToRevision().orElse(null)) //
-            .hideFromUsage() //
+            .hidden(true) //
             .build();
-    final Argument<String> fromCommitArgument =
-        stringArgument(PARAM_FROM_COMMIT, "--from-commit") //
+    final OptionSpec fromCommitArgument =
+        stringOption(PARAM_FROM_COMMIT, "--from-commit") //
             .description("From commit.") //
             .defaultValue(defaultSettings.getFromRevision().orElse(null)) //
-            .hideFromUsage() //
+            .hidden(true) //
             .build();
-    final Argument<String> toCommitArgument =
-        stringArgument(PARAM_TO_COMMIT, "--to-commit") //
+    final OptionSpec toCommitArgument =
+        stringOption(PARAM_TO_COMMIT, "--to-commit") //
             .description("To commit.") //
             .defaultValue(defaultSettings.getToRevision().orElse(null)) //
-            .hideFromUsage() //
+            .hidden(true) //
             .build();
 
-    final Argument<String> ignoreCommitsIfMessageMatchesArgument =
-        stringArgument(PARAM_IGNORE_PATTERN, "--ignore-pattern") //
+    final OptionSpec ignoreCommitsIfMessageMatchesArgument =
+        stringOption(PARAM_IGNORE_PATTERN, "--ignore-pattern") //
             .description("Ignore commits where pattern matches message.") //
             .defaultValue(defaultSettings.getIgnoreCommitsIfMessageMatches()) //
             .build();
 
-    final Argument<String> ignoreCommitsOlderThanArgument =
-        stringArgument(PARAM_IGNORE_OLDER_PATTERN, "--ignore-older-than") //
+    final OptionSpec ignoreCommitsOlderThanArgument =
+        stringOption(PARAM_IGNORE_OLDER_PATTERN, "--ignore-older-than") //
             .description("Ignore commits older than " + DEFAULT_DATEFORMAT + ".") //
             .build();
 
-    final Argument<String> ignoreTagsIfNameMatchesArgument =
-        stringArgument(PARAM_IGNORE_TAG_PATTERN, "--ignore-tag-pattern") //
+    final OptionSpec ignoreTagsIfNameMatchesArgument =
+        stringOption(PARAM_IGNORE_TAG_PATTERN, "--ignore-tag-pattern") //
             .description(
                 "Ignore tags that matches regular expression. Can be used to ignore release candidates and only include actual releases.") //
             .defaultValue(defaultSettings.getIgnoreTagsIfNameMatches().orElse(null)) //
             .build();
 
-    final Argument<String> jiraServerArgument =
-        stringArgument(PARAM_JIRA_SERVER, "--jiraServer", "--jira-server") //
+    final OptionSpec jiraServerArgument =
+        stringOption(PARAM_JIRA_SERVER, "--jiraServer", "--jira-server") //
             .description(
                 "Jira server. When a Jira server is given, the title of the Jira issues can be used in the changelog.") //
             .defaultValue(defaultSettings.getJiraServer().orElse(null)) //
             .build();
-    final Argument<String> jiraIssuePatternArgument =
-        stringArgument(PARAM_JIRA_ISSUE_PATTERN, "--jira-pattern") //
+    final OptionSpec jiraIssuePatternArgument =
+        stringOption(PARAM_JIRA_ISSUE_PATTERN, "--jira-pattern") //
             .description("Jira issue pattern.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    final Argument<String> jiraUsernamePatternArgument =
-        stringArgument(PARAM_JIRA_USERNAME, "--jira-username") //
+    final OptionSpec jiraUsernamePatternArgument =
+        stringOption(PARAM_JIRA_USERNAME, "--jira-username") //
             .description("Optional username to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    final Argument<String> jiraPasswordPatternArgument =
-        stringArgument(PARAM_JIRA_PASSWORD, "--jira-password") //
+    final OptionSpec jiraPasswordPatternArgument =
+        stringOption(PARAM_JIRA_PASSWORD, "--jira-password") //
             .description("Optional password to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    final Argument<String> jiraBasicAuthStringPatternArgument =
-        stringArgument(PARAM_JIRA_BASIC_AUTH, "--jira-basic-auth") //
+    final OptionSpec jiraBasicAuthStringPatternArgument =
+        stringOption(PARAM_JIRA_BASIC_AUTH, "--jira-basic-auth") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    final Argument<String> jiraBearerArgument =
-        stringArgument(PARAM_JIRA_BEARER, "--jira-bearer") //
+    final OptionSpec jiraBearerArgument =
+        stringOption(PARAM_JIRA_BEARER, "--jira-bearer") //
             .description("Optional token to authenticate with Jira.") //
             .defaultValue(defaultSettings.getJiraIssuePattern()) //
             .build();
-    final Argument<List<String>> jiraAdditionalFieldArgument =
-        stringArgument(PARAM_JIRA_ADDITIONAL_FIELD, "--jira-additional-field") //
-            .repeated()
+    final OptionSpec jiraAdditionalFieldArgument =
+        repeatedStringOption(PARAM_JIRA_ADDITIONAL_FIELD, "--jira-additional-field") //
             .description(
                 "Adds an additional field for Jira. When configured, we will return from Jira the result of this field, if it exists.") //
             .build();
 
-    final Argument<String> redmineServerArgument =
-        stringArgument(PARAM_REDMINE_SERVER, "--redmine-server") //
+    final OptionSpec redmineServerArgument =
+        stringOption(PARAM_REDMINE_SERVER, "--redmine-server") //
             .description(
                 "Redmine server. When a Redmine server is given, the title of the Redmine issues can be used in the changelog.") //
             .defaultValue(defaultSettings.getRedmineServer().orElse(null)) //
             .build();
-    final Argument<String> redmineIssuePatternArgument =
-        stringArgument(PARAM_REDMINE_ISSUE_PATTERN, "--redmine-pattern") //
+    final OptionSpec redmineIssuePatternArgument =
+        stringOption(PARAM_REDMINE_ISSUE_PATTERN, "--redmine-pattern") //
             .description("Redmine issue pattern.") //
             .defaultValue(defaultSettings.getRedmineIssuePattern()) //
             .build();
-    final Argument<String> redmineUsernameArgument =
-        stringArgument(PARAM_REDMINE_USERNAME, "--redmine-username") //
+    final OptionSpec redmineUsernameArgument =
+        stringOption(PARAM_REDMINE_USERNAME, "--redmine-username") //
             .description("Optional username to authenticate with Redmine.") //
             .build();
-    final Argument<String> redminePasswordArgument =
-        stringArgument(PARAM_REDMINE_PASSWORD, "--redmine-password") //
+    final OptionSpec redminePasswordArgument =
+        stringOption(PARAM_REDMINE_PASSWORD, "--redmine-password") //
             .description("Optional password to authenticate with Redmine.") //
             .build();
-    final Argument<String> redmineTokenArgument =
-        stringArgument(PARAM_REDMINE_TOKEN, "--redmine-token") //
+    final OptionSpec redmineTokenArgument =
+        stringOption(PARAM_REDMINE_TOKEN, "--redmine-token") //
             .description("Optional token/api-key to authenticate with Redmine.") //
             .build();
 
-    final Argument<String> customIssueNameArgument =
-        stringArgument(PARAM_CUSTOM_ISSUE_NAME, "--custom-issue-name") //
+    final OptionSpec customIssueNameArgument =
+        stringOption(PARAM_CUSTOM_ISSUE_NAME, "--custom-issue-name") //
             .description("Custom issue name.") //
-            .defaultValue(null) //
             .build();
-    final Argument<String> customIssuePatternArgument =
-        stringArgument(PARAM_CUSTOM_ISSUE_PATTERN, "--custom-issue-pattern") //
+    final OptionSpec customIssuePatternArgument =
+        stringOption(PARAM_CUSTOM_ISSUE_PATTERN, "--custom-issue-pattern") //
             .description("Custom issue pattern.") //
-            .defaultValue(null) //
             .build();
-    final Argument<String> customIssueLinkArgument =
-        stringArgument(PARAM_CUSTOM_ISSUE_LINK, "--custom-issue-link") //
+    final OptionSpec customIssueLinkArgument =
+        stringOption(PARAM_CUSTOM_ISSUE_LINK, "--custom-issue-link") //
             .description(
-                "Custom issue link. Supports variables like ${PATTERN_GROUP_1} to inject variables from pattern.") //
-            .defaultValue(null) //
+                "Custom issue link. Supports variables like $${PATTERN_GROUP_1} to inject variables from pattern.") //
             .build();
-    final Argument<String> customIssueTitleArgument =
-        stringArgument(PARAM_CUSTOM_ISSUE_TITLE, "--custom-issue-title") //
+    final OptionSpec customIssueTitleArgument =
+        stringOption(PARAM_CUSTOM_ISSUE_TITLE, "--custom-issue-title") //
             .description(
-                "Custom issue title. Supports variables like ${PATTERN_GROUP_1} to inject variables from pattern.") //
-            .defaultValue(null) //
+                "Custom issue title. Supports variables like $${PATTERN_GROUP_1} to inject variables from pattern.") //
             .build();
 
-    final Argument<String> timeZoneArgument =
-        stringArgument(PARAM_TIMEZONE, "--time-zone") //
+    final OptionSpec timeZoneArgument =
+        stringOption(PARAM_TIMEZONE, "--time-zone") //
             .description("TimeZone to use when printing dates.") //
             .defaultValue(defaultSettings.getTimeZone()) //
             .build();
-    final Argument<String> dateFormatArgument =
-        stringArgument(PARAM_DATEFORMAT, "--date-format") //
+    final OptionSpec dateFormatArgument =
+        stringOption(PARAM_DATEFORMAT, "--date-format") //
             .description("Format to use when printing dates.") //
             .defaultValue(defaultSettings.getDateFormat()) //
             .build();
-    final Argument<String> noIssueArgument =
-        stringArgument(PARAM_NOISSUE, "--no-issue-name") //
+    final OptionSpec noIssueArgument =
+        stringOption(PARAM_NOISSUE, "--no-issue-name") //
             .description(
                 "Name of virtual issue that contains commits that has no issue associated.") //
             .defaultValue(defaultSettings.getNoIssueName()) //
             .build();
-    final Argument<Boolean> ignoreCommitsWithoutIssueArgument =
-        optionArgument(PARAM_IGNORE_NOISSUE, "--ignore-commits-without-issue") //
+    final OptionSpec ignoreCommitsWithoutIssueArgument =
+        flagOption(PARAM_IGNORE_NOISSUE, "--ignore-commits-without-issue") //
             .description("Ignore commits that is not included in any issue.") //
             .build();
-    final Argument<String> readableTagNameArgument =
-        stringArgument(PARAM_READABLETAGNAME, "--readable-tag-name") //
+    final OptionSpec readableTagNameArgument =
+        stringOption(PARAM_READABLETAGNAME, "--readable-tag-name") //
             .description("Pattern to extract readable part of tag.") //
             .defaultValue(defaultSettings.getReadableTagName()) //
             .build();
-    final Argument<Boolean> removeIssueFromMessageArgument =
-        optionArgument(PARAM_REMOVEISSUE, "--remove-issue-from-message") //
+    final OptionSpec removeIssueFromMessageArgument =
+        flagOption(PARAM_REMOVEISSUE, "--remove-issue-from-message") //
             .description("Dont print any issues in the messages of commits.") //
             .build();
 
-    final Argument<String> gitHubApiArgument =
-        stringArgument(PARAM_GITHUBAPI, "--github-api") //
+    final OptionSpec gitHubApiArgument =
+        stringOption(PARAM_GITHUBAPI, "--github-api") //
             .description(
                 "GitHub API. Like: https://api.github.com/repos/tomasbjerre/git-changelog-command-line/") //
             .defaultValue("") //
             .build();
-    final Argument<String> gitHubTokenArgument =
-        stringArgument(PARAM_GITHUBTOKEN, "--github-token") //
+    final OptionSpec gitHubTokenArgument =
+        stringOption(PARAM_GITHUBTOKEN, "--github-token") //
             .description(
                 "GitHub API OAuth2 token. You can get it from: curl -u 'yourgithubuser' -d '{\"note\":\"Git Changelog Lib\"}' https://api.github.com/authorizations") //
             .defaultValue("") //
             .build();
 
-    final Argument<String> extendedVariablesArgument =
-        stringArgument(PARAM_EXTENDED_VARIABLES, "--extended-variables") //
+    final OptionSpec extendedVariablesArgument =
+        stringOption(PARAM_EXTENDED_VARIABLES, "--extended-variables") //
             .description(
                 "Extended variables that will be available as {{extended.*}}. "
                     + PARAM_EXTENDED_VARIABLES
@@ -356,259 +359,269 @@ public class Main {
             .defaultValue("") //
             .build();
 
-    final Argument<List<String>> extendedHeadersArgument =
-        stringArgument(PARAM_EXTENDED_HEADERS, "--extended-headers") //
-            .repeated()
+    final OptionSpec extendedHeadersArgument =
+        repeatedStringOption(PARAM_EXTENDED_HEADERS, "--extended-headers") //
             .description(
                 "Extended headers that will send when access JIRA. e.g. "
                     + PARAM_EXTENDED_HEADERS
                     + " CF-Access-Client-ID:abcde12345xyz.access") //
             .build();
 
-    final Argument<String> templateContentArgument =
-        stringArgument(PARAM_TEMPLATE_CONTENT, "--template-content") //
+    final OptionSpec templateContentArgument =
+        stringOption(PARAM_TEMPLATE_CONTENT, "--template-content") //
             .description("String to use as template.") //
             .defaultValue("") //
             .build();
 
-    final Argument<String> gitLabTokenArgument =
-        stringArgument(PARAM_GITLABTOKEN, "--gitlab-token") //
+    final OptionSpec gitLabTokenArgument =
+        stringOption(PARAM_GITLABTOKEN, "--gitlab-token") //
             .description("GitLab API token.") //
             .defaultValue("") //
             .build();
-    final Argument<String> gitLabServerArgument =
-        stringArgument(PARAM_GITLABSERVER, "--gitlab-server") //
+    final OptionSpec gitLabServerArgument =
+        stringOption(PARAM_GITLABSERVER, "--gitlab-server") //
             .description("GitLab server, like https://gitlab.com/.") //
             .defaultValue("") //
             .build();
-    final Argument<String> gitLabProjectNameArgument =
-        stringArgument(PARAM_GITLABPROJECTNAME, "--gitlab-project-name") //
+    final OptionSpec gitLabProjectNameArgument =
+        stringOption(PARAM_GITLABPROJECTNAME, "--gitlab-project-name") //
             .description("GitLab project name.") //
             .defaultValue("") //
             .build();
-    final Argument<String> gitLabProjectIssuePattern =
-        stringArgument(PARAM_GITLABISSUEPATTERN, "--gitlab-issue-pattern") //
+    final OptionSpec gitLabProjectIssuePattern =
+        stringOption(PARAM_GITLABISSUEPATTERN, "--gitlab-issue-pattern") //
             .description("GitLab issue pattern.") //
             .defaultValue("") //
             .build();
 
-    final Argument<Boolean> printHighestVersion =
-        optionArgument(PARAM_PRINT_HIGHEST_VERSION, "--print-highest-version") //
+    final OptionSpec printHighestVersion =
+        flagOption(PARAM_PRINT_HIGHEST_VERSION, "--print-highest-version") //
             .description("Print the highest version, determined by tags in repo, and exit.") //
-            .defaultValue(false)
+            .defaultValue("false")
             .build();
 
-    final Argument<Boolean> printHighestVersionTag =
-        optionArgument(PARAM_PRINT_HIGHEST_VERSION_TAG, "--print-highest-version-tag") //
+    final OptionSpec printHighestVersionTag =
+        flagOption(PARAM_PRINT_HIGHEST_VERSION_TAG, "--print-highest-version-tag") //
             .description("Print the tag corresponding to highest version, and exit.") //
-            .defaultValue(false)
+            .defaultValue("false")
             .build();
 
-    final Argument<Boolean> printNextVersion =
-        optionArgument(PARAM_PRINT_NEXT_VERSION, "--print-next-version") //
+    final OptionSpec printNextVersion =
+        flagOption(PARAM_PRINT_NEXT_VERSION, "--print-next-version") //
             .description(
                 "Print the next version, determined by commits since highest version, and exit.") //
-            .defaultValue(false)
+            .defaultValue("false")
             .build();
 
-    final Argument<Boolean> printCurrentVersion =
-        optionArgument(PARAM_PRINT_CURRENT_VERSION, "--print-current-version") //
+    final OptionSpec printCurrentVersion =
+        flagOption(PARAM_PRINT_CURRENT_VERSION, "--print-current-version") //
             .description(
                 "Like --print-next-version unless the current commit is tagged with a version, if so it will print that version.") //
-            .defaultValue(false)
+            .defaultValue("false")
             .build();
 
-    final Argument<String> registerHandlebarsHelper =
-        stringArgument(PARAM_REGISTER_HANDLEBARS_HELPER, "--register-handlebars-helper") //
+    final OptionSpec registerHandlebarsHelper =
+        stringOption(PARAM_REGISTER_HANDLEBARS_HELPER, "--register-handlebars-helper") //
             .description(
                 "Handlebar helpers, https://handlebarsjs.com/guide/block-helpers.html, to register and use in given template.") //
             .defaultValue("")
             .build();
 
-    final Argument<File> handlebarsHelperFile =
-        fileArgument("-handlebars-helper-file", "-hhf")
-            .description("Can be used to add extra helpers.")
+    final OptionSpec handlebarsHelperFile =
+        OptionSpec.builder("-handlebars-helper-file", "-hhf") //
+            .type(File.class) //
+            .description("Can be used to add extra helpers.") //
             .build();
 
-    final Argument<String> prependToFile =
-        stringArgument(PARAM_PREPEND_TO_FILE, "--prepend-to-file") //
+    final OptionSpec prependToFile =
+        stringOption(PARAM_PREPEND_TO_FILE, "--prepend-to-file") //
             .description("Add the changelog to top of given file.") //
-            .defaultValue(null)
             .build();
 
-    final Argument<String> majorVersionPattern =
-        stringArgument(PARAM_MAJOR_VERSION_PATTERN, "--major-version-pattern") //
+    final OptionSpec majorVersionPattern =
+        stringOption(PARAM_MAJOR_VERSION_PATTERN, "--major-version-pattern") //
             .description(
                 "Commit messages matching this, optional, regular expression will trigger new major version.") //
-            .defaultValue(null)
             .build();
 
-    final Argument<String> minorVersionPattern =
-        stringArgument(PARAM_MINOR_VERSION_PATTERN, "--minor-version-pattern") //
+    final OptionSpec minorVersionPattern =
+        stringOption(PARAM_MINOR_VERSION_PATTERN, "--minor-version-pattern") //
             .description(
                 "Commit messages matching this, optional, regular expression will trigger new minor version.") //
             .defaultValue(GitChangelogApiConstants.DEFAULT_MINOR_PATTERN)
             .build();
 
-    final Argument<String> patchVersionPattern =
-        stringArgument(PARAM_PATCH_VERSION_PATTERN, "--patch-version-pattern") //
+    final OptionSpec patchVersionPattern =
+        stringOption(PARAM_PATCH_VERSION_PATTERN, "--patch-version-pattern") //
             .description(
                 "Commit messages matching this, optional, regular expression will trigger new patch version.") //
             .defaultValue(GitChangelogApiConstants.DEFAULT_PATCH_PATTERN)
             .build();
 
-    final Argument<Boolean> showDebugInfo =
-        optionArgument("--show-debug-info")
+    final OptionSpec showDebugInfo =
+        flagOption("--show-debug-info")
             .description(
                 "Please run your command with this parameter and supply output when reporting bugs.")
             .build();
 
-    final Argument<Boolean> jiraEnabledArgument =
-        optionArgument("-je", "--jira-enabled") //
+    final OptionSpec jiraEnabledArgument =
+        flagOption("-je", "--jira-enabled") //
             .description("Enable parsing for Jira issues.") //
             .build();
 
-    final Argument<Boolean> githubEnabledArgument =
-        optionArgument("-ge", "--github-enabled") //
+    final OptionSpec githubEnabledArgument =
+        flagOption("-ge", "--github-enabled") //
             .description("Enable parsing for GitHub issues.") //
             .build();
 
-    final Argument<Boolean> gitlabEnabledArgument =
-        optionArgument("-gl", "--gitlab-enabled") //
+    final OptionSpec gitlabEnabledArgument =
+        flagOption("-gl", "--gitlab-enabled") //
             .description("Enable parsing for GitLab issues.") //
             .build();
 
-    final Argument<Boolean> redmineEnabledArgument =
-        optionArgument("-re", "--redmine-enabled") //
+    final OptionSpec redmineEnabledArgument =
+        flagOption("-re", "--redmine-enabled") //
             .description("Enable parsing for Redmine issues.") //
             .build();
 
-    final Argument<Boolean> useIntegrationsArgument =
-        optionArgument("-ui", "--use-integrations") //
+    final OptionSpec useIntegrationsArgument =
+        flagOption("-ui", "--use-integrations") //
             .description("Use integrations to get more details on commits.") //
             .build();
 
-    final Argument<String> encodingArgument =
-        stringArgument("-en", "--encoding") //
+    final OptionSpec encodingArgument =
+        stringOption("-en", "--encoding") //
             .description("Encoding to use when writing content.") //
             .defaultValue(StandardCharsets.UTF_8.name())
             .build();
 
-    final Argument<List<String>> pathsArgument =
-        stringArgument("-pf", "--path-filters") //
-            .repeated()
+    final OptionSpec pathsArgument =
+        repeatedStringOption("-pf", "--path-filters") //
             .description("Paths on the filesystem to filter on.") //
-            .defaultValue(defaultSettings.getPathFilters())
             .build();
 
+    final CommandSpec spec = CommandSpec.create().name("git-changelog-command-line");
+    spec.addOption(helpArgument);
+    spec.addOption(settingsArgument);
+    spec.addOption(outputStdoutArgument);
+    spec.addOption(outputFileArgument);
+    spec.addOption(templatePathArgument);
+    spec.addOption(prependTemplatePathArgument);
+    spec.addOption(templateBaseDirArgument);
+    spec.addOption(templatePartialSuffixArgument);
+    spec.addOption(fromCommitArgument);
+    spec.addOption(fromRevArgument);
+    spec.addOption(toRevArgument);
+    spec.addOption(toRevInclusivenessStrategyArgument);
+    spec.addOption(fromRevInclusivenessStrategyArgument);
+    spec.addOption(fromRefArgument);
+    spec.addOption(fromRepoArgument);
+    spec.addOption(toCommitArgument);
+    spec.addOption(toRefArgument);
+    spec.addOption(untaggedTagNameArgument);
+    spec.addOption(jiraIssuePatternArgument);
+    spec.addOption(jiraServerArgument);
+    spec.addOption(redmineIssuePatternArgument);
+    spec.addOption(redmineServerArgument);
+    spec.addOption(ignoreCommitsIfMessageMatchesArgument);
+    spec.addOption(ignoreCommitsOlderThanArgument);
+    spec.addOption(customIssueLinkArgument);
+    spec.addOption(customIssueTitleArgument);
+    spec.addOption(customIssueNameArgument);
+    spec.addOption(customIssuePatternArgument);
+    spec.addOption(timeZoneArgument);
+    spec.addOption(dateFormatArgument);
+    spec.addOption(noIssueArgument);
+    spec.addOption(readableTagNameArgument);
+    spec.addOption(removeIssueFromMessageArgument);
+    spec.addOption(gitHubApiArgument);
+    spec.addOption(jiraUsernamePatternArgument);
+    spec.addOption(jiraPasswordPatternArgument);
+    spec.addOption(jiraBasicAuthStringPatternArgument);
+    spec.addOption(jiraBearerArgument);
+    spec.addOption(jiraAdditionalFieldArgument);
+    spec.addOption(redmineUsernameArgument);
+    spec.addOption(redminePasswordArgument);
+    spec.addOption(redmineTokenArgument);
+    spec.addOption(extendedVariablesArgument);
+    spec.addOption(extendedHeadersArgument);
+    spec.addOption(templateContentArgument);
+    spec.addOption(gitHubTokenArgument);
+    spec.addOption(ignoreCommitsWithoutIssueArgument);
+    spec.addOption(ignoreTagsIfNameMatchesArgument);
+    spec.addOption(gitLabTokenArgument);
+    spec.addOption(gitLabServerArgument);
+    spec.addOption(gitLabProjectNameArgument);
+    spec.addOption(gitLabProjectIssuePattern);
+    spec.addOption(printHighestVersion);
+    spec.addOption(printHighestVersionTag);
+    spec.addOption(printNextVersion);
+    spec.addOption(printCurrentVersion);
+    spec.addOption(registerHandlebarsHelper);
+    spec.addOption(prependToFile);
+    spec.addOption(majorVersionPattern);
+    spec.addOption(minorVersionPattern);
+    spec.addOption(patchVersionPattern);
+    spec.addOption(showDebugInfo);
+    spec.addOption(handlebarsHelperFile);
+    spec.addOption(jiraEnabledArgument);
+    spec.addOption(githubEnabledArgument);
+    spec.addOption(gitlabEnabledArgument);
+    spec.addOption(redmineEnabledArgument);
+    spec.addOption(useIntegrationsArgument);
+    spec.addOption(encodingArgument);
+    spec.addOption(pathsArgument);
+
+    final CommandLine commandLine = new CommandLine(spec);
+
     try {
-      final ParsedArguments arg =
-          withArguments(
-                  helpArgument,
-                  settingsArgument,
-                  outputStdoutArgument,
-                  outputFileArgument,
-                  templatePathArgument,
-                  prependTemplatePathArgument,
-                  templateBaseDirArgument,
-                  templatePartialSuffixArgument,
-                  fromCommitArgument,
-                  fromRevArgument,
-                  toRevArgument,
-                  toRevInclusivenessStrategyArgument,
-                  fromRevInclusivenessStrategyArgument,
-                  fromRefArgument,
-                  fromRepoArgument,
-                  toCommitArgument,
-                  toRefArgument,
-                  untaggedTagNameArgument,
-                  jiraIssuePatternArgument,
-                  jiraServerArgument,
-                  redmineIssuePatternArgument,
-                  redmineServerArgument,
-                  ignoreCommitsIfMessageMatchesArgument,
-                  ignoreCommitsOlderThanArgument,
-                  customIssueLinkArgument,
-                  customIssueTitleArgument,
-                  customIssueNameArgument,
-                  customIssuePatternArgument,
-                  timeZoneArgument,
-                  dateFormatArgument,
-                  noIssueArgument,
-                  readableTagNameArgument,
-                  removeIssueFromMessageArgument,
-                  gitHubApiArgument,
-                  jiraUsernamePatternArgument,
-                  jiraPasswordPatternArgument,
-                  jiraBasicAuthStringPatternArgument,
-                  jiraBearerArgument,
-                  jiraAdditionalFieldArgument,
-                  redmineUsernameArgument,
-                  redminePasswordArgument,
-                  redmineTokenArgument,
-                  extendedVariablesArgument,
-                  extendedHeadersArgument,
-                  templateContentArgument,
-                  gitHubTokenArgument,
-                  ignoreCommitsWithoutIssueArgument,
-                  ignoreTagsIfNameMatchesArgument,
-                  gitLabTokenArgument,
-                  gitLabServerArgument,
-                  gitLabProjectNameArgument,
-                  gitLabProjectIssuePattern,
-                  printHighestVersion,
-                  printHighestVersionTag,
-                  printNextVersion,
-                  printCurrentVersion,
-                  registerHandlebarsHelper,
-                  prependToFile,
-                  majorVersionPattern,
-                  minorVersionPattern,
-                  patchVersionPattern,
-                  showDebugInfo,
-                  handlebarsHelperFile,
-                  jiraEnabledArgument,
-                  githubEnabledArgument,
-                  gitlabEnabledArgument,
-                  redmineEnabledArgument,
-                  useIntegrationsArgument,
-                  encodingArgument,
-                  pathsArgument) //
-              .parse(args);
+      final ParseResult arg = commandLine.parseArgs(args);
+
+      if (arg.isUsageHelpRequested()) {
+        commandLine.usage(System.out); // NOPMD
+        System.exit(0);
+      }
 
       final GitChangelogApi changelogApiBuilder =
           gitChangelogApiBuilder()
-              .withUseIntegrations(arg.wasGiven(useIntegrationsArgument))
-              .withJiraEnabled(arg.wasGiven(jiraEnabledArgument))
-              .withRedmineEnabled(arg.wasGiven(redmineEnabledArgument))
-              .withGitHubEnabled(arg.wasGiven(githubEnabledArgument))
-              .withGitLabEnabled(arg.wasGiven(gitlabEnabledArgument))
-              .withEncoding(Charset.forName(arg.get(encodingArgument)))
-              .withPathFilters(arg.get(pathsArgument).toArray(new String[0]));
+              .withUseIntegrations(arg.hasMatchedOption(useIntegrationsArgument))
+              .withJiraEnabled(arg.hasMatchedOption(jiraEnabledArgument))
+              .withRedmineEnabled(arg.hasMatchedOption(redmineEnabledArgument))
+              .withGitHubEnabled(arg.hasMatchedOption(githubEnabledArgument))
+              .withGitLabEnabled(arg.hasMatchedOption(gitlabEnabledArgument))
+              .withEncoding(Charset.forName(encodingArgument.getValue()));
 
-      if (!arg.get(registerHandlebarsHelper).trim().isEmpty()) {
-        changelogApiBuilder.withHandlebarsHelper(arg.get(registerHandlebarsHelper));
+      final List<String> pathFilters = pathsArgument.getValue();
+      if (pathFilters != null) {
+        changelogApiBuilder.withPathFilters(pathFilters.toArray(new String[0]));
       }
 
-      if (arg.wasGiven(handlebarsHelperFile)) {
-        final byte[] content = Files.readAllBytes(arg.get(handlebarsHelperFile).toPath());
+      final String registerHandlebarsHelperValue = registerHandlebarsHelper.getValue();
+      if (!registerHandlebarsHelperValue.trim().isEmpty()) {
+        changelogApiBuilder.withHandlebarsHelper(registerHandlebarsHelperValue);
+      }
+
+      if (arg.hasMatchedOption(handlebarsHelperFile)) {
+        final File helperFile = handlebarsHelperFile.getValue();
+        final byte[] content = Files.readAllBytes(helperFile.toPath());
         final String contentString = new String(content, StandardCharsets.UTF_8);
         changelogApiBuilder.withHandlebarsHelper(contentString);
       }
 
-      if (arg.wasGiven(settingsArgument)) {
-        changelogApiBuilder.withSettings(new File(arg.get(settingsArgument)).toURI().toURL());
+      if (arg.hasMatchedOption(settingsArgument)) {
+        final String settingsFile = settingsArgument.getValue();
+        changelogApiBuilder.withSettings(new File(settingsFile).toURI().toURL());
       }
 
-      if (arg.wasGiven(removeIssueFromMessageArgument)) {
+      if (arg.hasMatchedOption(removeIssueFromMessageArgument)) {
         changelogApiBuilder.withRemoveIssueFromMessageArgument(true);
       }
-      if (arg.wasGiven(ignoreCommitsWithoutIssueArgument)) {
+      if (arg.hasMatchedOption(ignoreCommitsWithoutIssueArgument)) {
         changelogApiBuilder.withIgnoreCommitsWithoutIssue(true);
       }
 
-      if (arg.wasGiven(extendedVariablesArgument)) {
-        final String jsonString = arg.get(extendedVariablesArgument);
+      if (arg.hasMatchedOption(extendedVariablesArgument)) {
+        final String jsonString = extendedVariablesArgument.getValue();
         final JsonMapper jsonMapper = JsonMapper.builder().build();
         final Map<String, Object> jsonObject =
             jsonMapper.readValue(jsonString, new TypeReference<Map<String, Object>>() {});
@@ -617,8 +630,8 @@ public class Main {
         changelogApiBuilder.withExtendedVariables(extendedVariables);
       }
 
-      if (arg.wasGiven(extendedHeadersArgument)) {
-        final List<String> extendedHeaders = arg.get(extendedHeadersArgument);
+      if (arg.hasMatchedOption(extendedHeadersArgument)) {
+        final List<String> extendedHeaders = extendedHeadersArgument.getValue();
         final Map<String, String> headers = new HashMap<>();
         for (final String extendedHeader : extendedHeaders) {
           final String[] splitted = extendedHeader.split(":");
@@ -632,168 +645,169 @@ public class Main {
         changelogApiBuilder.withExtendedHeaders(headers);
       }
 
-      if (arg.wasGiven(templateContentArgument)) {
-        changelogApiBuilder.withTemplateContent(arg.get(templateContentArgument));
+      if (arg.hasMatchedOption(templateContentArgument)) {
+        changelogApiBuilder.withTemplateContent(templateContentArgument.getValue());
       }
 
-      if (arg.wasGiven(templateBaseDirArgument)) {
-        changelogApiBuilder.withTemplateBaseDir(arg.get(templateBaseDirArgument));
+      if (arg.hasMatchedOption(templateBaseDirArgument)) {
+        changelogApiBuilder.withTemplateBaseDir(templateBaseDirArgument.getValue());
       }
 
-      if (arg.wasGiven(templatePartialSuffixArgument)) {
-        changelogApiBuilder.withTemplateSuffix(arg.get(templatePartialSuffixArgument));
+      if (arg.hasMatchedOption(templatePartialSuffixArgument)) {
+        changelogApiBuilder.withTemplateSuffix(templatePartialSuffixArgument.getValue());
       }
 
-      if (arg.wasGiven(fromRepoArgument)) {
-        changelogApiBuilder.withFromRepo(arg.get(fromRepoArgument));
+      if (arg.hasMatchedOption(fromRepoArgument)) {
+        final String fromRepo = fromRepoArgument.getValue();
+        changelogApiBuilder.withFromRepo(fromRepo);
       }
-      if (arg.wasGiven(untaggedTagNameArgument)) {
-        changelogApiBuilder.withUntaggedName(arg.get(untaggedTagNameArgument));
+      if (arg.hasMatchedOption(untaggedTagNameArgument)) {
+        changelogApiBuilder.withUntaggedName(untaggedTagNameArgument.getValue());
       }
-      if (arg.wasGiven(ignoreCommitsIfMessageMatchesArgument)) {
+      if (arg.hasMatchedOption(ignoreCommitsIfMessageMatchesArgument)) {
         changelogApiBuilder.withIgnoreCommitsWithMessage(
-            arg.get(ignoreCommitsIfMessageMatchesArgument));
+            ignoreCommitsIfMessageMatchesArgument.getValue());
       }
-      if (arg.wasGiven(ignoreCommitsOlderThanArgument)) {
+      if (arg.hasMatchedOption(ignoreCommitsOlderThanArgument)) {
         final Date date =
             new SimpleDateFormat(DEFAULT_DATEFORMAT) // NOPMD
-                .parse(arg.get(ignoreCommitsOlderThanArgument));
+                .parse(ignoreCommitsOlderThanArgument.getValue());
         changelogApiBuilder.withIgnoreCommitsOlderThan(date);
       }
-      if (arg.wasGiven(ignoreTagsIfNameMatchesArgument)) {
-        changelogApiBuilder.withIgnoreTagsIfNameMatches(arg.get(ignoreTagsIfNameMatchesArgument));
+      if (arg.hasMatchedOption(ignoreTagsIfNameMatchesArgument)) {
+        changelogApiBuilder.withIgnoreTagsIfNameMatches(ignoreTagsIfNameMatchesArgument.getValue());
       }
-      if (arg.wasGiven(templatePathArgument)) {
-        changelogApiBuilder.withTemplatePath(arg.get(templatePathArgument));
+      if (arg.hasMatchedOption(templatePathArgument)) {
+        changelogApiBuilder.withTemplatePath(templatePathArgument.getValue());
       }
-      if (arg.wasGiven(prependTemplatePathArgument)) {
-        changelogApiBuilder.withPrependTemplatePath(arg.get(prependTemplatePathArgument));
+      if (arg.hasMatchedOption(prependTemplatePathArgument)) {
+        changelogApiBuilder.withPrependTemplatePath(prependTemplatePathArgument.getValue());
       }
-      if (arg.wasGiven(jiraIssuePatternArgument)) {
-        changelogApiBuilder.withJiraIssuePattern(arg.get(jiraIssuePatternArgument));
+      if (arg.hasMatchedOption(jiraIssuePatternArgument)) {
+        changelogApiBuilder.withJiraIssuePattern(jiraIssuePatternArgument.getValue());
       }
-      if (arg.wasGiven(jiraServerArgument)) {
-        changelogApiBuilder.withJiraServer(arg.get(jiraServerArgument));
+      if (arg.hasMatchedOption(jiraServerArgument)) {
+        changelogApiBuilder.withJiraServer(jiraServerArgument.getValue());
       }
-      if (arg.wasGiven(jiraUsernamePatternArgument)) {
-        changelogApiBuilder.withJiraUsername(arg.get(jiraUsernamePatternArgument));
+      if (arg.hasMatchedOption(jiraUsernamePatternArgument)) {
+        changelogApiBuilder.withJiraUsername(jiraUsernamePatternArgument.getValue());
       }
-      if (arg.wasGiven(jiraPasswordPatternArgument)) {
-        changelogApiBuilder.withJiraPassword(arg.get(jiraPasswordPatternArgument));
+      if (arg.hasMatchedOption(jiraPasswordPatternArgument)) {
+        changelogApiBuilder.withJiraPassword(jiraPasswordPatternArgument.getValue());
       }
-      if (arg.wasGiven(jiraBasicAuthStringPatternArgument)) {
-        changelogApiBuilder.withJiraBasicAuthString(arg.get(jiraBasicAuthStringPatternArgument));
+      if (arg.hasMatchedOption(jiraBasicAuthStringPatternArgument)) {
+        changelogApiBuilder.withJiraBasicAuthString(jiraBasicAuthStringPatternArgument.getValue());
       }
-      if (arg.wasGiven(jiraBearerArgument)) {
-        changelogApiBuilder.withJiraBearer(arg.get(jiraBearerArgument));
+      if (arg.hasMatchedOption(jiraBearerArgument)) {
+        changelogApiBuilder.withJiraBearer(jiraBearerArgument.getValue());
       }
-      if (arg.wasGiven(jiraAdditionalFieldArgument)) {
-        arg.get(jiraAdditionalFieldArgument)
-            .forEach(changelogApiBuilder::withJiraIssueAdditionalField);
+      if (arg.hasMatchedOption(jiraAdditionalFieldArgument)) {
+        final List<String> jiraAdditionalFields = jiraAdditionalFieldArgument.getValue();
+        jiraAdditionalFields.forEach(changelogApiBuilder::withJiraIssueAdditionalField);
       }
-      if (arg.wasGiven(redmineIssuePatternArgument)) {
-        changelogApiBuilder.withRedmineIssuePattern(arg.get(redmineIssuePatternArgument));
+      if (arg.hasMatchedOption(redmineIssuePatternArgument)) {
+        changelogApiBuilder.withRedmineIssuePattern(redmineIssuePatternArgument.getValue());
       }
-      if (arg.wasGiven(redmineServerArgument)) {
-        changelogApiBuilder.withRedmineServer(arg.get(redmineServerArgument));
+      if (arg.hasMatchedOption(redmineServerArgument)) {
+        changelogApiBuilder.withRedmineServer(redmineServerArgument.getValue());
       }
-      if (arg.wasGiven(redmineUsernameArgument)) {
-        changelogApiBuilder.withRedmineUsername(arg.get(redmineUsernameArgument));
+      if (arg.hasMatchedOption(redmineUsernameArgument)) {
+        changelogApiBuilder.withRedmineUsername(redmineUsernameArgument.getValue());
       }
-      if (arg.wasGiven(redminePasswordArgument)) {
-        changelogApiBuilder.withRedminePassword(arg.get(redminePasswordArgument));
+      if (arg.hasMatchedOption(redminePasswordArgument)) {
+        changelogApiBuilder.withRedminePassword(redminePasswordArgument.getValue());
       }
-      if (arg.wasGiven(redmineTokenArgument)) {
-        changelogApiBuilder.withRedmineToken(arg.get(redmineTokenArgument));
+      if (arg.hasMatchedOption(redmineTokenArgument)) {
+        changelogApiBuilder.withRedmineToken(redmineTokenArgument.getValue());
       }
-      if (arg.wasGiven(timeZoneArgument)) {
-        changelogApiBuilder.withTimeZone(arg.get(timeZoneArgument));
+      if (arg.hasMatchedOption(timeZoneArgument)) {
+        changelogApiBuilder.withTimeZone(timeZoneArgument.getValue());
       }
-      if (arg.wasGiven(dateFormatArgument)) {
-        changelogApiBuilder.withDateFormat(arg.get(dateFormatArgument));
+      if (arg.hasMatchedOption(dateFormatArgument)) {
+        changelogApiBuilder.withDateFormat(dateFormatArgument.getValue());
       }
-      if (arg.wasGiven(noIssueArgument)) {
-        changelogApiBuilder.withNoIssueName(arg.get(noIssueArgument));
+      if (arg.hasMatchedOption(noIssueArgument)) {
+        changelogApiBuilder.withNoIssueName(noIssueArgument.getValue());
       }
-      if (arg.wasGiven(readableTagNameArgument)) {
-        changelogApiBuilder.withReadableTagName(arg.get(readableTagNameArgument));
+      if (arg.hasMatchedOption(readableTagNameArgument)) {
+        changelogApiBuilder.withReadableTagName(readableTagNameArgument.getValue());
       }
 
-      if (arg.wasGiven(fromRevArgument)) {
-        if (arg.wasGiven(fromRevInclusivenessStrategyArgument)) {
+      if (arg.hasMatchedOption(fromRevArgument)) {
+        if (arg.hasMatchedOption(fromRevInclusivenessStrategyArgument)) {
           changelogApiBuilder.withFromRevision(
-              arg.get(fromRevArgument), arg.get(fromRevInclusivenessStrategyArgument));
+              fromRevArgument.getValue(), fromRevInclusivenessStrategyArgument.getValue());
         } else {
-          changelogApiBuilder.withFromRevision(arg.get(fromRevArgument));
+          changelogApiBuilder.withFromRevision(fromRevArgument.getValue());
         }
       }
-      if (arg.wasGiven(toRevArgument)) {
-        if (arg.wasGiven(toRevInclusivenessStrategyArgument)) {
+      if (arg.hasMatchedOption(toRevArgument)) {
+        if (arg.hasMatchedOption(toRevInclusivenessStrategyArgument)) {
           changelogApiBuilder.withToRevision(
-              arg.get(toRevArgument), arg.get(toRevInclusivenessStrategyArgument));
+              toRevArgument.getValue(), toRevInclusivenessStrategyArgument.getValue());
         } else {
-          changelogApiBuilder.withToRevision(arg.get(toRevArgument));
+          changelogApiBuilder.withToRevision(toRevArgument.getValue());
         }
       }
-      if (arg.wasGiven(fromCommitArgument)) {
-        changelogApiBuilder.withFromCommit(arg.get(fromCommitArgument));
+      if (arg.hasMatchedOption(fromCommitArgument)) {
+        changelogApiBuilder.withFromCommit(fromCommitArgument.getValue());
       }
-      if (arg.wasGiven(fromRefArgument)) {
-        changelogApiBuilder.withFromRef(arg.get(fromRefArgument));
+      if (arg.hasMatchedOption(fromRefArgument)) {
+        changelogApiBuilder.withFromRef(fromRefArgument.getValue());
       }
-      if (arg.wasGiven(toCommitArgument)) {
-        changelogApiBuilder.withToCommit(arg.get(toCommitArgument));
+      if (arg.hasMatchedOption(toCommitArgument)) {
+        changelogApiBuilder.withToCommit(toCommitArgument.getValue());
       }
-      if (arg.wasGiven(toRefArgument)) {
-        changelogApiBuilder.withToRef(arg.get(toRefArgument));
+      if (arg.hasMatchedOption(toRefArgument)) {
+        changelogApiBuilder.withToRef(toRefArgument.getValue());
       }
-      if (arg.wasGiven(gitHubApiArgument)) {
-        changelogApiBuilder.withGitHubApi(arg.get(gitHubApiArgument));
+      if (arg.hasMatchedOption(gitHubApiArgument)) {
+        changelogApiBuilder.withGitHubApi(gitHubApiArgument.getValue());
       }
-      if (arg.wasGiven(gitHubTokenArgument)) {
-        changelogApiBuilder.withGitHubToken(arg.get(gitHubTokenArgument));
+      if (arg.hasMatchedOption(gitHubTokenArgument)) {
+        changelogApiBuilder.withGitHubToken(gitHubTokenArgument.getValue());
       }
 
-      if (arg.wasGiven(gitLabServerArgument)) {
-        changelogApiBuilder.withGitLabServer(arg.get(gitLabServerArgument));
+      if (arg.hasMatchedOption(gitLabServerArgument)) {
+        changelogApiBuilder.withGitLabServer(gitLabServerArgument.getValue());
       }
-      if (arg.wasGiven(gitLabProjectNameArgument)) {
-        changelogApiBuilder.withGitLabProjectName(arg.get(gitLabProjectNameArgument));
+      if (arg.hasMatchedOption(gitLabProjectNameArgument)) {
+        changelogApiBuilder.withGitLabProjectName(gitLabProjectNameArgument.getValue());
       }
-      if (arg.wasGiven(gitLabTokenArgument)) {
-        changelogApiBuilder.withGitLabToken(arg.get(gitLabTokenArgument));
+      if (arg.hasMatchedOption(gitLabTokenArgument)) {
+        changelogApiBuilder.withGitLabToken(gitLabTokenArgument.getValue());
       }
-      if (arg.wasGiven(gitLabProjectIssuePattern)) {
-        changelogApiBuilder.withGitLabIssuePattern(arg.get(gitLabProjectIssuePattern));
+      if (arg.hasMatchedOption(gitLabProjectIssuePattern)) {
+        changelogApiBuilder.withGitLabIssuePattern(gitLabProjectIssuePattern.getValue());
       }
 
       if ( //
-      arg.wasGiven(customIssueNameArgument)
+      arg.hasMatchedOption(customIssueNameArgument)
           && //
-          arg.wasGiven(customIssuePatternArgument)) {
+          arg.hasMatchedOption(customIssuePatternArgument)) {
         String title = null;
-        if (arg.wasGiven(customIssueTitleArgument)) {
-          title = arg.get(customIssueTitleArgument);
+        if (arg.hasMatchedOption(customIssueTitleArgument)) {
+          title = customIssueTitleArgument.getValue();
         }
         String link = null;
-        if (arg.wasGiven(customIssueLinkArgument)) {
-          link = arg.get(customIssueLinkArgument);
+        if (arg.hasMatchedOption(customIssueLinkArgument)) {
+          link = customIssueLinkArgument.getValue();
         }
         changelogApiBuilder.withCustomIssue( //
-            arg.get(customIssueNameArgument), //
-            arg.get(customIssuePatternArgument), //
+            customIssueNameArgument.getValue(), //
+            customIssuePatternArgument.getValue(), //
             link, //
             title);
       }
 
       checkArgument( //
-          arg.wasGiven(outputStdoutArgument)
-              || arg.wasGiven(outputFileArgument)
-              || arg.wasGiven(prependToFile)
-              || arg.wasGiven(printHighestVersion)
-              || arg.wasGiven(printHighestVersionTag)
-              || arg.wasGiven(printNextVersion)
-              || arg.wasGiven(printCurrentVersion), //
+          arg.hasMatchedOption(outputStdoutArgument)
+              || arg.hasMatchedOption(outputFileArgument)
+              || arg.hasMatchedOption(prependToFile)
+              || arg.hasMatchedOption(printHighestVersion)
+              || arg.hasMatchedOption(printHighestVersionTag)
+              || arg.hasMatchedOption(printNextVersion)
+              || arg.hasMatchedOption(printCurrentVersion), //
           "You must supply an output, "
               + PARAM_OUTPUT_FILE
               + " <filename>, "
@@ -807,36 +821,36 @@ public class Main {
               + ", "
               + PARAM_PRINT_CURRENT_VERSION);
 
-      if (arg.wasGiven(outputStdoutArgument)) {
+      if (arg.hasMatchedOption(outputStdoutArgument)) {
         systemOutPrintln(changelogApiBuilder.render());
       }
 
-      if (arg.wasGiven(outputFileArgument)) {
-        final String filePath = arg.get(outputFileArgument);
+      if (arg.hasMatchedOption(outputFileArgument)) {
+        final String filePath = outputFileArgument.getValue();
         changelogApiBuilder.toFile(new File(filePath));
       }
 
-      if (arg.wasGiven(majorVersionPattern)) {
-        final String major = arg.get(majorVersionPattern);
+      if (arg.hasMatchedOption(majorVersionPattern)) {
+        final String major = majorVersionPattern.getValue();
         changelogApiBuilder.withSemanticMajorVersionPattern(major);
       }
 
-      if (arg.wasGiven(minorVersionPattern)) {
-        final String minor = arg.get(minorVersionPattern);
+      if (arg.hasMatchedOption(minorVersionPattern)) {
+        final String minor = minorVersionPattern.getValue();
         changelogApiBuilder.withSemanticMinorVersionPattern(minor);
       }
 
-      if (arg.wasGiven(patchVersionPattern)) {
-        final String patch = arg.get(patchVersionPattern);
+      if (arg.hasMatchedOption(patchVersionPattern)) {
+        final String patch = patchVersionPattern.getValue();
         changelogApiBuilder.withSemanticPatchVersionPattern(patch);
       }
 
-      if (arg.wasGiven(prependToFile)) {
-        final String filePath = arg.get(prependToFile);
+      if (arg.hasMatchedOption(prependToFile)) {
+        final String filePath = prependToFile.getValue();
         changelogApiBuilder.prependToFile(new File(filePath));
       }
 
-      if (arg.wasGiven(showDebugInfo)) {
+      if (arg.hasMatchedOption(showDebugInfo)) {
         System.out.println( // NOPMD
             "Settings:\n" + changelogApiBuilder.getSettings().toJson());
         System.out.println( // NOPMD
@@ -849,13 +863,13 @@ public class Main {
         System.out.println(); // NOPMD
       }
 
-      if (arg.wasGiven(printHighestVersion)) {
+      if (arg.hasMatchedOption(printHighestVersion)) {
         final String version = changelogApiBuilder.getHighestSemanticVersion().toString();
         System.out.println(version); // NOPMD
         System.exit(0);
       }
 
-      if (arg.wasGiven(printHighestVersionTag)) {
+      if (arg.hasMatchedOption(printHighestVersionTag)) {
         final SemanticVersion highestSemanticVersion =
             changelogApiBuilder.getHighestSemanticVersion();
         final String tag = highestSemanticVersion.findTag().orElse("");
@@ -863,20 +877,21 @@ public class Main {
         System.exit(0);
       }
 
-      if (arg.wasGiven(printNextVersion)) {
+      if (arg.hasMatchedOption(printNextVersion)) {
         final String version = changelogApiBuilder.getNextSemanticVersion().toString();
         System.out.println(version); // NOPMD
         System.exit(0);
       }
 
-      if (arg.wasGiven(printCurrentVersion)) {
+      if (arg.hasMatchedOption(printCurrentVersion)) {
         final String version = changelogApiBuilder.getCurrentSemanticVersion().toString();
         System.out.println(version); // NOPMD
         System.exit(0);
       }
 
-    } catch (final ArgumentException exception) {
-      System.out.println(exception.getMessageAndUsage()); // NOPMD
+    } catch (final ParameterException exception) {
+      System.out.println(exception.getMessage()); // NOPMD
+      exception.getCommandLine().usage(System.out);
       System.exit(1);
     }
   }
