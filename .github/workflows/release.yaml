@@ -15,6 +15,9 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+          # A PAT (not the default GITHUB_TOKEN) so the commits/tags this
+          # workflow pushes still trigger gradle-ci.yaml downstream.
+          token: ${{ secrets.RELEASE_PAT }}
 
       - name: Configure git identity
         run: |
