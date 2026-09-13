@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Ensure npm supports trusted publishing (OIDC)
+        run: npm install -g npm@latest
+
+      - name: Bump version and push tag
+        run: ./gradlew updateVersion
+
+      - name: Publish to npm and Maven Central
+        run: ./gradlew release
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingkey: ${{ secrets.GPG_SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signing.password: ${{ secrets.GPG_SIGNING_PASSWORD }}
+
+      - name: Publish to Docker Hub
+        run: |
+          MAVEN_VERSION=$(grep '^version=' gradle.properties | cut -d= -f2)
+          MAVEN_GROUP=$(grep '^group=' gradle.properties | cut -d= -f2)
+          npx runnable-jar-to-docker@latest \
+            --docker-username tomasbjerre \
+            --docker-password "$DOCKERHUB_TOKEN" \
+            --maven-group "$MAVEN_GROUP" \
+            --maven-artifact "${{ github.event.repository.name }}" \
+            --maven-version "$MAVEN_VERSION" \
+            --repository-url "file://$HOME/.m2/repository"
+        env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
