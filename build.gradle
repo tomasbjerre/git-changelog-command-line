@@ -23,6 +23,15 @@ shadowExtension {
 	relocate.set("org:org,com:com")
 }
 
+if (System.getenv("CI")) {
+	// A literal env var name containing a dot ("signing.password") does not
+	// survive the GitHub Actions -> bash -> JVM chain, so use a dot-free name
+	// in CI only. Local releases keep using "signing.password" via gradle.properties.
+	signExtension {
+		signingPasswordEnvOrProp.set("SIGNING_PASSWORD")
+	}
+}
+
 staticCodeAnalysisExtension {
 	maxViolations.set(0)
 }
