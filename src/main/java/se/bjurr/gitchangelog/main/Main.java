@@ -11,7 +11,6 @@ import static se.softhouse.jargo.Arguments.stringArgument;
 import static se.softhouse.jargo.CommandLineParser.withArguments;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.lang.reflect.Type;
@@ -840,11 +839,7 @@ public class Main {
 
       if (arg.wasGiven(showDebugInfo)) {
         System.out.println( // NOPMD
-            "Settings:\n"
-                + new GsonBuilder()
-                    .setPrettyPrinting()
-                    .create()
-                    .toJson(changelogApiBuilder.getSettings()));
+            "Settings:\n" + changelogApiBuilder.getSettings().toJson());
         System.out.println( // NOPMD
             "Template:\n\n" + changelogApiBuilder.getTemplateString() + "\n\n"); // NOPMD
         final byte[] template =
