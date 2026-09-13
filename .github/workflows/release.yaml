@@ -39,12 +39,15 @@ jobs:
         run: ./gradlew updateVersion
 
       - name: Publish to npm and Maven Central
-        run: ./gradlew release
+        run: |
+          ./gradlew release \
+            -Psigningkey="$SIGNING_KEY" \
+            -Psigning.password="$SIGNING_PASSWORD"
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
-          ORG_GRADLE_PROJECT_signingkey: ${{ secrets.GPG_SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signing.password: ${{ secrets.GPG_SIGNING_PASSWORD }}
+          SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.GPG_SIGNING_PASSWORD }}
 
       - name: Publish to Docker Hub
         run: |
