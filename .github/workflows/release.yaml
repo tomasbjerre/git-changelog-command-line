@@ -53,12 +53,16 @@ jobs:
           # runnable-jar-to-docker's README-sync step (docker-pushrm) reads this
           # lowercase name directly, mirroring the old local build-docker.sh.
           export dockerhub_token="$DOCKERHUB_TOKEN"
+          # The image build/push always runs first and must succeed; a trailing
+          # README-sync (docker-pushrm) failure (e.g. token lacks admin scope)
+          # is tolerated and doesn't fail the release.
           npx runnable-jar-to-docker@latest \
             --docker-username tomasbjerre \
             --docker-password "$DOCKERHUB_TOKEN" \
             --maven-group "$MAVEN_GROUP" \
             --maven-artifact "${{ github.event.repository.name }}" \
             --maven-version "$MAVEN_VERSION" \
-            --repository-url "file://$HOME/.m2/repository"
+            --repository-url "file://$HOME/.m2/repository" \
+          || echo "runnable-jar-to-docker reported an error (likely the README push) - continuing"
         env:
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
