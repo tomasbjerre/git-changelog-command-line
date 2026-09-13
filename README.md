@@ -1,6 +1,6 @@
 # Git Changelog Command Line
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.gitchangelog/git-changelog-command-line)
+[![Maven Central](https://img.shields.io/maven-central/v/se.bjurr.gitchangelog/git-changelog-command-line.svg?label=Maven%20Central)](https://search.maven.org/artifact/se.bjurr.gitchangelog/git-changelog-command-line)
 [![NPM](https://img.shields.io/npm/v/git-changelog-command-line.svg?style=flat-square)](https://www.npmjs.com/package/git-changelog-command-line)
 [![NPM Downloads](https://img.shields.io/npm/dm/git-changelog-command-line.svg?style=flat)](https://www.npmjs.com/package/git-changelog-command-line)
 [![Docker Pulls](https://badgen.net/docker/pulls/tomasbjerre/git-changelog-command-line?icon=docker&label=pulls)](https://hub.docker.com/r/tomasbjerre/git-changelog-command-line/)
