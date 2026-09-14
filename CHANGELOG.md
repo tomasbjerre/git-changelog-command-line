@@ -1,3 +1,49 @@
+## 4.0.6 (2026-09-14)
+
+### Bug Fixes
+
+-  using SIGNING_PASSWORD to replace signing.password that does not work in Github actions ([ad4c5](https://github.com/tomasbjerre/git-changelog-command-line/commit/ad4c59be30a9746) Tomas Bjerre)  
+
+### Dependency updates
+
+- update gradle wrapper to 9.7.1 ([712d6](https://github.com/tomasbjerre/git-changelog-command-line/commit/712d6ee11930fa9) Tomas Bjerre)  
+### Other changes
+
+**Add missing draft-release workflow so releases get drafted like sibling repos**
+
+
+[a20f7](https://github.com/tomasbjerre/git-changelog-command-line/commit/a20f7198a427f71) Tomas Bjerre *2026-09-14 20:03:06*
+
+**Superseded by centralized publish-draft-releases.yaml in .github**
+
+
+[0ab4a](https://github.com/tomasbjerre/git-changelog-command-line/commit/0ab4a1586d86083) Tomas Bjerre *2026-09-14 19:58:44*
+
+**Auto-publish pending draft releases weekly**
+
+
+[10c17](https://github.com/tomasbjerre/git-changelog-command-line/commit/10c17c6ef2108e1) Tomas Bjerre *2026-09-14 19:47:43*
+
+**Use shared reusable release workflow**
+
+* Replace the repo-local release.yaml body with a call to 
+* tomasbjerre/.github&#x27;s gradle-npm-maven-docker-release.yaml reusable 
+* workflow, so the release steps are maintained in one place. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_017K9KgD31eJFz7wu9b2C7XE 
+
+[f050f](https://github.com/tomasbjerre/git-changelog-command-line/commit/f050fe0c9f25c22) Tomas Bjerre *2026-09-14 11:25:54*
+
+**Fix broken Maven Central badge in README**
+
+* maven-badges.herokuapp.com is down; switch to img.shields.io badge 
+* linking to search.maven.org. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_011PGVf85V1VhJj4oM3rKh7b 
+
+[49bd6](https://github.com/tomasbjerre/git-changelog-command-line/commit/49bd65131c82e6b) Tomas Bjerre *2026-09-13 08:52:01*
+
+
 ## 4.0.5 (2026-09-13)
 
 ## 4.0.4 (2026-09-13)
