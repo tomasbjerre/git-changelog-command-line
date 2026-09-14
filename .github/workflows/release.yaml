@@ -9,5 +9,5 @@ permissions:
 
 jobs:
   release:
-    uses: tomasbjerre/.github/.github/workflows/gradle-npm-maven-docker-release.yaml@master
+    uses: tomasbjerre/.github/.github/workflows/bundle-gradle-command-line-release.yaml@master
     secrets: inherit
