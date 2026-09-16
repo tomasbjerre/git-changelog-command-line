@@ -56,6 +56,7 @@ public class Main {
   public static final String PARAM_IGNORE_OLDER_PATTERN = "-iot";
   public static final String PARAM_IGNORE_TAG_PATTERN = "-itp";
   public static final String PARAM_JIRA_SERVER = "-js";
+  public static final String PARAM_JIRA_REST_BASE_PATH = "-jrbp";
   public static final String PARAM_JIRA_ISSUE_PATTERN = "-jp";
   public static final String PARAM_JIRA_USERNAME = "-ju";
   public static final String PARAM_JIRA_PASSWORD = "-jpw";
@@ -87,6 +88,7 @@ public class Main {
   public static final String PARAM_GITLABSERVER = "-gls";
   public static final String PARAM_GITLABPROJECTNAME = "-glpn";
   public static final String PARAM_GITLABISSUEPATTERN = "-glp";
+  public static final String PARAM_COMMIT_COUNT = "-cc";
 
   private static String systemOutPrintln;
   private static boolean recordSystemOutPrintln;
@@ -232,6 +234,14 @@ public class Main {
             .description(
                 "Jira server. When a Jira server is given, the title of the Jira issues can be used in the changelog.") //
             .defaultValue(defaultSettings.getJiraServer().orElse(null)) //
+            .build();
+    final OptionSpec jiraRestBasePathArgument =
+        stringOption(PARAM_JIRA_REST_BASE_PATH, "--jira-rest-base-path") //
+            .description(
+                "REST API base path, appended to the Jira server, used to reach the issue"
+                    + " endpoint. Defaults to /rest/api/2 when not set. Some Jira-compatible"
+                    + " servers use a different structure, e.g. /rest/api/latest.") //
+            .defaultValue(defaultSettings.getJiraRestBasePath().orElse(null)) //
             .build();
     final OptionSpec jiraIssuePatternArgument =
         stringOption(PARAM_JIRA_ISSUE_PATTERN, "--jira-pattern") //
@@ -500,6 +510,14 @@ public class Main {
             .description("Paths on the filesystem to filter on.") //
             .build();
 
+    final OptionSpec commitCountArgument =
+        flagOption(PARAM_COMMIT_COUNT, "--commit-count") //
+            .description(
+                "Compute each commit's ancestor count (equivalent to \"git rev-list --count"
+                    + " <hash>\"), exposed to templates as {{commitCount}}. Off by default: it is"
+                    + " O(depth) per commit and can be slow on large histories.") //
+            .build();
+
     final CommandSpec spec = CommandSpec.create().name("git-changelog-command-line");
     spec.addOption(helpArgument);
     spec.addOption(settingsArgument);
@@ -521,6 +539,7 @@ public class Main {
     spec.addOption(untaggedTagNameArgument);
     spec.addOption(jiraIssuePatternArgument);
     spec.addOption(jiraServerArgument);
+    spec.addOption(jiraRestBasePathArgument);
     spec.addOption(redmineIssuePatternArgument);
     spec.addOption(redmineServerArgument);
     spec.addOption(ignoreCommitsIfMessageMatchesArgument);
@@ -571,6 +590,7 @@ public class Main {
     spec.addOption(useIntegrationsArgument);
     spec.addOption(encodingArgument);
     spec.addOption(pathsArgument);
+    spec.addOption(commitCountArgument);
 
     final CommandLine commandLine = new CommandLine(spec);
 
@@ -589,6 +609,7 @@ public class Main {
               .withRedmineEnabled(arg.hasMatchedOption(redmineEnabledArgument))
               .withGitHubEnabled(arg.hasMatchedOption(githubEnabledArgument))
               .withGitLabEnabled(arg.hasMatchedOption(gitlabEnabledArgument))
+              .withCommitCount(arg.hasMatchedOption(commitCountArgument))
               .withEncoding(Charset.forName(encodingArgument.getValue()));
 
       final List<String> pathFilters = pathsArgument.getValue();
@@ -688,6 +709,9 @@ public class Main {
       }
       if (arg.hasMatchedOption(jiraServerArgument)) {
         changelogApiBuilder.withJiraServer(jiraServerArgument.getValue());
+      }
+      if (arg.hasMatchedOption(jiraRestBasePathArgument)) {
+        changelogApiBuilder.withJiraRestBasePath(jiraRestBasePathArgument.getValue());
       }
       if (arg.hasMatchedOption(jiraUsernamePatternArgument)) {
         changelogApiBuilder.withJiraUsername(jiraUsernamePatternArgument.getValue());
