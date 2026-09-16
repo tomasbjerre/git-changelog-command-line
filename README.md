@@ -256,6 +256,15 @@ Handlebars.registerHelper('startsWith', function(from, options) {
 Or from command line:
 
 ```shell
+-cc, --commit-count                                     Compute each commit's 
+                                                        ancestor count (equivalent 
+                                                        to "git rev-list --count 
+                                                        <hash>"), exposed to 
+                                                        templates as {{commitCount}}. 
+                                                        Off by default: it is O(depth) 
+                                                        per commit and can be slow 
+                                                        on large histories.
+                                                        Default: disabled
 -cl, --custom-issue-link <string>                       Custom issue link. 
                                                         Supports variables like 
                                                         ${PATTERN_GROUP_1} to inject variables 
@@ -384,6 +393,17 @@ Or from command line:
                                                         authenticate with Jira.
                                                         <string>: any string
                                                         Default: \\b[a-zA-Z]([a-zA-Z]+)-([0-9]+)\\b
+-jrbp, --jira-rest-base-path <string>                   REST API base path, 
+                                                        appended to the Jira 
+                                                        server, used to reach 
+                                                        the issue endpoint. 
+                                                        Defaults to /rest/api/2 
+                                                        when not set. Some Jira-
+                                                        compatible servers use a 
+                                                        different structure, e.g. 
+                                                        /rest/api/latest.
+                                                        <string>: any string
+                                                        Default: null
 -js, --jiraServer, --jira-server <string>               Jira server. When a 
                                                         Jira server is given, the 
                                                         title of the Jira issues can 

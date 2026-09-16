@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-	implementation "se.bjurr.gitchangelog:git-changelog-lib:3.2.0"
+	implementation "se.bjurr.gitchangelog:git-changelog-lib:3.4.0"
 	implementation "info.picocli:picocli:4.7.7"
 	implementation "org.slf4j:slf4j-simple:2.0.19"
 	implementation "tools.jackson.core:jackson-databind:3.2.2"
