@@ -1,5 +1,5 @@
 plugins {
-	id "se.bjurr.gradle.bundle-command-shadow" version "2.3.0"
+	id "se.bjurr.gradle.bundle-command-shadow" version "2.4.0"
 }
 
 dependencies {
