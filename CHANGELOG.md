@@ -1,3 +1,9 @@
+## 4.1.1 (2026-10-02)
+
+### Dependency updates
+
+- update plugin se.bjurr.gradle.bundle-command-shadow to v2.4.3 (#29) ([9c475](https://github.com/tomasbjerre/git-changelog-command-line/commit/9c475bf6a1c05fc) renovate[bot])  
+- update plugin se.bjurr.gradle.bundle-command-shadow to v2.4.1 (#28) ([1275e](https://github.com/tomasbjerre/git-changelog-command-line/commit/1275e336b8f8788) renovate[bot])  
 ## 4.0.8 (2026-09-15)
 
 ### Dependency updates
