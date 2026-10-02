@@ -598,7 +598,7 @@ public class Main {
       final ParseResult arg = commandLine.parseArgs(args);
 
       if (arg.isUsageHelpRequested()) {
-        commandLine.usage(System.out); // NOPMD
+        commandLine.usage(System.out);
         System.exit(0);
       }
 
@@ -690,7 +690,7 @@ public class Main {
             ignoreCommitsIfMessageMatchesArgument.getValue());
       }
       if (arg.hasMatchedOption(ignoreCommitsOlderThanArgument)) {
-        final Date date =
+        final Date date = // NOPMD
             new SimpleDateFormat(DEFAULT_DATEFORMAT) // NOPMD
                 .parse(ignoreCommitsOlderThanArgument.getValue());
         changelogApiBuilder.withIgnoreCommitsOlderThan(date);
@@ -878,7 +878,7 @@ public class Main {
         System.out.println( // NOPMD
             "Settings:\n" + changelogApiBuilder.getSettings().toJson());
         System.out.println( // NOPMD
-            "Template:\n\n" + changelogApiBuilder.getTemplateString() + "\n\n"); // NOPMD
+            "Template:\n\n" + changelogApiBuilder.getTemplateString() + "\n\n");
         final byte[] template =
             changelogApiBuilder.getTemplateString().getBytes(StandardCharsets.UTF_8);
         for (final byte element : template) {
