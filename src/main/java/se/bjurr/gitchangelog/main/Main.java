@@ -105,7 +105,7 @@ public class Main {
     return OptionSpec.builder(names).type(List.class).auxiliaryTypes(String.class);
   }
 
-  public static void main(final String args[]) throws Exception {
+  public static void main(final String[] args) throws Exception {
     final Settings defaultSettings = defaultSettings();
 
     final OptionSpec helpArgument =
