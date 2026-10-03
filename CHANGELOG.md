@@ -1,3 +1,13 @@
+## 4.1.2 (2026-10-03)
+
+### Bug Fixes
+
+-  update to git-changelog-lib 5.0.0 (#31) ([b5210](https://github.com/tomasbjerre/git-changelog-command-line/commit/b52105c82b3cb6a) Tomas Bjerre)  
+-  remove literal quotes from gradle.properties description ([dc9e4](https://github.com/tomasbjerre/git-changelog-command-line/commit/dc9e44e4f2be320) Tomas Bjerre)  
+
+### Dependency updates
+
+- update plugin se.bjurr.gradle.bundle-command-shadow to v2.4.4 (#30) ([fe555](https://github.com/tomasbjerre/git-changelog-command-line/commit/fe5556e0d0fd5c6) renovate[bot])  
 ## 4.1.1 (2026-10-02)
 
 ### Dependency updates
