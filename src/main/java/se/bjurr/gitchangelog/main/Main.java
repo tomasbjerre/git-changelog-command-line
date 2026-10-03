@@ -693,7 +693,7 @@ public class Main {
         final Date date = // NOPMD
             new SimpleDateFormat(DEFAULT_DATEFORMAT) // NOPMD
                 .parse(ignoreCommitsOlderThanArgument.getValue());
-        changelogApiBuilder.withIgnoreCommitsOlderThan(date);
+        changelogApiBuilder.withIgnoreCommitsOlderThan(date.toInstant());
       }
       if (arg.hasMatchedOption(ignoreTagsIfNameMatchesArgument)) {
         changelogApiBuilder.withIgnoreTagsIfNameMatches(ignoreTagsIfNameMatchesArgument.getValue());
