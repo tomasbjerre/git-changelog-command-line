@@ -1,3 +1,10 @@
+## 4.1.3 (2026-10-24)
+
+### Dependency updates
+
+- update dependency tools.jackson.core:jackson-databind to v3.2.4 (#35) ([d0d80](https://github.com/tomasbjerre/git-changelog-command-line/commit/d0d80a630967e37) renovate[bot])  
+- update dependency gradle to v9.8.2 (#34) ([49bce](https://github.com/tomasbjerre/git-changelog-command-line/commit/49bce1131ba8f95) renovate[bot])  
+- update dependency gradle to v9.8.1 (#33) ([7263b](https://github.com/tomasbjerre/git-changelog-command-line/commit/7263b351e4c9107) renovate[bot])  
 ## 4.1.2 (2026-10-03)
 
 ### Bug Fixes
